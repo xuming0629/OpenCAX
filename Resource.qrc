@@ -1,0 +1,47 @@
+<RCC>
+    <qresource prefix="/imgs">
+        <file>icons/view-top.svg</file>
+        <file>icons/view-select.svg</file>
+        <file>icons/view-right.svg</file>
+        <file>icons/view-rear.svg</file>
+        <file>icons/view-left.svg</file>
+        <file>icons/view-fullscreen.svg</file>
+        <file>icons/view-front.svg</file>
+        <file>icons/view-bottom.svg</file>
+        <file>icons/view-axonometric.svg</file>
+        <file>icons/vertex-selection.svg</file>
+        <file>icons/utilities-terminal.svg</file>
+        <file>icons/triangle.png</file>
+        <file>icons/showAll.png</file>
+        <file>icons/show.png</file>
+        <file>icons/set.png</file>
+        <file>icons/sel-bbox.svg</file>
+        <file>icons/saveAs.png</file>
+        <file>icons/run.png</file>
+        <file>icons/quit.png</file>
+        <file>icons/print.png</file>
+        <file>icons/point.png</file>
+        <file>icons/new_file.png</file>
+        <file>icons/Material.svg</file>
+        <file>icons/linear.png</file>
+        <file>icons/license.png</file>
+        <file>icons/hideAll.png</file>
+        <file>icons/hide.png</file>
+        <file>icons/help.png</file>
+        <file>icons/face-selection.svg</file>
+        <file>icons/edit_OK.svg</file>
+        <file>icons/edit-delete.svg</file>
+        <file>icons/edge-selection.svg</file>
+        <file>icons/DrawStyleWireFrame.svg</file>
+        <file>icons/DrawStyleShaded.svg</file>
+        <file>icons/DrawStyleFlatLines.svg</file>
+        <file>icons/delete.svg</file>
+        <file>icons/datumPln.png</file>
+        <file>icons/cursor_zoom.png</file>
+        <file>icons/cursor_rotate.png</file>
+        <file>icons/colors.svg</file>
+        <file>icons/axis.png</file>
+        <file>icons/add.png</file>
+        <file>icons/3dModel.png</file>
+    </qresource>
+</RCC>

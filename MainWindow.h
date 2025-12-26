@@ -1,56 +1,17 @@
-// #ifndef MAINWINDOW_H
-// #define MAINWINDOW_H
-
-// #include "SARibbonMainWindow.h"
-// #include "MVTKWidget.h"
-// class SARibbonCategory;
-// class SARibbonPannel;
-// class SARibbonBar;
-
-// namespace Ui {
-// class MainWindow;
-// }
-
-// class MainWindow : public SARibbonMainWindow
-// {
-//     Q_OBJECT
-
-// public:
-//     explicit MainWindow(QWidget *parent = nullptr);
-//     ~MainWindow();
-
-// private:
-//     void initUI();
-
-//     void createCategoryFile(SARibbonCategory* page);
-
-//     // 创建几何模块 Ribbon 分类
-//     void createCategoryGeometry(SARibbonCategory* page);
-
-//     void createCategoryMesh(SARibbonCategory* page);
-
-//     SARibbonBar *ribbon;
-
-
-// private:
-//     MVtkWidget* wid_vtk;
-
-// private:
-//     Ui::MainWindow *ui;
-// };
-
-// #endif // MAINWINDOW_H
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include "SARibbonMainWindow.h"
-#include "MVTKWidget.h"
+#include "MVtkWidget.h"
+#include <QFrame>
 
+#include "ModelManager.h"
 class SARibbonCategory;
 class SARibbonBar;
 class QDockWidget;
 class QTreeWidget;
 class QTextEdit;
+class SARibbonMenu;
 
 namespace Ui {
 class MainWindow;
@@ -65,20 +26,38 @@ public:
     ~MainWindow();
 
 private:
-    /* ===== UI 初始化 ===== */
-    void initUI();
+    /* ===== Ribbon 初始化 ===== */
+    void initRibbon();
+
+
+    /* ===== Dock Widgets 初始化 ===== */
     void initDockWidgets();
 
-    /* ===== Ribbon 分类 ===== */
-    void createCategoryFile(SARibbonCategory* page);
-    void createCategoryGeometry(SARibbonCategory* page);
-    void createCategoryMesh(SARibbonCategory* page);
+    /* ===== Ribbon 页面创建 ===== */
+    void createFilePage();
+    void createViewPage();
+    void createGeometryPage();
+    void createMeshPage();
+    void createSolvePage();
+    void createPostPage();
+
+    void initCentralVTKView();
+
+    /* ===== 辅助函数 ===== */
+    QAction* createAction(const QString& text, const QString& iconPath);
+
+
+private slots:
+    void onImportModel();   // 导入模型
+    void onExportModel();   // 导出模型
+    // void onSaveProject();   // 保存工程
+
+
+
 
 private:
     SARibbonBar* ribbon {nullptr};
 
-    /* ===== 中央 3D 视图 ===== */
-    MVtkWidget* wid_vtk {nullptr};
 
     /* ===== Dock Widgets ===== */
     QDockWidget* dockTree {nullptr};
@@ -86,6 +65,14 @@ private:
 
     QTreeWidget* treeWidget {nullptr};
     QTextEdit*  logWidget  {nullptr};
+
+    /* ===== ApplicationButton 菜单 ===== */
+    SARibbonMenu* mMenuApplicationBtn {nullptr};
+
+    MVtkWidget* wid_vtk = nullptr;
+    QFrame*     vtkFrame = nullptr;
+
+    ModelManager modelManager;    // <-- 新增
 
 private:
     Ui::MainWindow *ui;

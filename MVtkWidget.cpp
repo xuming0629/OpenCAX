@@ -126,6 +126,8 @@ MVtkWidget::MVtkWidget(QWidget* parent)
     Connector = vtkSmartPointer<vtkEventQtSlotConnect>::New();
     WorldPicker = vtkSmartPointer<vtkWorldPointPicker>::New();
 
+
+
     ViewAXO();
 }
 
@@ -164,6 +166,7 @@ void MVtkWidget::fitAll() { Renderer->ResetCamera(); Renderer->ResetCameraClippi
 void MVtkWidget::fitActor(vtkActor* actor) { Renderer->ResetCamera(actor->GetBounds()); }
 
 void MVtkWidget::disPlayOCC(TopoDS_Shape& aShape) {
+    currentShape = aShape;
     if(aShape.IsNull()) { qDebug()<<"shape err"; return; }
     IVtkOCC_Shape::Handle aShapeImpl = new IVtkOCC_Shape(aShape);
     vtkNew<IVtkTools_ShapeDataSource> DS;
@@ -224,3 +227,5 @@ void MVtkWidget::ViewPositiveZ(){ VIEW_CAMERA(0,0,0,0,0,1,0,1,0) }
 void MVtkWidget::ViewNegativeX(){ VIEW_CAMERA(0,0,0,-1,0,0,0,0,1) }
 void MVtkWidget::ViewNegativeY(){ VIEW_CAMERA(0,0,0,0,-1,0,0,0,1) }
 void MVtkWidget::ViewNegativeZ(){ VIEW_CAMERA(0,0,0,0,0,-1,0,1,0) }
+
+

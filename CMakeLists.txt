@@ -114,8 +114,11 @@ set(PROJECT_SOURCES
     MainWindow.h
     MainWindow.cpp
     MainWindow.ui
-    MVTKWidget.h
-    MVkWidget.cpp
+    MVtkWidget.h
+    MVtkWidget.cpp
+    ModelManager.h
+    ModelManager.cpp
+    Resource.qrc
 )
 
 # ------------------------------
@@ -124,6 +127,7 @@ set(PROJECT_SOURCES
 qt_add_executable(OpenCAX
     MANUAL_FINALIZATION
     ${PROJECT_SOURCES}
+
 
 )
 

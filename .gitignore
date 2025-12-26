@@ -3,8 +3,9 @@
 
 build/
 bak/
-3rdparty/
 bak/
+models/
+.qtcreator
 *~
 *.autosave
 *.a
