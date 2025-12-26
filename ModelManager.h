@@ -9,6 +9,8 @@
 #include <STEPControl_Writer.hxx>
 #include <IGESControl_Reader.hxx>
 #include <IGESControl_Writer.hxx>
+#include <IFSelect_ReturnStatus.hxx>
+#include <Standard_Failure.hxx>
 
 class ModelManager
 {

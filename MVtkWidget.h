@@ -93,12 +93,12 @@ public:
     void ViewNegativeY();
     void ViewNegativeZ();
 
-    void ViewTop();
-    void ViewBottom();
-    void ViewLeft();
-    void ViewRight();
-    void ViewFront();
-    void ViewBack();
+    // void ViewTop();
+    // void ViewBottom();
+    // void ViewLeft();
+    // void ViewRight();
+    // void ViewFront();
+    // void ViewBack();
     TopoDS_Shape currentShape;
 
 private:

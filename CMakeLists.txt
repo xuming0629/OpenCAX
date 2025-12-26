@@ -119,6 +119,18 @@ set(PROJECT_SOURCES
     ModelManager.h
     ModelManager.cpp
     Resource.qrc
+    FilePage.h
+    FilePage.cpp
+    ViewPage.h
+    ViewPage.cpp
+    GeometryPage.h
+    GeometryPage.cpp
+    MeshPage.h
+    MeshPage.cpp
+    SolvePage.h
+    SolvePage.cpp
+    PostPage.h
+    PostPage.cpp
 )
 
 # ------------------------------
@@ -126,10 +138,7 @@ set(PROJECT_SOURCES
 # ------------------------------
 qt_add_executable(OpenCAX
     MANUAL_FINALIZATION
-    ${PROJECT_SOURCES}
-
-
-)
+    ${PROJECT_SOURCES})
 
 target_link_libraries(OpenCAX PRIVATE
     Qt6::Widgets
