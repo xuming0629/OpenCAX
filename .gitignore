@@ -1,0 +1,16 @@
+
+# third-party binaries
+3rdparty/vtk-*/
+3rdparty/gmsh-*/
+3rdparty/occt-*/
+
+# build output
+build/
+cmake-build-*/
+*.so
+*.so.*
+*.a
+*.o
+*.obj
+*.dll
+*.dylib
