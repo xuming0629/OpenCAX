@@ -419,4 +419,87 @@ Mesh StructuredMeshGenerator::create_hex(
     return mesh;
 }
 
+
+Mesh StructuredMeshGenerator::create_tet(
+    const Vec3& p000,
+    const Vec3& p100,
+    const Vec3& p110,
+    const Vec3& p010,
+    const Vec3& p001,
+    const Vec3& p101,
+    const Vec3& p111,
+    const Vec3& p011,
+    int nx,
+    int ny,
+    int nz
+)
+{
+    if (nx <= 0 || ny <= 0 || nz <= 0) {
+        throw std::runtime_error(
+            "create_tet: nx, ny and nz must be > 0"
+        );
+    }
+
+    Mesh mesh;
+
+    mesh.info().topology_dim = TopologyDim::Dim3;
+    mesh.info().geometry_dim = GeometryDim::Dim3;
+    mesh.info().kind = MeshKind::Volume;
+    mesh.info().structure = MeshStructure::Structured;
+
+    // 1. nodes
+    for (int k = 0; k <= nz; ++k) {
+        double w = static_cast<double>(k) / static_cast<double>(nz);
+
+        for (int j = 0; j <= ny; ++j) {
+            double v = static_cast<double>(j) / static_cast<double>(ny);
+
+            for (int i = 0; i <= nx; ++i) {
+                double u = static_cast<double>(i) / static_cast<double>(nx);
+
+                Vec3 p = trilinear_interpolate(
+                    p000, p100, p110, p010,
+                    p001, p101, p111, p011,
+                    u, v, w
+                );
+
+                mesh.add_node(p.x, p.y, p.z);
+            }
+        }
+    }
+
+    auto id = [nx, ny](int i, int j, int k) {
+        return k * (ny + 1) * (nx + 1)
+             + j * (nx + 1)
+             + i;
+    };
+
+    // 2. cells: 每个 Hexa8 拆成 6 个 Tetra4
+    for (int k = 0; k < nz; ++k) {
+        for (int j = 0; j < ny; ++j) {
+            for (int i = 0; i < nx; ++i) {
+                int n000 = id(i,     j,     k);
+                int n100 = id(i + 1, j,     k);
+                int n110 = id(i + 1, j + 1, k);
+                int n010 = id(i,     j + 1, k);
+
+                int n001 = id(i,     j,     k + 1);
+                int n101 = id(i + 1, j,     k + 1);
+                int n111 = id(i + 1, j + 1, k + 1);
+                int n011 = id(i,     j + 1, k + 1);
+
+                // 共用主对角线 n000 -> n111
+                mesh.add_cell(CellType::Tetra4, {n000, n100, n110, n111});
+                mesh.add_cell(CellType::Tetra4, {n000, n110, n010, n111});
+                mesh.add_cell(CellType::Tetra4, {n000, n010, n011, n111});
+                mesh.add_cell(CellType::Tetra4, {n000, n011, n001, n111});
+                mesh.add_cell(CellType::Tetra4, {n000, n001, n101, n111});
+                mesh.add_cell(CellType::Tetra4, {n000, n101, n100, n111});
+            }
+        }
+    }
+
+    return mesh;
+}
+
 }

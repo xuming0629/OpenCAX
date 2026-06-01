@@ -61,6 +61,20 @@ public:
         int nz
     );
 
+    static Mesh create_tet(
+        const Vec3& p000,
+        const Vec3& p100,
+        const Vec3& p110,
+        const Vec3& p010,
+        const Vec3& p001,
+        const Vec3& p101,
+        const Vec3& p111,
+        const Vec3& p011,
+        int nx,
+        int ny,
+        int nz
+    );
+
    
 };
 

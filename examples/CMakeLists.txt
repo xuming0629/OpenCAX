@@ -34,12 +34,14 @@ add_opencax_example(
     example_quad_mesh.cpp
 )
 
-# add_opencax_example(
-#     example_tet_mesh
-#     example_tet_mesh.cpp
-# )
+
 
 add_opencax_example(
     example_hex_mesh
     example_hex_mesh.cpp
+)
+
+add_opencax_example(
+    example_tet_mesh
+    example_tet_mesh.cpp
 )
