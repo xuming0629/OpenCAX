@@ -37,6 +37,52 @@ static spdlog::level::level_enum toSpdlogLevel(LogLevel level)
     }
 }
 
+// void Logger::init(LogLevel level, const std::string& log_file)
+// {
+//     if (s_initialized && s_logger) {
+//         return;
+//     }
+
+//     std::vector<spdlog::sink_ptr> sinks;
+
+//     auto console_sink =
+//         std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+
+//     console_sink->set_pattern(
+//     "%^[%Y-%m-%d %H:%M:%S.%e] [%n] [%l] %v%$"
+// );
+
+//     sinks.push_back(console_sink);
+
+// #if OpenCAX_ENABLE_FILE_LOG
+//     auto file_sink =
+//         std::make_shared<spdlog::sinks::basic_file_sink_mt>(
+//             log_file,
+//             true
+//         );
+
+//     file_sink->set_pattern(
+//     "[%Y-%m-%d %H:%M:%S.%e] [%n] [%l] %v"
+// );
+
+//     sinks.push_back(file_sink);
+// #endif
+
+//     s_logger = std::make_shared<spdlog::logger>(
+//         "OpenCAX",
+//         sinks.begin(),
+//         sinks.end()
+//     );
+
+//     s_logger->set_level(toSpdlogLevel(level));
+//     s_logger->flush_on(spdlog::level::warn);
+
+//     spdlog::register_logger(s_logger);
+//     spdlog::set_default_logger(s_logger);
+
+//     s_initialized = true;
+// }
+
 void Logger::init(LogLevel level, const std::string& log_file)
 {
     if (s_initialized && s_logger) {
@@ -49,23 +95,25 @@ void Logger::init(LogLevel level, const std::string& log_file)
         std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
 
     console_sink->set_pattern(
-        "%^[%Y-%m-%d %H:%M:%S.%e] [OpenCAX] [%l] %v%$"
+        "%^[%Y-%m-%d %H:%M:%S.%e] [%n] [%l] %v%$"
     );
 
     sinks.push_back(console_sink);
 
 #if OpenCAX_ENABLE_FILE_LOG
-    auto file_sink =
-        std::make_shared<spdlog::sinks::basic_file_sink_mt>(
-            log_file,
-            true
+    if (!log_file.empty()) {
+        auto file_sink =
+            std::make_shared<spdlog::sinks::basic_file_sink_mt>(
+                log_file,
+                true
+            );
+
+        file_sink->set_pattern(
+            "[%Y-%m-%d %H:%M:%S.%e] [%n] [%l] %v"
         );
 
-    file_sink->set_pattern(
-        "[%Y-%m-%d %H:%M:%S.%e] [OpenCAX] [%l] %v"
-    );
-
-    sinks.push_back(file_sink);
+        sinks.push_back(file_sink);
+    }
 #endif
 
     s_logger = std::make_shared<spdlog::logger>(
