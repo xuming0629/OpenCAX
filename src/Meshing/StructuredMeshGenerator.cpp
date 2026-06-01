@@ -87,6 +87,63 @@ static Vec3 bilinear_interpolate(
     return p;
 }
 
+static Vec3 trilinear_interpolate(
+    const Vec3& p000,
+    const Vec3& p100,
+    const Vec3& p110,
+    const Vec3& p010,
+    const Vec3& p001,
+    const Vec3& p101,
+    const Vec3& p111,
+    const Vec3& p011,
+    double u,
+    double v,
+    double w
+)
+{
+    Vec3 p;
+
+    double N000 = (1.0 - u) * (1.0 - v) * (1.0 - w);
+    double N100 = u * (1.0 - v) * (1.0 - w);
+    double N110 = u * v * (1.0 - w);
+    double N010 = (1.0 - u) * v * (1.0 - w);
+
+    double N001 = (1.0 - u) * (1.0 - v) * w;
+    double N101 = u * (1.0 - v) * w;
+    double N111 = u * v * w;
+    double N011 = (1.0 - u) * v * w;
+
+    p.x = N000 * p000.x
+        + N100 * p100.x
+        + N110 * p110.x
+        + N010 * p010.x
+        + N001 * p001.x
+        + N101 * p101.x
+        + N111 * p111.x
+        + N011 * p011.x;
+
+    p.y = N000 * p000.y
+        + N100 * p100.y
+        + N110 * p110.y
+        + N010 * p010.y
+        + N001 * p001.y
+        + N101 * p101.y
+        + N111 * p111.y
+        + N011 * p011.y;
+
+    p.z = N000 * p000.z
+        + N100 * p100.z
+        + N110 * p110.z
+        + N010 * p010.z
+        + N001 * p001.z
+        + N101 * p101.z
+        + N111 * p111.z
+        + N011 * p011.z;
+
+    return p;
+}
+
+
 Mesh StructuredMeshGenerator::create_line(
     const Vec3& p0,
     const Vec3& p1,
@@ -179,6 +236,183 @@ Mesh StructuredMeshGenerator::create_quad(
             int n3 = id(i, j + 1);
 
             mesh.add_cell(CellType::Quad4, {n0, n1, n2, n3});
+        }
+    }
+
+    return mesh;
+}
+
+Mesh StructuredMeshGenerator::create_tri(
+    const Vec3& p00,
+    const Vec3& p10,
+    const Vec3& p11,
+    const Vec3& p01,
+    int nx,
+    int ny,
+    double tolerance
+)
+{
+    if (nx <= 0 || ny <= 0) {
+        throw std::runtime_error("create_tri: nx and ny must be > 0");
+    }
+
+    if (!is_coplanar_quad(p00, p10, p11, p01, tolerance)) {
+        throw std::runtime_error(
+            "create_tri: input four points are not coplanar"
+        );
+    }
+
+    Mesh mesh;
+
+    mesh.info().topology_dim = TopologyDim::Dim2;
+    mesh.info().geometry_dim = GeometryDim::Dim3;
+    mesh.info().kind = MeshKind::Surface;
+    mesh.info().structure = MeshStructure::Structured;
+
+    // ==========================================
+    // generate nodes
+    // ==========================================
+
+    for (int j = 0; j <= ny; ++j) {
+        double v = static_cast<double>(j) / static_cast<double>(ny);
+
+        for (int i = 0; i <= nx; ++i) {
+            double u = static_cast<double>(i) / static_cast<double>(nx);
+
+            Vec3 p = bilinear_interpolate(
+                p00,
+                p10,
+                p11,
+                p01,
+                u,
+                v
+            );
+
+            mesh.add_node(p.x, p.y, p.z);
+        }
+    }
+
+    auto id = [nx](int i, int j) {
+        return j * (nx + 1) + i;
+    };
+
+    // ==========================================
+    // split each quad into two triangles
+    //
+    // n3 ---- n2
+    // |    /  |
+    // |   /   |
+    // n0 ---- n1
+    // ==========================================
+
+    for (int j = 0; j < ny; ++j) {
+        for (int i = 0; i < nx; ++i) {
+            int n0 = id(i, j);
+            int n1 = id(i + 1, j);
+            int n2 = id(i + 1, j + 1);
+            int n3 = id(i, j + 1);
+
+            mesh.add_cell(CellType::Triangle3, {n0, n1, n2});
+            mesh.add_cell(CellType::Triangle3, {n0, n2, n3});
+        }
+    }
+
+    return mesh;
+}
+
+Mesh StructuredMeshGenerator::create_hex(
+    const Vec3& p000,
+    const Vec3& p100,
+    const Vec3& p110,
+    const Vec3& p010,
+    const Vec3& p001,
+    const Vec3& p101,
+    const Vec3& p111,
+    const Vec3& p011,
+    int nx,
+    int ny,
+    int nz
+)
+{
+    if (nx <= 0 || ny <= 0 || nz <= 0) {
+        throw std::runtime_error(
+            "create_hex: nx, ny and nz must be > 0"
+        );
+    }
+
+    Mesh mesh;
+
+    mesh.info().topology_dim = TopologyDim::Dim3;
+    mesh.info().geometry_dim = GeometryDim::Dim3;
+    mesh.info().kind = MeshKind::Volume;
+    mesh.info().structure = MeshStructure::Structured;
+
+    // ==========================================
+    // nodes
+    // ==========================================
+
+    for (int k = 0; k <= nz; ++k) {
+        double w = static_cast<double>(k) / static_cast<double>(nz);
+
+        for (int j = 0; j <= ny; ++j) {
+            double v = static_cast<double>(j) / static_cast<double>(ny);
+
+            for (int i = 0; i <= nx; ++i) {
+                double u = static_cast<double>(i) / static_cast<double>(nx);
+
+                Vec3 p = trilinear_interpolate(
+                    p000,
+                    p100,
+                    p110,
+                    p010,
+                    p001,
+                    p101,
+                    p111,
+                    p011,
+                    u,
+                    v,
+                    w
+                );
+
+                mesh.add_node(p.x, p.y, p.z);
+            }
+        }
+    }
+
+    auto id = [nx, ny](int i, int j, int k) {
+        return k * (ny + 1) * (nx + 1)
+             + j * (nx + 1)
+             + i;
+    };
+
+    // ==========================================
+    // cells
+    // ==========================================
+
+    for (int k = 0; k < nz; ++k) {
+        for (int j = 0; j < ny; ++j) {
+            for (int i = 0; i < nx; ++i) {
+                int n000 = id(i,     j,     k);
+                int n100 = id(i + 1, j,     k);
+                int n110 = id(i + 1, j + 1, k);
+                int n010 = id(i,     j + 1, k);
+
+                int n001 = id(i,     j,     k + 1);
+                int n101 = id(i + 1, j,     k + 1);
+                int n111 = id(i + 1, j + 1, k + 1);
+                int n011 = id(i,     j + 1, k + 1);
+
+                mesh.add_cell(CellType::Hexa8, {
+                    n000,
+                    n100,
+                    n110,
+                    n010,
+                    n001,
+                    n101,
+                    n111,
+                    n011
+                });
+            }
         }
     }
 
