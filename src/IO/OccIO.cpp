@@ -1,5 +1,5 @@
 #include <OpenCAX/IO/OccIO.h>
-#include <OpenCAX/Core/Logger.h>
+#include <OpenCAX/Core/LogMacros.h>
 
 #include <STEPControl_Reader.hxx>
 #include <STEPControl_Writer.hxx>
@@ -18,7 +18,11 @@ TopoDS_Shape OccIO::readSTEP(const std::string& filename)
     IFSelect_ReturnStatus status = reader.ReadFile(filename.c_str());
 
     if (status != IFSelect_RetDone) {
-        Logger::error("Failed to read STEP: " + filename);
+        OpenCAX_LOG_ERROR(
+            LogModule::IO,
+            "Failed to read STEP: {}",
+            filename
+        );
         return {};
     }
 
@@ -32,7 +36,11 @@ TopoDS_Shape OccIO::readIGES(const std::string& filename)
     IFSelect_ReturnStatus status = reader.ReadFile(filename.c_str());
 
     if (status != IFSelect_RetDone) {
-        Logger::error("Failed to read IGES: " + filename);
+        OpenCAX_LOG_ERROR(
+            LogModule::IO,
+            "Failed to read IGES: {}",
+            filename
+        );
         return {};
     }
 
@@ -46,7 +54,11 @@ TopoDS_Shape OccIO::readBREP(const std::string& filename)
     BRep_Builder builder;
 
     if (!BRepTools::Read(shape, filename.c_str(), builder)) {
-        Logger::error("Failed to read BREP: " + filename);
+        OpenCAX_LOG_ERROR(
+            LogModule::IO,
+            "Failed to read BREP: {}",
+            filename
+        );
         return {};
     }
 
@@ -57,7 +69,17 @@ TopoDS_Shape OccIO::readSTL(const std::string& filename)
 {
     TopoDS_Shape shape;
     StlAPI_Reader reader;
+
     reader.Read(shape, filename.c_str());
+
+    if (shape.IsNull()) {
+        OpenCAX_LOG_ERROR(
+            LogModule::IO,
+            "Failed to read STL: {}",
+            filename
+        );
+    }
+
     return shape;
 }
 
@@ -66,20 +88,48 @@ bool OccIO::writeSTEP(const TopoDS_Shape& shape, const std::string& filename)
     STEPControl_Writer writer;
     writer.Transfer(shape, STEPControl_AsIs);
 
-    return writer.Write(filename.c_str()) == IFSelect_RetDone;
+    bool ok = writer.Write(filename.c_str()) == IFSelect_RetDone;
+
+    if (!ok) {
+        OpenCAX_LOG_ERROR(
+            LogModule::IO,
+            "Failed to write STEP: {}",
+            filename
+        );
+    }
+
+    return ok;
 }
 
 bool OccIO::writeBREP(const TopoDS_Shape& shape, const std::string& filename)
 {
-    return BRepTools::Write(shape, filename.c_str());
+    bool ok = BRepTools::Write(shape, filename.c_str());
+
+    if (!ok) {
+        OpenCAX_LOG_ERROR(
+            LogModule::IO,
+            "Failed to write BREP: {}",
+            filename
+        );
+    }
+
+    return ok;
 }
 
 bool OccIO::writeSTL(const TopoDS_Shape& shape, const std::string& filename)
 {
     StlAPI_Writer writer;
     writer.ASCIIMode() = true;
+
     writer.Write(shape, filename.c_str());
+
+    OpenCAX_LOG_INFO(
+        LogModule::IO,
+        "Write STL: {}",
+        filename
+    );
+
     return true;
 }
 
-}
+} // namespace OpenCAX

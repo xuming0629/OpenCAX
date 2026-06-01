@@ -45,3 +45,8 @@ add_opencax_example(
     example_tet_mesh
     example_tet_mesh.cpp
 )
+
+add_opencax_example(
+    example_logger
+    example_logger.cpp
+)

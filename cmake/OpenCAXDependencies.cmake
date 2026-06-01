@@ -95,24 +95,38 @@ endif()
 # ==============================
 # spdlog
 # ==============================
+
 if(OPEN_CAX_BUILD_LOGGING)
 
     if(NOT SPDLOG_ROOT)
-        set(SPDLOG_ROOT "${CMAKE_SOURCE_DIR}/3rdparty/spdlog")
+        set(SPDLOG_ROOT
+            "${CMAKE_SOURCE_DIR}/3rdparty/spdlog"
+        )
     endif()
 
-    find_path(SPDLOG_INCLUDE_DIR
+    find_path(
+        SPDLOG_INCLUDE_DIR
         NAMES spdlog/spdlog.h
-        PATHS ${SPDLOG_ROOT}/include
+        PATHS
+            ${SPDLOG_ROOT}/include
         REQUIRED
     )
 
-    find_library(SPDLOG_LIBRARY
-        NAMES spdlog
-        PATHS ${SPDLOG_ROOT}/lib
+    find_library(
+        SPDLOG_LIBRARY
+        NAMES spdlog spdlogd
+        PATHS
+            ${SPDLOG_ROOT}/lib
     )
 
     message(STATUS "spdlog include: ${SPDLOG_INCLUDE_DIR}")
     message(STATUS "spdlog lib: ${SPDLOG_LIBRARY}")
+
+    add_library(spdlog::spdlog UNKNOWN IMPORTED)
+
+    set_target_properties(spdlog::spdlog PROPERTIES
+        IMPORTED_LOCATION "${SPDLOG_LIBRARY}"
+        INTERFACE_INCLUDE_DIRECTORIES "${SPDLOG_INCLUDE_DIR}"
+    )
 
 endif()
