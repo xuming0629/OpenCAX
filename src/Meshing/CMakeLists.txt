@@ -1,6 +1,6 @@
 add_library(OpenCAXMesh
     Mesh.cpp
-    GmshMesher.cpp
+    StructuredMeshGenerator.cpp
 )
 
 add_library(OpenCAX::Meshing ALIAS OpenCAXMesh)

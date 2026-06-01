@@ -17,4 +17,32 @@ function(add_opencax_example name source)
     endif()
 endfunction()
 
-add_opencax_example(example_box example_box.cpp)
+# add_opencax_example(
+#     example_box
+#     example_box.cpp
+# )
+
+add_opencax_example(
+    example_line_mesh
+    example_line_mesh.cpp
+)
+
+# add_opencax_example(
+#     example_tri_mesh
+#     example_tri_mesh.cpp
+# )
+
+add_opencax_example(
+    example_quad_mesh
+    example_quad_mesh.cpp
+)
+
+# add_opencax_example(
+#     example_tet_mesh
+#     example_tet_mesh.cpp
+# )
+
+# add_opencax_example(
+#     example_hex_mesh
+#     example_hex_mesh.cpp
+# )

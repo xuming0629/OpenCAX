@@ -1,5 +1,8 @@
 add_library(OpenCAXVisualization
     VtkViewer.cpp
+    VisualOptions.cpp
+    VtkConverter.cpp
+
 )
 
 add_library(OpenCAX::Visualization ALIAS OpenCAXVisualization)
