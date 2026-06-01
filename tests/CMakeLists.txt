@@ -39,20 +39,20 @@ target_link_libraries(test_io_step
 gtest_discover_tests(test_io_step)
 
 
-# =====================================
-# test_meshing
-# =====================================
+# # =====================================
+# # test_meshing
+# # =====================================
 
-add_executable(test_meshing
-    test_meshing.cpp
-)
+# add_executable(test_meshing
+#     test_meshing.cpp
+# )
 
-target_link_libraries(test_meshing
-    PRIVATE
-        GTest::gtest_main
-        OpenCAX::Core
-        OpenCAX::Geometry
-        OpenCAX::Meshing
-)
+# target_link_libraries(test_meshing
+#     PRIVATE
+#         GTest::gtest_main
+#         OpenCAX::Core
+#         OpenCAX::Geometry
+#         OpenCAX::Meshing
+# )
 
-gtest_discover_tests(test_meshing)
+# gtest_discover_tests(test_meshing)

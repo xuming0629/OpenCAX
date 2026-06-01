@@ -58,3 +58,61 @@ if(OPEN_CAX_BUILD_MESHING)
     message(STATUS "Gmsh include: ${GMSH_INCLUDE_DIR}")
     message(STATUS "Gmsh lib: ${GMSH_LIBRARY}")
 endif()
+# ==============================
+# GoogleTest
+# ==============================
+if(OPEN_CAX_BUILD_TESTS)
+
+    if(NOT GTEST_ROOT)
+        set(GTEST_ROOT "${CMAKE_SOURCE_DIR}/3rdparty/googletest")
+    endif()
+
+    find_path(GTEST_INCLUDE_DIR
+        NAMES gtest/gtest.h
+        PATHS ${GTEST_ROOT}/include
+        REQUIRED
+    )
+
+    find_library(GTEST_LIBRARY
+        NAMES gtest
+        PATHS ${GTEST_ROOT}/lib
+        REQUIRED
+    )
+
+    find_library(GTEST_MAIN_LIBRARY
+        NAMES gtest_main
+        PATHS ${GTEST_ROOT}/lib
+        REQUIRED
+    )
+
+    message(STATUS "GoogleTest include: ${GTEST_INCLUDE_DIR}")
+    message(STATUS "GoogleTest lib: ${GTEST_LIBRARY}")
+    message(STATUS "GoogleTest main lib: ${GTEST_MAIN_LIBRARY}")
+
+endif()
+
+
+# ==============================
+# spdlog
+# ==============================
+if(OPEN_CAX_BUILD_LOGGING)
+
+    if(NOT SPDLOG_ROOT)
+        set(SPDLOG_ROOT "${CMAKE_SOURCE_DIR}/3rdparty/spdlog")
+    endif()
+
+    find_path(SPDLOG_INCLUDE_DIR
+        NAMES spdlog/spdlog.h
+        PATHS ${SPDLOG_ROOT}/include
+        REQUIRED
+    )
+
+    find_library(SPDLOG_LIBRARY
+        NAMES spdlog
+        PATHS ${SPDLOG_ROOT}/lib
+    )
+
+    message(STATUS "spdlog include: ${SPDLOG_INCLUDE_DIR}")
+    message(STATUS "spdlog lib: ${SPDLOG_LIBRARY}")
+
+endif()

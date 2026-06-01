@@ -1,31 +1,58 @@
 cmake_minimum_required(VERSION 3.16)
-
+cmake_policy(SET CMP0144 NEW)
 project(OpenCAX
     VERSION 0.1.0
     LANGUAGES CXX
 )
 
+# =========================================
+# C++
+# =========================================
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-option(OPEN_CAX_BUILD_EXAMPLES "Build examples" ON)
-option(OPEN_CAX_BUILD_TESTS "Build tests" ON)
-option(OPEN_CAX_BUILD_MESHING "Build meshing module" ON)
+# =========================================
+# Build Options
+# =========================================
+option(OPEN_CAX_BUILD_EXAMPLES      "Build examples" ON)
+option(OPEN_CAX_BUILD_TESTS         "Build tests" ON)
+
+option(OPEN_CAX_BUILD_LOGGING       "Build logging module" ON)
 option(OPEN_CAX_BUILD_VISUALIZATION "Build visualization module" ON)
-option(OPEN_CAX_BUILD_FEM "Build FEM module" ON)
+option(OPEN_CAX_BUILD_MESHING       "Build meshing module" ON)
+option(OPEN_CAX_BUILD_FEM           "Build FEM module" ON)
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+option(OPEN_CAX_BUILD_PYTHON        "Build python bindings" OFF)
 
+# =========================================
+# CMake Modules
+# =========================================
+list(APPEND CMAKE_MODULE_PATH
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake"
+)
+
+# =========================================
+# Dependencies
+# =========================================
 include(OpenCAXDependencies)
 
+# =========================================
+# Source
+# =========================================
 add_subdirectory(src)
 
+# =========================================
+# Examples
+# =========================================
 if(OPEN_CAX_BUILD_EXAMPLES)
     add_subdirectory(examples)
 endif()
 
+# =========================================
+# Tests
+# =========================================
 if(OPEN_CAX_BUILD_TESTS)
-    # enable_testing()
-    # add_subdirectory(tests)
+    enable_testing()
+    add_subdirectory(tests)
 endif()
