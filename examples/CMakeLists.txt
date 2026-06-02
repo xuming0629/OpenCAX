@@ -34,8 +34,6 @@ add_opencax_example(
     example_quad_mesh.cpp
 )
 
-
-
 add_opencax_example(
     example_hex_mesh
     example_hex_mesh.cpp
@@ -111,3 +109,6 @@ add_opencax_example(
 add_opencax_example(
     example_mesh_tetgen
     example_mesh_tetgen.cpp)
+
+
+add_opencax_example(example_mesh_tetgen_stl example_mesh_tetgen_stl.cpp)
