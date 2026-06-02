@@ -131,7 +131,6 @@ if(OPEN_CAX_BUILD_LOGGING)
 
 endif()
 
-
 # ==============================
 # TetGen
 # ==============================
@@ -169,7 +168,7 @@ if(OPEN_CAX_BUILD_MESHING)
     message(STATUS "TetGen source: ${TETGEN_SOURCE_FILE}")
     message(STATUS "TetGen predicates: ${TETGEN_PREDICATES_FILE}")
 
-    add_library(tetgen STATIC
+    add_library(tetgen SHARED
         ${TETGEN_SOURCE_FILE}
         ${TETGEN_PREDICATES_FILE}
     )
@@ -182,6 +181,13 @@ if(OPEN_CAX_BUILD_MESHING)
     target_compile_definitions(tetgen
         PUBLIC
             TETLIBRARY
+        PRIVATE
+            TETGEN_EXPORTS
+    )
+
+    set_target_properties(tetgen PROPERTIES
+        POSITION_INDEPENDENT_CODE ON
+        OUTPUT_NAME "tetgen"
     )
 
 endif()
