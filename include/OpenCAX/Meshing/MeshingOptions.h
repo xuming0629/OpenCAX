@@ -76,6 +76,12 @@ struct MeshingOptions
     int algorithm_3d = 1;
 
     int smoothing_steps = 10;
+
+
+    // TetGen
+    // TetGen
+    double tetgen_max_volume = 0.01;
+    double tetgen_quality = 1.414;
 };
 
 } // namespace OpenCAX

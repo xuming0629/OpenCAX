@@ -106,4 +106,8 @@ add_opencax_example(
 add_opencax_example(
     example_plane_tri_quad_mixed
     example_plane_tri_quad_mixed.cpp)
-   
+
+
+add_opencax_example(
+    example_mesh_tetgen
+    example_mesh_tetgen.cpp)

@@ -1,7 +1,7 @@
 
 # third-party binaries
 3rdparty/vtk-*/
-3rdparty/gmsh-*/
+# 3rdparty/gmsh-*/
 3rdparty/occt-*/
 
 # build output

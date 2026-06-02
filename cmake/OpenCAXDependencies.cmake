@@ -130,3 +130,48 @@ if(OPEN_CAX_BUILD_LOGGING)
     )
 
 endif()
+
+
+# ==============================
+# TetGen
+# ==============================
+if(OPEN_CAX_BUILD_MESHING)
+
+    if(NOT TETGEN_ROOT)
+        set(TETGEN_ROOT "${CMAKE_SOURCE_DIR}/3rdparty/tetgen")
+    endif()
+
+    find_path(TETGEN_INCLUDE_DIR
+        NAMES tetgen.h
+        PATHS
+            ${TETGEN_ROOT}
+            ${TETGEN_ROOT}/include
+        REQUIRED
+    )
+
+    find_file(TETGEN_SOURCE_FILE
+        NAMES tetgen.cxx
+        PATHS
+            ${TETGEN_ROOT}
+            ${TETGEN_ROOT}/src
+        REQUIRED
+    )
+
+    message(STATUS "TetGen include: ${TETGEN_INCLUDE_DIR}")
+    message(STATUS "TetGen source: ${TETGEN_SOURCE_FILE}")
+
+    add_library(tetgen STATIC
+        ${TETGEN_SOURCE_FILE}
+    )
+
+    target_include_directories(tetgen
+        PUBLIC
+            ${TETGEN_INCLUDE_DIR}
+    )
+
+    target_compile_definitions(tetgen
+        PUBLIC
+            TETLIBRARY
+    )
+
+endif()
