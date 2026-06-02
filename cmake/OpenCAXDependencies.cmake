@@ -157,11 +157,21 @@ if(OPEN_CAX_BUILD_MESHING)
         REQUIRED
     )
 
+    find_file(TETGEN_PREDICATES_FILE
+        NAMES predicates.cxx
+        PATHS
+            ${TETGEN_ROOT}
+            ${TETGEN_ROOT}/src
+        REQUIRED
+    )
+
     message(STATUS "TetGen include: ${TETGEN_INCLUDE_DIR}")
     message(STATUS "TetGen source: ${TETGEN_SOURCE_FILE}")
+    message(STATUS "TetGen predicates: ${TETGEN_PREDICATES_FILE}")
 
     add_library(tetgen STATIC
         ${TETGEN_SOURCE_FILE}
+        ${TETGEN_PREDICATES_FILE}
     )
 
     target_include_directories(tetgen
