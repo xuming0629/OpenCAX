@@ -1,6 +1,6 @@
 #pragma once
 
-#include <OpenCAX/Meshing/MeshTypes.h>
+#include <OpenCAX/Core/MeshTypes.h>
 
 #include <vector>
 #include <cstddef>
