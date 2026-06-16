@@ -1,6 +1,6 @@
 #pragma once
 
-#include <OpenCAX/Meshing/Mesh.h>
+#include <OpenCAX/Mesh/Mesh.h>
 
 namespace OpenCAX
 {

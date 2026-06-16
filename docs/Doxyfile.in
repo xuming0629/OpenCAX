@@ -1,0 +1,35 @@
+PROJECT_NAME           = "OpenCAX"
+PROJECT_NUMBER         = "@PROJECT_VERSION@"
+PROJECT_BRIEF          = "OpenCAX C++ API Documentation"
+
+OUTPUT_DIRECTORY       = "@OPEN_CAX_DOC_OUTPUT_DIR@"
+
+INPUT                  = "@OPEN_CAX_DOC_INPUT_DIR@"
+RECURSIVE              = YES
+
+FILE_PATTERNS          = *.h *.hpp *.hh
+
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+
+HTML_OUTPUT            = html
+GENERATE_TREEVIEW      = YES
+
+HAVE_DOT               = YES
+CLASS_DIAGRAMS         = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+UML_LOOK               = YES
+
+SOURCE_BROWSER         = YES
+
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+
+JAVADOC_AUTOBRIEF      = YES
+QT_AUTOBRIEF           = YES
+
+PREDEFINED             = OpenCAX_API=

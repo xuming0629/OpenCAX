@@ -12,5 +12,5 @@ target_include_directories(OpenCAXFEM
 target_link_libraries(OpenCAXFEM
     PUBLIC
         OpenCAX::Core
-        OpenCAX::Meshing
+        OpenCAX::Mesh
 )

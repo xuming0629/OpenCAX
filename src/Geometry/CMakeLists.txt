@@ -1,5 +1,9 @@
 add_library(OpenCAXGeometry
-    ShapeFactory.cpp
+    Shape.cpp
+    # GeometryBuilder.cpp
+    # GeometryOps.cpp
+    # GeometryAnalysis.cpp
+    # GeometryIO.cpp
 )
 
 add_library(OpenCAX::Geometry ALIAS OpenCAXGeometry)
