@@ -5,8 +5,6 @@ var classOpenCAX_1_1TriangleMesh =
     [ "add_triangle", "classOpenCAX_1_1TriangleMesh.html#a2a64de392cbbce2c7dab754a38f4e481", null ],
     [ "boundary_edges", "classOpenCAX_1_1TriangleMesh.html#aa31980607b6be255bd910dfee6c07869", null ],
     [ "boundary_nodes", "classOpenCAX_1_1TriangleMesh.html#a29797131948525aba8fa4ed9739be923", null ],
-    [ "create_structured_rectangle", "classOpenCAX_1_1TriangleMesh.html#a1602bd84147dc4f94dbe595422158015", null ],
-    [ "create_unstructured", "classOpenCAX_1_1TriangleMesh.html#aa0f15004cbf3bd467711a1d2f0be8659", null ],
     [ "edges", "classOpenCAX_1_1TriangleMesh.html#a1c75e31605eaf13c3b9d55016700973b", null ],
     [ "is_pure_triangle_mesh", "classOpenCAX_1_1TriangleMesh.html#a81d58e6fa5a14ff7d766d1b16786d38f", null ],
     [ "num_triangles", "classOpenCAX_1_1TriangleMesh.html#af23fa88fe0f3532af9219ada86c32b30", null ],

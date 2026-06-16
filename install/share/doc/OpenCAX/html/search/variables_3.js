@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['edge_5fcolor_0',['edge_color',['../structOpenCAX_1_1VisualOptions.html#aa58e361c2f59ff6b57cdd718a20aa1c2',1,'OpenCAX::VisualOptions']]],
-  ['edges_1',['edges',['../structOpenCAX_1_1ShapeStats.html#aaecd0a9fd1017f39d76a891ceca1c400',1,'OpenCAX::ShapeStats']]]
+  ['id_0',['id',['../structOpenCAX_1_1MeshNode.html#aea01917a2d9209614e76eb0ba82d563f',1,'OpenCAX::MeshNode::id'],['../structOpenCAX_1_1MeshCell.html#a96114252747efd0e0a757317974e1536',1,'OpenCAX::MeshCell::id']]],
+  ['info_5f_1',['info_',['../classOpenCAX_1_1Mesh.html#a876e223e16700e9b4ff93779a7783c9f',1,'OpenCAX::Mesh']]]
 ];

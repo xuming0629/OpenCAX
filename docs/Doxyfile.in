@@ -9,25 +9,35 @@ RECURSIVE              = YES
 
 FILE_PATTERNS          = *.h *.hpp *.hh
 
-EXTRACT_ALL            = YES
+EXTRACT_ALL            = NO
 EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = NO
+HIDE_UNDOC_MEMBERS     = YES
+HIDE_UNDOC_CLASSES     = NO
 
 GENERATE_HTML          = YES
-GENERATE_LATEX         = NO
-
 HTML_OUTPUT            = html
 GENERATE_TREEVIEW      = YES
+SEARCHENGINE           = YES
+
+SOURCE_BROWSER         = NO
+INLINE_SOURCES         = NO
 
 HAVE_DOT               = YES
 CLASS_DIAGRAMS         = YES
-CALL_GRAPH             = YES
-CALLER_GRAPH           = YES
 UML_LOOK               = YES
+CALL_GRAPH             = NO
+CALLER_GRAPH           = NO
+REFERENCES_RELATION    = NO
+REFERENCED_BY_RELATION = NO
 
-SOURCE_BROWSER         = YES
+GENERATE_LATEX         = NO
+GENERATE_XML           = NO
+GENERATE_MAN           = NO
+GENERATE_RTF           = NO
 
 WARNINGS               = YES
-WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_UNDOCUMENTED   = NO
 
 JAVADOC_AUTOBRIEF      = YES
 QT_AUTOBRIEF           = YES

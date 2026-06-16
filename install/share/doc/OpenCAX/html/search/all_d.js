@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['setlevel_0',['setlevel',['../classOpenCAX_1_1Logger.html#a97f97625d5f356959c9c509b0826c515',1,'OpenCAX::Logger::setLevel(LogLevel level)'],['../classOpenCAX_1_1Logger.html#afdb30c1ad8d8ed4ae8971695d9fd1745',1,'OpenCAX::Logger::setLevel(const std::string &amp;level)']]],
-  ['shutdown_1',['shutdown',['../classOpenCAX_1_1Logger.html#a9e1d2960744b483efaa4e504ac04e1dd',1,'OpenCAX::Logger']]],
-  ['solver_2',['Solver',['../namespaceOpenCAX.html#a7c11abdf0a5bdc975b3a3873dff66528a36d976182cdd1ebdb3c96bf19477aa6d',1,'OpenCAX']]],
-  ['spdlog_3',['spdlog',['../namespacespdlog.html',1,'']]],
-  ['stepio_4',['StepIO',['../namespaceOpenCAX.html#a7c11abdf0a5bdc975b3a3873dff66528a94f7940174dd8ca05b88ce05eba56547',1,'OpenCAX']]],
-  ['stlio_5',['StlIO',['../namespaceOpenCAX.html#a7c11abdf0a5bdc975b3a3873dff66528a644f5bbb782792d80288cbbd3afee0a9',1,'OpenCAX']]],
-  ['surface_6',['Surface',['../namespaceOpenCAX.html#a7c11abdf0a5bdc975b3a3873dff66528aaa0d528ba11ea1485d466dfe1ea40819',1,'OpenCAX']]]
+  ['total_5farea_0',['total_area',['../classOpenCAX_1_1TriangleMesh.html#a096ab2c7c0d5af1ddcb43efff66a2092',1,'OpenCAX::TriangleMesh']]],
+  ['triangle_1',['triangle',['../classOpenCAX_1_1TriangleMesh.html#a97e04f98675f4ac202c904e9a3d6b2b7',1,'OpenCAX::TriangleMesh']]],
+  ['triangle_5farea_2',['triangle_area',['../classOpenCAX_1_1TriangleMesh.html#a47d0987652de8d92a9641d9dd3c1cd5a',1,'OpenCAX::TriangleMesh']]],
+  ['triangle_5fcentroid_3',['triangle_centroid',['../classOpenCAX_1_1TriangleMesh.html#a72e9a1e73eadd9ab4414996a65d4e656',1,'OpenCAX::TriangleMesh']]],
+  ['trianglemesh_4',['TriangleMesh',['../classOpenCAX_1_1TriangleMesh.html',1,'OpenCAX']]],
+  ['type_5',['type',['../structOpenCAX_1_1MeshCell.html#aba0a1fdef805b5cc26ee5a55f0f18f7a',1,'OpenCAX::MeshCell']]]
 ];

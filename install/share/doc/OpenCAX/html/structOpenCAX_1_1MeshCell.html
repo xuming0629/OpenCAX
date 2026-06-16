@@ -27,7 +27,7 @@
   <td id="projectalign">
    <div id="projectname">OpenCAX<span id="projectnumber">&#160;0.1.0</span>
    </div>
-   <div id="projectbrief">OpenCAX C++ CAD/CAE Framework</div>
+   <div id="projectbrief">OpenCAX C++ API Documentation</div>
   </td>
  </tr>
  </tbody>
@@ -101,12 +101,13 @@ $(document).ready(function(){initNavTree('structOpenCAX_1_1MeshCell.html',''); i
  <a href="structOpenCAX_1_1MeshCell.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="MeshTypes_8h_source.html">MeshTypes.h</a>&gt;</code></p>
-<div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for OpenCAX::MeshCell:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="structOpenCAX_1_1MeshCell__coll__graph.svg" width="147" height="196"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="dynheader">
+Collaboration diagram for OpenCAX::MeshCell:</div>
+<div class="dyncontent">
+<div class="center"><img src="structOpenCAX_1_1MeshCell__coll__graph.png" border="0" usemap="#aOpenCAX_1_1MeshCell_coll__map" alt="Collaboration graph"/></div>
+<map name="aOpenCAX_1_1MeshCell_coll__map" id="aOpenCAX_1_1MeshCell_coll__map">
+<area shape="rect" title="网格单元" alt="" coords="5,5,141,191"/>
+</map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -114,8 +115,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a96114252747efd0e0a757317974e1536" id="r_a96114252747efd0e0a757317974e1536"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structOpenCAX_1_1MeshCell.html#a96114252747efd0e0a757317974e1536">id</a> = -1</td></tr>
 <tr class="memdesc:a96114252747efd0e0a757317974e1536"><td class="mdescLeft">&#160;</td><td class="mdescRight">单元 ID  <br /></td></tr>
 <tr class="separator:a96114252747efd0e0a757317974e1536"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba0a1fdef805b5cc26ee5a55f0f18f7a" id="r_aba0a1fdef805b5cc26ee5a55f0f18f7a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceOpenCAX.html#a3e2a5ee4438f2217b91245349f39ecf8">CellType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structOpenCAX_1_1MeshCell.html#aba0a1fdef805b5cc26ee5a55f0f18f7a">type</a> = <a class="el" href="namespaceOpenCAX.html#a3e2a5ee4438f2217b91245349f39ecf8a88183b946cc5f0e8c96b2e66e1c74a7e">CellType::Unknown</a></td></tr>
-<tr class="memdesc:aba0a1fdef805b5cc26ee5a55f0f18f7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">单元类型  <br /></td></tr>
+<tr class="memitem:aba0a1fdef805b5cc26ee5a55f0f18f7a" id="r_aba0a1fdef805b5cc26ee5a55f0f18f7a"><td class="memItemLeft" align="right" valign="top"><a id="aba0a1fdef805b5cc26ee5a55f0f18f7a" name="aba0a1fdef805b5cc26ee5a55f0f18f7a"></a>
+CellType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b> = CellType::Unknown</td></tr>
+<tr class="memdesc:aba0a1fdef805b5cc26ee5a55f0f18f7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">单元类型 <br /></td></tr>
 <tr class="separator:aba0a1fdef805b5cc26ee5a55f0f18f7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae770b2c94f73c36f7d98ae387683bfbb" id="r_ae770b2c94f73c36f7d98ae387683bfbb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structOpenCAX_1_1MeshCell.html#ae770b2c94f73c36f7d98ae387683bfbb">node_ids</a></td></tr>
 <tr class="memdesc:ae770b2c94f73c36f7d98ae387683bfbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">单元节点连接关系  <br /></td></tr>
@@ -139,23 +141,19 @@ Public Attributes</h2></td></tr>
 <p>通过 type 描述单元类型， 通过 node_ids 描述单元与节点的连接关系。</p>
 <p>示例：</p>
 <p>Triangle3:</p>
-<div class="fragment"><div class="line"><a class="code hl_variable" href="structOpenCAX_1_1MeshCell.html#aba0a1fdef805b5cc26ee5a55f0f18f7a">type</a> = <a class="code hl_enumvalue" href="namespaceOpenCAX.html#a3e2a5ee4438f2217b91245349f39ecf8a231b2a14e6c8f5f042991cc8c5990003">CellType::Triangle3</a></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="structOpenCAX_1_1MeshCell.html#aba0a1fdef805b5cc26ee5a55f0f18f7a">type</a> = CellType::Triangle3</div>
 <div class="line"><a class="code hl_variable" href="structOpenCAX_1_1MeshCell.html#ae770b2c94f73c36f7d98ae387683bfbb">node_ids</a> = {0, 1, 2}</div>
-<div class="ttc" id="anamespaceOpenCAX_html_a3e2a5ee4438f2217b91245349f39ecf8a231b2a14e6c8f5f042991cc8c5990003"><div class="ttname"><a href="namespaceOpenCAX.html#a3e2a5ee4438f2217b91245349f39ecf8a231b2a14e6c8f5f042991cc8c5990003">OpenCAX::CellType::Triangle3</a></div><div class="ttdeci">@ Triangle3</div><div class="ttdoc">三角形单元，3 个节点</div></div>
-<div class="ttc" id="astructOpenCAX_1_1MeshCell_html_aba0a1fdef805b5cc26ee5a55f0f18f7a"><div class="ttname"><a href="structOpenCAX_1_1MeshCell.html#aba0a1fdef805b5cc26ee5a55f0f18f7a">OpenCAX::MeshCell::type</a></div><div class="ttdeci">CellType type</div><div class="ttdoc">单元类型</div><div class="ttdef"><b>Definition</b> <a href="MeshTypes_8h_source.html#l00253">MeshTypes.h:253</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1MeshCell_html_ae770b2c94f73c36f7d98ae387683bfbb"><div class="ttname"><a href="structOpenCAX_1_1MeshCell.html#ae770b2c94f73c36f7d98ae387683bfbb">OpenCAX::MeshCell::node_ids</a></div><div class="ttdeci">std::vector&lt; int &gt; node_ids</div><div class="ttdoc">单元节点连接关系</div><div class="ttdef"><b>Definition</b> <a href="MeshTypes_8h_source.html#l00263">MeshTypes.h:263</a></div></div>
+<div class="ttc" id="astructOpenCAX_1_1MeshCell_html_aba0a1fdef805b5cc26ee5a55f0f18f7a"><div class="ttname"><a href="structOpenCAX_1_1MeshCell.html#aba0a1fdef805b5cc26ee5a55f0f18f7a">OpenCAX::MeshCell::type</a></div><div class="ttdeci">CellType type</div><div class="ttdoc">单元类型</div><div class="ttdef"><b>Definition</b> MeshTypes.h:253</div></div>
+<div class="ttc" id="astructOpenCAX_1_1MeshCell_html_ae770b2c94f73c36f7d98ae387683bfbb"><div class="ttname"><a href="structOpenCAX_1_1MeshCell.html#ae770b2c94f73c36f7d98ae387683bfbb">OpenCAX::MeshCell::node_ids</a></div><div class="ttdeci">std::vector&lt; int &gt; node_ids</div><div class="ttdoc">单元节点连接关系</div><div class="ttdef"><b>Definition</b> MeshTypes.h:263</div></div>
 </div><!-- fragment --><p>Quad4:</p>
-<div class="fragment"><div class="line"><a class="code hl_variable" href="structOpenCAX_1_1MeshCell.html#aba0a1fdef805b5cc26ee5a55f0f18f7a">type</a> = <a class="code hl_enumvalue" href="namespaceOpenCAX.html#a3e2a5ee4438f2217b91245349f39ecf8a7e543de6ba602d09b9bd5cb5e1eee77c">CellType::Quad4</a></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="structOpenCAX_1_1MeshCell.html#aba0a1fdef805b5cc26ee5a55f0f18f7a">type</a> = CellType::Quad4</div>
 <div class="line"><a class="code hl_variable" href="structOpenCAX_1_1MeshCell.html#ae770b2c94f73c36f7d98ae387683bfbb">node_ids</a> = {0, 1, 2, 3}</div>
-<div class="ttc" id="anamespaceOpenCAX_html_a3e2a5ee4438f2217b91245349f39ecf8a7e543de6ba602d09b9bd5cb5e1eee77c"><div class="ttname"><a href="namespaceOpenCAX.html#a3e2a5ee4438f2217b91245349f39ecf8a7e543de6ba602d09b9bd5cb5e1eee77c">OpenCAX::CellType::Quad4</a></div><div class="ttdeci">@ Quad4</div><div class="ttdoc">四边形单元，4 个节点</div></div>
 </div><!-- fragment --><p>Tetra4:</p>
-<div class="fragment"><div class="line"><a class="code hl_variable" href="structOpenCAX_1_1MeshCell.html#aba0a1fdef805b5cc26ee5a55f0f18f7a">type</a> = <a class="code hl_enumvalue" href="namespaceOpenCAX.html#a3e2a5ee4438f2217b91245349f39ecf8af709d869d1ea9cab85fb4b1fd095447a">CellType::Tetra4</a></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="structOpenCAX_1_1MeshCell.html#aba0a1fdef805b5cc26ee5a55f0f18f7a">type</a> = CellType::Tetra4</div>
 <div class="line"><a class="code hl_variable" href="structOpenCAX_1_1MeshCell.html#ae770b2c94f73c36f7d98ae387683bfbb">node_ids</a> = {0, 1, 2, 3}</div>
-<div class="ttc" id="anamespaceOpenCAX_html_a3e2a5ee4438f2217b91245349f39ecf8af709d869d1ea9cab85fb4b1fd095447a"><div class="ttname"><a href="namespaceOpenCAX.html#a3e2a5ee4438f2217b91245349f39ecf8af709d869d1ea9cab85fb4b1fd095447a">OpenCAX::CellType::Tetra4</a></div><div class="ttdeci">@ Tetra4</div><div class="ttdoc">四面体单元，4 个节点</div></div>
 </div><!-- fragment --><p>Hexa8:</p>
-<div class="fragment"><div class="line"><a class="code hl_variable" href="structOpenCAX_1_1MeshCell.html#aba0a1fdef805b5cc26ee5a55f0f18f7a">type</a> = <a class="code hl_enumvalue" href="namespaceOpenCAX.html#a3e2a5ee4438f2217b91245349f39ecf8abfa7bb6b2412cd02de839f23ea0c7c00">CellType::Hexa8</a></div>
+<div class="fragment"><div class="line"><a class="code hl_variable" href="structOpenCAX_1_1MeshCell.html#aba0a1fdef805b5cc26ee5a55f0f18f7a">type</a> = CellType::Hexa8</div>
 <div class="line"><a class="code hl_variable" href="structOpenCAX_1_1MeshCell.html#ae770b2c94f73c36f7d98ae387683bfbb">node_ids</a> = {0, 1, 2, 3, 4, 5, 6, 7}</div>
-<div class="ttc" id="anamespaceOpenCAX_html_a3e2a5ee4438f2217b91245349f39ecf8abfa7bb6b2412cd02de839f23ea0c7c00"><div class="ttname"><a href="namespaceOpenCAX.html#a3e2a5ee4438f2217b91245349f39ecf8abfa7bb6b2412cd02de839f23ea0c7c00">OpenCAX::CellType::Hexa8</a></div><div class="ttdeci">@ Hexa8</div><div class="ttdoc">六面体单元，8 个节点</div></div>
 </div><!-- fragment --><p>字段说明：</p>
 <ul>
 <li>id : 单元编号</li>
@@ -166,8 +164,6 @@ Public Attributes</h2></td></tr>
 <li>material_id : 材料 ID，用于 FEM 材料映射</li>
 <li>region_id : 几何区域 ID，例如不同体域、面域 </li>
 </ul>
-
-<p class="definition">Definition at line <a class="el" href="MeshTypes_8h_source.html#l00241">241</a> of file <a class="el" href="MeshTypes_8h_source.html">MeshTypes.h</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a96114252747efd0e0a757317974e1536" name="a96114252747efd0e0a757317974e1536"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a96114252747efd0e0a757317974e1536">&#9670;&#160;</a></span>id</h2>
@@ -183,8 +179,6 @@ Public Attributes</h2></td></tr>
 
 <p>单元 ID </p>
 <p>通常从 0 开始连续编号。 </p>
-
-<p class="definition">Definition at line <a class="el" href="MeshTypes_8h_source.html#l00248">248</a> of file <a class="el" href="MeshTypes_8h_source.html">MeshTypes.h</a>.</p>
 
 </div>
 </div>
@@ -203,8 +197,6 @@ Public Attributes</h2></td></tr>
 <p>材料 ID </p>
 <p>FEM 中用于将单元映射到材料参数。 </p>
 
-<p class="definition">Definition at line <a class="el" href="MeshTypes_8h_source.html#l00296">296</a> of file <a class="el" href="MeshTypes_8h_source.html">MeshTypes.h</a>.</p>
-
 </div>
 </div>
 <a id="ae770b2c94f73c36f7d98ae387683bfbb" name="ae770b2c94f73c36f7d98ae387683bfbb"></a>
@@ -221,9 +213,7 @@ Public Attributes</h2></td></tr>
 
 <p>单元节点连接关系 </p>
 <p>存储构成该单元的节点 ID。</p>
-<p>节点顺序应遵循 <a class="el" href="namespaceOpenCAX.html">OpenCAX</a> 统一约定， 后续可与 Gmsh / VTK / FEM 单元顺序进行映射。 </p>
-
-<p class="definition">Definition at line <a class="el" href="MeshTypes_8h_source.html#l00263">263</a> of file <a class="el" href="MeshTypes_8h_source.html">MeshTypes.h</a>.</p>
+<p>节点顺序应遵循 OpenCAX 统一约定， 后续可与 Gmsh / VTK / FEM 单元顺序进行映射。 </p>
 
 </div>
 </div>
@@ -255,8 +245,6 @@ Public Attributes</h2></td></tr>
 <li>Hex20 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="MeshTypes_8h_source.html#l00282">282</a> of file <a class="el" href="MeshTypes_8h_source.html">MeshTypes.h</a>.</p>
-
 </div>
 </div>
 <a id="a8eff977e233c8ca5e3a7a51057e4ae6e" name="a8eff977e233c8ca5e3a7a51057e4ae6e"></a>
@@ -273,8 +261,6 @@ Public Attributes</h2></td></tr>
 
 <p>物理分组 ID </p>
 <p>常用于记录 Gmsh Physical Group。 </p>
-
-<p class="definition">Definition at line <a class="el" href="MeshTypes_8h_source.html#l00289">289</a> of file <a class="el" href="MeshTypes_8h_source.html">MeshTypes.h</a>.</p>
 
 </div>
 </div>
@@ -293,38 +279,18 @@ Public Attributes</h2></td></tr>
 <p>区域 ID </p>
 <p>可用于区分几何区域、体域、面域。 </p>
 
-<p class="definition">Definition at line <a class="el" href="MeshTypes_8h_source.html#l00303">303</a> of file <a class="el" href="MeshTypes_8h_source.html">MeshTypes.h</a>.</p>
-
-</div>
-</div>
-<a id="aba0a1fdef805b5cc26ee5a55f0f18f7a" name="aba0a1fdef805b5cc26ee5a55f0f18f7a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba0a1fdef805b5cc26ee5a55f0f18f7a">&#9670;&#160;</a></span>type</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespaceOpenCAX.html#a3e2a5ee4438f2217b91245349f39ecf8">CellType</a> OpenCAX::MeshCell::type = <a class="el" href="namespaceOpenCAX.html#a3e2a5ee4438f2217b91245349f39ecf8a88183b946cc5f0e8c96b2e66e1c74a7e">CellType::Unknown</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>单元类型 </p>
-
-<p class="definition">Definition at line <a class="el" href="MeshTypes_8h_source.html#l00253">253</a> of file <a class="el" href="MeshTypes_8h_source.html">MeshTypes.h</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>/home/xuming/code_ws/OpenCAX/include/OpenCAX/Mesh/<a class="el" href="MeshTypes_8h_source.html">MeshTypes.h</a></li>
+<li>/home/xuming/code_ws/OpenCAX/install/include/OpenCAX/Mesh/<a class="el" href="MeshTypes_8h_source.html">MeshTypes.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="namespaceOpenCAX.html">OpenCAX</a></li><li class="navelem"><a class="el" href="structOpenCAX_1_1MeshCell.html">MeshCell</a></li>
-    <li class="footer">Generated on Tue Jun 16 2026 09:19:18 for OpenCAX by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="navelem"><b>OpenCAX</b></li><li class="navelem"><a class="el" href="structOpenCAX_1_1MeshCell.html">MeshCell</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

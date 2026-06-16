@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['line_5fwidth_0',['line_width',['../structOpenCAX_1_1VisualOptions.html#adebf95c17c37b57c620f9f293029cab2',1,'OpenCAX::VisualOptions']]]
+  ['physical_5fid_0',['physical_id',['../structOpenCAX_1_1MeshNode.html#adfe00cbcd25ab735a169c2c7167ed91c',1,'OpenCAX::MeshNode::physical_id'],['../structOpenCAX_1_1MeshCell.html#a8eff977e233c8ca5e3a7a51057e4ae6e',1,'OpenCAX::MeshCell::physical_id']]]
 ];

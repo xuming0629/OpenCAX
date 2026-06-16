@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['debug_0',['Debug',['../namespaceOpenCAX.html#acf5a149791c3ea74c364f9a79f15bca4aa603905470e2a5b8c13e96b579ef0dba',1,'OpenCAX']]]
+  ['dimension_0',['dimension',['../structOpenCAX_1_1MeshInfo.html#a5d9a8d8e46b85fce06a84f95456bb164',1,'OpenCAX::MeshInfo']]]
 ];
