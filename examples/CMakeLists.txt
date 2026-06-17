@@ -5,13 +5,20 @@ function(add_opencax_example name source)
         PRIVATE
             OpenCAX::Core
             OpenCAX::Geometry
-            # OpenCAX::IO
     )
 
     if(OPEN_CAX_BUILD_MESH)
         target_link_libraries(${name}
             PRIVATE
                 OpenCAX::Mesh
+        )
+    endif()
+
+    if(OPEN_CAX_BUILD_FEM)
+        target_link_libraries(${name}
+            PRIVATE
+                OpenCAX::FEM
+                Eigen3::Eigen
         )
     endif()
 
@@ -23,11 +30,12 @@ function(add_opencax_example name source)
     endif()
 endfunction()
 
-
-
 add_opencax_example(
     test_triangle_mesh
     test_triangle_mesh.cpp
 )
 
-
+add_opencax_example(
+    test_poisson2d
+    test_poisson2d.cpp
+)

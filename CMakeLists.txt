@@ -24,8 +24,8 @@ option(OPEN_CAX_BUILD_LOGGING  "Build logging module" ON)
 
 option(OPEN_CAX_BUILD_MESH     "Build mesh module" ON)
 option(OPEN_CAX_BUILD_POST     "Build post-processing module" ON)
-option(OPEN_CAX_BUILD_FEM      "Build FEM module" OFF)
-option(OPEN_CAX_BUILD_SOLVER   "Build solver module" OFF)
+option(OPEN_CAX_BUILD_FEM      "Build FEM module" ON)
+option(OPEN_CAX_BUILD_SOLVER   "Build solver module" ON)
 
 option(OPEN_CAX_BUILD_PYTHON   "Build python bindings" OFF)
 

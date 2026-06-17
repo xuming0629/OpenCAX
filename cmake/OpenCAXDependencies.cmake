@@ -258,3 +258,38 @@ if(OPEN_CAX_BUILD_LOGGING)
     endif()
 
 endif()
+
+# ==============================
+# Eigen3
+# Used by FEM/Solver
+# ==============================
+if(OPEN_CAX_BUILD_FEM OR OPEN_CAX_BUILD_SOLVER)
+
+    if(NOT EIGEN3_ROOT)
+        set(EIGEN3_ROOT
+            "${CMAKE_SOURCE_DIR}/3rdparty/eigen-3.4.0"
+            CACHE PATH "Eigen3 root directory"
+        )
+    endif()
+
+    find_path(EIGEN3_INCLUDE_DIR
+        NAMES Eigen/Core
+        PATHS
+            ${EIGEN3_ROOT}
+            ${EIGEN3_ROOT}/include
+            ${EIGEN3_ROOT}/include/eigen3
+            /usr/include/eigen3
+        REQUIRED
+    )
+
+    message(STATUS "Eigen3 include: ${EIGEN3_INCLUDE_DIR}")
+
+    if(NOT TARGET Eigen3::Eigen)
+        add_library(Eigen3::Eigen INTERFACE IMPORTED)
+
+        set_target_properties(Eigen3::Eigen PROPERTIES
+            INTERFACE_INCLUDE_DIRECTORIES "${EIGEN3_INCLUDE_DIR}"
+        )
+    endif()
+
+endif()

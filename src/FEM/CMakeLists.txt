@@ -1,5 +1,6 @@
 add_library(OpenCAXFEM
     FEMModel.cpp
+    Poisson2D.cpp
 )
 
 add_library(OpenCAX::FEM ALIAS OpenCAXFEM)
@@ -13,4 +14,5 @@ target_link_libraries(OpenCAXFEM
     PUBLIC
         OpenCAX::Core
         OpenCAX::Mesh
+        Eigen3::Eigen
 )
