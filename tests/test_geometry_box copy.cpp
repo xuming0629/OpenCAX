@@ -31,7 +31,9 @@
 // }
 
 
-
+# include <vector>
 void get_surface_xxx_power(
+    // power_step_value
+    std::vector<double> & power_points,
     
 )

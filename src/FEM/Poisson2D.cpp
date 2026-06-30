@@ -1,4 +1,5 @@
 #include <OpenCAX/FEM/Poisson2D.h>
+#include <OpenCAX/Post/ScalarFieldViewer.h>
 
 #include <Eigen/SparseLU>
 
@@ -6,6 +7,7 @@
 #include <vector>
 #include <iostream>
 #include <cmath>
+#include <utility>
 
 namespace OpenCAX
 {
@@ -13,13 +15,8 @@ namespace OpenCAX
 Poisson2D::Poisson2D(const TriangleMesh& mesh)
     : mesh_(mesh)
 {
-    source_ = [](double, double) {
-        return 1.0;
-    };
-
-    dirichlet_ = [](double, double) {
-        return 0.0;
-    };
+    source_ = [](double, double) { return 1.0; };
+    dirichlet_ = [](double, double) { return 0.0; };
 }
 
 void Poisson2D::setSource(Function2D f)
@@ -46,6 +43,7 @@ void Poisson2D::assemble()
     F_ = Eigen::VectorXd::Zero(node_count);
 
     std::vector<Eigen::Triplet<double>> triplets;
+    triplets.reserve(tri_count * 9);
 
     for (std::size_t cid = 0; cid < tri_count; ++cid)
     {
@@ -59,14 +57,9 @@ void Poisson2D::assemble()
         auto p1 = mesh_.point2d(id1);
         auto p2 = mesh_.point2d(id2);
 
-        double x0 = p0[0];
-        double y0 = p0[1];
-
-        double x1 = p1[0];
-        double y1 = p1[1];
-
-        double x2 = p2[0];
-        double y2 = p2[1];
+        double x0 = p0[0], y0 = p0[1];
+        double x1 = p1[0], y1 = p1[1];
+        double x2 = p2[0], y2 = p2[1];
 
         double detJ =
             (x1 - x0) * (y2 - y0) -
@@ -128,6 +121,11 @@ void Poisson2D::applyDirichlet()
         auto p = mesh_.point2d(node_id);
         double value = dirichlet_(p[0], p[1]);
 
+        for (int i = 0; i < dense.rows(); ++i)
+        {
+            F_(i) -= dense(i, node_id) * value;
+        }
+
         for (int j = 0; j < dense.cols(); ++j)
         {
             dense(node_id, j) = 0.0;
@@ -168,6 +166,17 @@ bool Poisson2D::solve()
     }
 
     return true;
+}
+
+void Poisson2D::showSolution(const char* title) const
+{
+    if (U_.size() == 0)
+    {
+        std::cerr << "[OpenCAX::Poisson2D] solution is empty. Call solve() first." << std::endl;
+        return;
+    }
+
+    ScalarFieldViewer::showSolution(mesh_, U_, title);
 }
 
 } // namespace OpenCAX

@@ -263,7 +263,17 @@ endif()
 # Eigen3
 # Used by FEM/Solver
 # ==============================
+option(OPEN_CAX_USE_EIGEN3 "Enable Eigen3 support" ON)
+
 if(OPEN_CAX_BUILD_FEM OR OPEN_CAX_BUILD_SOLVER)
+    if(NOT OPEN_CAX_USE_EIGEN3)
+        message(FATAL_ERROR
+            "OPEN_CAX_BUILD_FEM or OPEN_CAX_BUILD_SOLVER requires OPEN_CAX_USE_EIGEN3=ON"
+        )
+    endif()
+endif()
+
+if(OPEN_CAX_USE_EIGEN3)
 
     if(NOT EIGEN3_ROOT)
         set(EIGEN3_ROOT
@@ -279,8 +289,27 @@ if(OPEN_CAX_BUILD_FEM OR OPEN_CAX_BUILD_SOLVER)
             ${EIGEN3_ROOT}/include
             ${EIGEN3_ROOT}/include/eigen3
             /usr/include/eigen3
-        REQUIRED
+            /usr/local/include/eigen3
+        NO_DEFAULT_PATH
     )
+
+    if(NOT EIGEN3_INCLUDE_DIR)
+        find_path(EIGEN3_INCLUDE_DIR
+            NAMES Eigen/Core
+            PATHS
+                /usr/include/eigen3
+                /usr/local/include/eigen3
+        )
+    endif()
+
+    if(NOT EIGEN3_INCLUDE_DIR)
+        message(FATAL_ERROR
+            "Eigen3 not found. Please set EIGEN3_ROOT, for example:\n"
+            "  cmake .. -DEIGEN3_ROOT=/path/to/eigen-3.4.0\n"
+            "or install Eigen3:\n"
+            "  sudo apt install libeigen3-dev"
+        )
+    endif()
 
     message(STATUS "Eigen3 include: ${EIGEN3_INCLUDE_DIR}")
 

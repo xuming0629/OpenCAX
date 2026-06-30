@@ -14,5 +14,13 @@ target_link_libraries(OpenCAXFEM
     PUBLIC
         OpenCAX::Core
         OpenCAX::Mesh
-        Eigen3::Eigen
 )
+
+if(OPEN_CAX_USE_EIGEN3)
+    target_link_libraries(OpenCAXFEM
+        PRIVATE
+            Eigen3::Eigen
+    )
+else()
+    message(FATAL_ERROR "OpenCAX FEM requires Eigen3. Please enable OPEN_CAX_USE_EIGEN3=ON.")
+endif()

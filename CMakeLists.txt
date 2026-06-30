@@ -30,6 +30,7 @@ option(OPEN_CAX_BUILD_SOLVER   "Build solver module" ON)
 option(OPEN_CAX_BUILD_PYTHON   "Build python bindings" OFF)
 
 option(OPEN_CAX_BUILD_DOCS "Build API documentation" ON)
+option(OPEN_CAX_USE_EIGEN3 "Enable Eigen3 support" ON)
 # =========================================
 # Backend Options
 # =========================================

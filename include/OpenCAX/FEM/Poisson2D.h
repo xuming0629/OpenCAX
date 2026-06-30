@@ -26,6 +26,8 @@ public:
 
     const Eigen::VectorXd& solution() const;
 
+    void showSolution(const char* title = "Poisson2D Solution") const;
+
 private:
     void assemble();
     void applyDirichlet();

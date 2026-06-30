@@ -117,6 +117,7 @@ int main()
     print_mesh_cells(structured);
 
     print_edges(structured_topology);
+    
 
     print_vector_matrix(
         "cell2edge",
