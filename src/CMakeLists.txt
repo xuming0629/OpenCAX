@@ -19,13 +19,7 @@ endif()
 # ==========================
 # FEM
 # ==========================
-if(OPEN_CAX_BUILD_FEM)
-    add_subdirectory(FEM)
-endif()
+# if(OPEN_CAX_BUILD_FEM)
+#     add_subdirectory(FEM)
+# endif()
 
-# ==========================
-# Solver
-# ==========================
-if(OPEN_CAX_BUILD_SOLVER)
-    add_subdirectory(Solver)
-endif()

@@ -25,9 +25,10 @@ option(OPEN_CAX_BUILD_LOGGING  "Build logging module" ON)
 option(OPEN_CAX_BUILD_MESH     "Build mesh module" ON)
 option(OPEN_CAX_BUILD_POST     "Build post-processing module" ON)
 option(OPEN_CAX_BUILD_FEM      "Build FEM module" ON)
-option(OPEN_CAX_BUILD_SOLVER   "Build solver module" ON)
 
-option(OPEN_CAX_BUILD_PYTHON   "Build python bindings" OFF)
+
+option(OPEN_CAX_BUILD_PYTHON   "Build python bindings" ON)
+
 
 option(OPEN_CAX_BUILD_DOCS "Build API documentation" ON)
 option(OPEN_CAX_USE_EIGEN3 "Enable Eigen3 support" ON)

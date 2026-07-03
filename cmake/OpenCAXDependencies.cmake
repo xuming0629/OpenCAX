@@ -322,3 +322,26 @@ if(OPEN_CAX_USE_EIGEN3)
     endif()
 
 endif()
+
+# 只做 find_package，不操作 target
+
+if(OPEN_CAX_BUILD_PYTHON)
+
+    find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
+
+    message(STATUS "Python include: ${Python3_INCLUDE_DIRS}")
+    message(STATUS "Python libs: ${Python3_LIBRARIES}")
+
+    execute_process(
+        COMMAND ${Python3_EXECUTABLE} -c "import matplotlib"
+        RESULT_VARIABLE MPL_RESULT
+        OUTPUT_QUIET ERROR_QUIET
+    )
+
+    if(NOT MPL_RESULT EQUAL 0)
+        message(WARNING "matplotlib not installed")
+    else()
+        message(STATUS "matplotlib found")
+    endif()
+
+endif()
