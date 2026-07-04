@@ -17,8 +17,12 @@ public:
     );
 
     static void showMeshWithNodeIds(const Mesh& mesh);
+
     static void showMeshWithCellIds(const Mesh& mesh);
+
+    static void showMeshWithEdgeIds(const Mesh& mesh);
+
     static void showMeshWithIds(const Mesh& mesh);
 };
 
-}
+} // namespace OpenCAX

@@ -194,7 +194,7 @@ int main()
         0.0, 1.0,
         0.0, 1.0,
         4, 4,
-        false
+        true
     );
 
     std::cout << "nodes = " << mesh.num_nodes() << "\n";
@@ -222,15 +222,29 @@ int main()
     /* =========================
      * VTK 可视化
      * ========================= */
-    VisualOptions opt;
-    opt.show_node_ids = true;
-    opt.show_cell_ids = true;
-    opt.show_points = true;
-    opt.wireframe = true;
-    opt.point_size = 5.0;
-    opt.line_width = 1.5;
+    OpenCAX::VisualOptions options;
 
-    VtkViewer::showMesh(mesh, opt);
+    options.window_title = "OpenCAX Triangle Mesh";
+    options.window_width = 1200;
+    options.window_height = 900;
+
+    options.show_nodes = true;
+    options.show_edges = true;
+    options.show_node_ids = true;
+    options.show_cell_ids = true;
+    options.show_edge_ids = true;
+
+    options.mesh_color = OpenCAX::Color(0.8, 0.8, 0.85);
+    options.edge_color = OpenCAX::Color(0.0, 0.0, 0.0);
+    options.node_color = OpenCAX::Color(1.0, 0.0, 0.0);
+
+    options.line_width = 1.5;
+    options.edge_width = 2.0;
+    options.point_size = 10.0;
+
+    OpenCAX::VtkViewer::showMesh(mesh, options);
+
+
 
     std::cout << "\n[PASSED] all tests done\n";
 

@@ -4,6 +4,7 @@ add_library(OpenCAXMesh
     CellTopology.cpp
     MeshTopology.cpp
     TriangleMesh.cpp
+    QuadMesh.cpp
   
 )
 

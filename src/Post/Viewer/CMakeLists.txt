@@ -1,6 +1,5 @@
 add_library(OpenCAXPostViewer
     VtkViewer.cpp
-    VisualOptions.cpp
     VtkConverter.cpp
 )
 
