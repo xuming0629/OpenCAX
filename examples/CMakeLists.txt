@@ -77,4 +77,14 @@ add_opencax_example(
     test_triangle_mesh_with_topology.cpp
 )
 
+add_opencax_example(
+    test_example_tetra_mesh
+    test_example_tetra_mesh.cpp
+)
+
+
+add_opencax_example(
+    test_example_hex_mesh
+    test_example_hex_mesh.cpp
+)
 

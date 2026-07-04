@@ -1,4 +1,4 @@
-#include <OpenCAX/Mesh/TetraMesh.h>
+#include <OpenCAX/Mesh/HexMesh.h>
 
 #include <algorithm>
 #include <cmath>
@@ -9,18 +9,18 @@
 namespace OpenCAX
 {
 
-TetraMesh::TetraMesh()
+HexMesh::HexMesh()
 {
     info_.dimension = MeshDimension::Dim3;
-    info_.source = "TetraMesh";
+    info_.source = "HexMesh";
 
-    source_type_ = TetraMeshSourceType::Unknown;
+    source_type_ = HexMeshSourceType::Unknown;
 }
 
 // =============================
 // structured
 // =============================
-TetraMesh TetraMesh::create_structured_box(
+HexMesh HexMesh::create_structured_box(
     double xmin,
     double xmax,
     double ymin,
@@ -35,52 +35,52 @@ TetraMesh TetraMesh::create_structured_box(
     if (nx <= 0)
     {
         throw std::invalid_argument(
-            "TetraMesh::create_structured_box: nx must be positive."
+            "HexMesh::create_structured_box: nx must be positive."
         );
     }
 
     if (ny <= 0)
     {
         throw std::invalid_argument(
-            "TetraMesh::create_structured_box: ny must be positive."
+            "HexMesh::create_structured_box: ny must be positive."
         );
     }
 
     if (nz <= 0)
     {
         throw std::invalid_argument(
-            "TetraMesh::create_structured_box: nz must be positive."
+            "HexMesh::create_structured_box: nz must be positive."
         );
     }
 
     if (!(xmax > xmin))
     {
         throw std::invalid_argument(
-            "TetraMesh::create_structured_box: xmax must be greater than xmin."
+            "HexMesh::create_structured_box: xmax must be greater than xmin."
         );
     }
 
     if (!(ymax > ymin))
     {
         throw std::invalid_argument(
-            "TetraMesh::create_structured_box: ymax must be greater than ymin."
+            "HexMesh::create_structured_box: ymax must be greater than ymin."
         );
     }
 
     if (!(zmax > zmin))
     {
         throw std::invalid_argument(
-            "TetraMesh::create_structured_box: zmax must be greater than zmin."
+            "HexMesh::create_structured_box: zmax must be greater than zmin."
         );
     }
 
-    TetraMesh mesh;
+    HexMesh mesh;
 
-    mesh.info_.name = "StructuredTetraMesh";
+    mesh.info_.name = "StructuredHexMesh";
     mesh.info_.source = "Structured";
     mesh.info_.dimension = MeshDimension::Dim3;
 
-    mesh.source_type_ = TetraMeshSourceType::Structured;
+    mesh.source_type_ = HexMeshSourceType::Structured;
 
     mesh.structured_info_.nx = nx;
     mesh.structured_info_.ny = ny;
@@ -140,9 +140,7 @@ TetraMesh TetraMesh::create_structured_box(
                 int n7 = nid(i,     j + 1, k + 1);
 
                 /*
-                 * 一个 Hexa8 结构块拆成 6 个 Tetra4。
-                 *
-                 * 节点约定：
+                 * Hexa8 节点顺序：
                  *
                  * bottom:
                  *
@@ -155,15 +153,11 @@ TetraMesh TetraMesh::create_structured_box(
                  * n7 ---- n6
                  * |       |
                  * n4 ---- n5
-                 *
-                 * 使用主对角线 n0 -> n6。
                  */
-                mesh.add_cell(CellType::Tetra4, {n0, n1, n2, n6});
-                mesh.add_cell(CellType::Tetra4, {n0, n2, n3, n6});
-                mesh.add_cell(CellType::Tetra4, {n0, n3, n7, n6});
-                mesh.add_cell(CellType::Tetra4, {n0, n7, n4, n6});
-                mesh.add_cell(CellType::Tetra4, {n0, n4, n5, n6});
-                mesh.add_cell(CellType::Tetra4, {n0, n5, n1, n6});
+                mesh.add_cell(
+                    CellType::Hexa8,
+                    {n0, n1, n2, n3, n4, n5, n6, n7}
+                );
             }
         }
     }
@@ -174,18 +168,18 @@ TetraMesh TetraMesh::create_structured_box(
 // =============================
 // unstructured
 // =============================
-TetraMesh TetraMesh::create_unstructured(
+HexMesh HexMesh::create_unstructured(
     const std::vector<std::array<double, 3>>& points,
-    const std::vector<std::array<int, 4>>& tets
+    const std::vector<std::array<int, 8>>& hexes
 )
 {
-    TetraMesh mesh;
+    HexMesh mesh;
 
-    mesh.info_.name = "UnstructuredTetraMesh";
+    mesh.info_.name = "UnstructuredHexMesh";
     mesh.info_.source = "Unstructured";
     mesh.info_.dimension = MeshDimension::Dim3;
 
-    mesh.source_type_ = TetraMeshSourceType::Unstructured;
+    mesh.source_type_ = HexMeshSourceType::Unstructured;
 
     for (const auto& p : points)
     {
@@ -194,23 +188,23 @@ TetraMesh TetraMesh::create_unstructured(
 
     int n = static_cast<int>(points.size());
 
-    for (size_t i = 0; i < tets.size(); ++i)
+    for (size_t i = 0; i < hexes.size(); ++i)
     {
-        const auto& t = tets[i];
+        const auto& h = hexes[i];
 
-        for (int k = 0; k < 4; ++k)
+        for (int k = 0; k < 8; ++k)
         {
-            if (t[k] < 0 || t[k] >= n)
+            if (h[k] < 0 || h[k] >= n)
             {
                 throw std::runtime_error(
-                    "TetraMesh::create_unstructured: invalid tetra node index."
+                    "HexMesh::create_unstructured: invalid hexa node index."
                 );
             }
         }
 
         mesh.add_cell(
-            CellType::Tetra4,
-            {t[0], t[1], t[2], t[3]}
+            CellType::Hexa8,
+            {h[0], h[1], h[2], h[3], h[4], h[5], h[6], h[7]}
         );
     }
 
@@ -218,29 +212,29 @@ TetraMesh TetraMesh::create_unstructured(
 }
 
 // =============================
-TetraMeshSourceType TetraMesh::source_type() const
+HexMeshSourceType HexMesh::source_type() const
 {
     return source_type_;
 }
 
-void TetraMesh::set_source_type(
-    TetraMeshSourceType type
+void HexMesh::set_source_type(
+    HexMeshSourceType type
 )
 {
     source_type_ = type;
 }
 
-bool TetraMesh::is_structured() const
+bool HexMesh::is_structured() const
 {
-    return source_type_ == TetraMeshSourceType::Structured;
+    return source_type_ == HexMeshSourceType::Structured;
 }
 
-bool TetraMesh::is_unstructured() const
+bool HexMesh::is_unstructured() const
 {
-    return source_type_ == TetraMeshSourceType::Unstructured;
+    return source_type_ == HexMeshSourceType::Unstructured;
 }
 
-const TetraMeshStructuredInfo& TetraMesh::structured_info() const
+const HexMeshStructuredInfo& HexMesh::structured_info() const
 {
     return structured_info_;
 }
@@ -248,7 +242,7 @@ const TetraMeshStructuredInfo& TetraMesh::structured_info() const
 // =============================
 // volume
 // =============================
-double TetraMesh::tetra_volume(
+double HexMesh::tetra_volume(
     const MeshNode& a,
     const MeshNode& b,
     const MeshNode& c,
@@ -275,51 +269,77 @@ double TetraMesh::tetra_volume(
     return std::abs(det) / 6.0;
 }
 
-double TetraMesh::volume(
+double HexMesh::hexa_volume(
+    const MeshNode& a,
+    const MeshNode& b,
+    const MeshNode& c,
+    const MeshNode& d,
+    const MeshNode& e,
+    const MeshNode& f,
+    const MeshNode& g,
+    const MeshNode& h
+)
+{
+    /*
+     * 将 Hexa8 拆成 6 个 Tetra4。
+     *
+     * a b c d = bottom n0 n1 n2 n3
+     * e f g h = top    n4 n5 n6 n7
+     *
+     * 使用主对角线 a -> g。
+     */
+    return tetra_volume(a, b, c, g)
+         + tetra_volume(a, c, d, g)
+         + tetra_volume(a, d, h, g)
+         + tetra_volume(a, h, e, g)
+         + tetra_volume(a, e, f, g)
+         + tetra_volume(a, f, b, g);
+}
+
+double HexMesh::volume(
     int cell_id
 ) const
 {
     if (!valid_cell_id(cell_id))
     {
         throw std::out_of_range(
-            "TetraMesh::volume: invalid cell id."
+            "HexMesh::volume: invalid cell id."
         );
     }
 
     const auto& c = cells()[static_cast<std::size_t>(cell_id)];
 
-    if (c.type != CellType::Tetra4 || c.node_ids.size() != 4)
+    if (c.type != CellType::Hexa8 || c.node_ids.size() != 8)
     {
         throw std::runtime_error(
-            "TetraMesh::volume: cell is not Tetra4."
+            "HexMesh::volume: cell is not Hexa8."
         );
     }
 
-    const int n0 = c.node_ids[0];
-    const int n1 = c.node_ids[1];
-    const int n2 = c.node_ids[2];
-    const int n3 = c.node_ids[3];
-
-    if (!valid_node_id(n0) ||
-        !valid_node_id(n1) ||
-        !valid_node_id(n2) ||
-        !valid_node_id(n3))
+    for (int nid : c.node_ids)
     {
-        throw std::runtime_error(
-            "TetraMesh::volume: invalid node id in cell."
-        );
+        if (!valid_node_id(nid))
+        {
+            throw std::runtime_error(
+                "HexMesh::volume: invalid node id in cell."
+            );
+        }
     }
 
-    return tetra_volume(
-        nodes()[static_cast<std::size_t>(n0)],
-        nodes()[static_cast<std::size_t>(n1)],
-        nodes()[static_cast<std::size_t>(n2)],
-        nodes()[static_cast<std::size_t>(n3)]
-    );
+    const auto& n0 = nodes()[static_cast<std::size_t>(c.node_ids[0])];
+    const auto& n1 = nodes()[static_cast<std::size_t>(c.node_ids[1])];
+    const auto& n2 = nodes()[static_cast<std::size_t>(c.node_ids[2])];
+    const auto& n3 = nodes()[static_cast<std::size_t>(c.node_ids[3])];
+    const auto& n4 = nodes()[static_cast<std::size_t>(c.node_ids[4])];
+    const auto& n5 = nodes()[static_cast<std::size_t>(c.node_ids[5])];
+    const auto& n6 = nodes()[static_cast<std::size_t>(c.node_ids[6])];
+    const auto& n7 = nodes()[static_cast<std::size_t>(c.node_ids[7])];
+
+    return hexa_volume(n0, n1, n2, n3, n4, n5, n6, n7);
 }
 
 // =============================
-double TetraMesh::total_volume() const
+double HexMesh::total_volume() const
 {
     double s = 0.0;
 
@@ -332,55 +352,55 @@ double TetraMesh::total_volume() const
 }
 
 // =============================
-std::array<double, 3> TetraMesh::centroid(
+std::array<double, 3> HexMesh::centroid(
     int cell_id
 ) const
 {
     if (!valid_cell_id(cell_id))
     {
         throw std::out_of_range(
-            "TetraMesh::centroid: invalid cell id."
+            "HexMesh::centroid: invalid cell id."
         );
     }
 
     const auto& c = cells()[static_cast<std::size_t>(cell_id)];
 
-    if (c.type != CellType::Tetra4 || c.node_ids.size() != 4)
+    if (c.type != CellType::Hexa8 || c.node_ids.size() != 8)
     {
         throw std::runtime_error(
-            "TetraMesh::centroid: cell is not Tetra4."
+            "HexMesh::centroid: cell is not Hexa8."
         );
     }
 
-    const int n0 = c.node_ids[0];
-    const int n1 = c.node_ids[1];
-    const int n2 = c.node_ids[2];
-    const int n3 = c.node_ids[3];
+    double x = 0.0;
+    double y = 0.0;
+    double z = 0.0;
 
-    if (!valid_node_id(n0) ||
-        !valid_node_id(n1) ||
-        !valid_node_id(n2) ||
-        !valid_node_id(n3))
+    for (int nid : c.node_ids)
     {
-        throw std::runtime_error(
-            "TetraMesh::centroid: invalid node id in cell."
-        );
-    }
+        if (!valid_node_id(nid))
+        {
+            throw std::runtime_error(
+                "HexMesh::centroid: invalid node id in cell."
+            );
+        }
 
-    const auto& p0 = nodes()[static_cast<std::size_t>(n0)];
-    const auto& p1 = nodes()[static_cast<std::size_t>(n1)];
-    const auto& p2 = nodes()[static_cast<std::size_t>(n2)];
-    const auto& p3 = nodes()[static_cast<std::size_t>(n3)];
+        const auto& p = nodes()[static_cast<std::size_t>(nid)];
+
+        x += p.x;
+        y += p.y;
+        z += p.z;
+    }
 
     return {
-        0.25 * (p0.x + p1.x + p2.x + p3.x),
-        0.25 * (p0.y + p1.y + p2.y + p3.y),
-        0.25 * (p0.z + p1.z + p2.z + p3.z)
+        x / 8.0,
+        y / 8.0,
+        z / 8.0
     };
 }
 
 // =============================
-std::array<double, 6> TetraMesh::bounds() const
+std::array<double, 6> HexMesh::bounds() const
 {
     if (num_nodes() == 0)
     {
@@ -412,7 +432,7 @@ std::array<double, 6> TetraMesh::bounds() const
 }
 
 // =============================
-bool TetraMesh::validate(
+bool HexMesh::validate(
     std::string* error_message,
     double volume_eps
 ) const
@@ -421,7 +441,7 @@ bool TetraMesh::validate(
     {
         if (error_message)
         {
-            *error_message = "TetraMesh::validate: mesh has no nodes.";
+            *error_message = "HexMesh::validate: mesh has no nodes.";
         }
 
         return false;
@@ -431,7 +451,7 @@ bool TetraMesh::validate(
     {
         if (error_message)
         {
-            *error_message = "TetraMesh::validate: mesh has no cells.";
+            *error_message = "HexMesh::validate: mesh has no cells.";
         }
 
         return false;
@@ -441,54 +461,53 @@ bool TetraMesh::validate(
     {
         const auto& c = cells()[i];
 
-        if (c.type != CellType::Tetra4)
+        if (c.type != CellType::Hexa8)
         {
             if (error_message)
             {
-                *error_message = "TetraMesh::validate: non-Tetra4 cell found.";
+                *error_message = "HexMesh::validate: non-Hexa8 cell found.";
             }
 
             return false;
         }
 
-        if (c.node_ids.size() != 4)
+        if (c.node_ids.size() != 8)
         {
             if (error_message)
             {
-                *error_message = "TetraMesh::validate: Tetra4 cell must have exactly 4 nodes.";
+                *error_message = "HexMesh::validate: Hexa8 cell must have exactly 8 nodes.";
             }
 
             return false;
         }
 
-        const int n0 = c.node_ids[0];
-        const int n1 = c.node_ids[1];
-        const int n2 = c.node_ids[2];
-        const int n3 = c.node_ids[3];
-
-        if (!valid_node_id(n0) ||
-            !valid_node_id(n1) ||
-            !valid_node_id(n2) ||
-            !valid_node_id(n3))
+        for (int nid : c.node_ids)
         {
-            if (error_message)
+            if (!valid_node_id(nid))
             {
-                *error_message = "TetraMesh::validate: invalid node id found.";
-            }
+                if (error_message)
+                {
+                    *error_message = "HexMesh::validate: invalid node id found.";
+                }
 
-            return false;
+                return false;
+            }
         }
 
-        if (n0 == n1 || n0 == n2 || n0 == n3 ||
-            n1 == n2 || n1 == n3 ||
-            n2 == n3)
+        for (size_t a = 0; a < c.node_ids.size(); ++a)
         {
-            if (error_message)
+            for (size_t b = a + 1; b < c.node_ids.size(); ++b)
             {
-                *error_message = "TetraMesh::validate: duplicated node id in tetra.";
-            }
+                if (c.node_ids[a] == c.node_ids[b])
+                {
+                    if (error_message)
+                    {
+                        *error_message = "HexMesh::validate: duplicated node id in hexa.";
+                    }
 
-            return false;
+                    return false;
+                }
+            }
         }
 
         double v = volume(static_cast<int>(i));
@@ -497,7 +516,7 @@ bool TetraMesh::validate(
         {
             if (error_message)
             {
-                *error_message = "TetraMesh::validate: degenerated tetra cell found.";
+                *error_message = "HexMesh::validate: degenerated hexa cell found.";
             }
 
             return false;

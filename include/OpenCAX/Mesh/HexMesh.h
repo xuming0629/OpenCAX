@@ -1,8 +1,8 @@
 #pragma once
 
 /**
- * @file TetraMesh.h
- * @brief OpenCAX 三维四面体网格类声明
+ * @file HexMesh.h
+ * @brief OpenCAX 三维六面体网格类声明
  */
 
 #include <OpenCAX/Core/Config.h>
@@ -16,14 +16,14 @@
 namespace OpenCAX
 {
 
-enum class TetraMeshSourceType
+enum class HexMeshSourceType
 {
     Unknown = 0,
     Structured,
     Unstructured
 };
 
-struct TetraMeshStructuredInfo
+struct HexMeshStructuredInfo
 {
     int nx = 0;
     int ny = 0;
@@ -39,12 +39,12 @@ struct TetraMeshStructuredInfo
     double zmax = 0.0;
 };
 
-class OpenCAX_API TetraMesh : public Mesh
+class OpenCAX_API HexMesh : public Mesh
 {
 public:
-    TetraMesh();
+    HexMesh();
 
-    static TetraMesh create_structured_box(
+    static HexMesh create_structured_box(
         double xmin,
         double xmax,
         double ymin,
@@ -56,18 +56,18 @@ public:
         int nz
     );
 
-    static TetraMesh create_unstructured(
+    static HexMesh create_unstructured(
         const std::vector<std::array<double, 3>>& points,
-        const std::vector<std::array<int, 4>>& tets
+        const std::vector<std::array<int, 8>>& hexes
     );
 
-    TetraMeshSourceType source_type() const;
-    void set_source_type(TetraMeshSourceType type);
+    HexMeshSourceType source_type() const;
+    void set_source_type(HexMeshSourceType type);
 
     bool is_structured() const;
     bool is_unstructured() const;
 
-    const TetraMeshStructuredInfo& structured_info() const;
+    const HexMeshStructuredInfo& structured_info() const;
 
     double volume(int cell_id) const;
     double total_volume() const;
@@ -89,9 +89,20 @@ private:
         const MeshNode& d
     );
 
+    static double hexa_volume(
+        const MeshNode& a,
+        const MeshNode& b,
+        const MeshNode& c,
+        const MeshNode& d,
+        const MeshNode& e,
+        const MeshNode& f,
+        const MeshNode& g,
+        const MeshNode& h
+    );
+
 private:
-    TetraMeshSourceType source_type_ = TetraMeshSourceType::Unknown;
-    TetraMeshStructuredInfo structured_info_;
+    HexMeshSourceType source_type_ = HexMeshSourceType::Unknown;
+    HexMeshStructuredInfo structured_info_;
 };
 
 } // namespace OpenCAX
