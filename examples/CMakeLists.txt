@@ -60,9 +60,15 @@ endfunction()
 #     test_pyplot_mesh
 #     test_pyplot_mesh.cpp
 # )
+# add_opencax_example(
+#     test_triangle_mesh_structured
+#     test_triangle_mesh_structured.cpp
+# )
+
+
 add_opencax_example(
-    test_triangle_mesh_structured
-    test_triangle_mesh_structured.cpp
+    test_example_quad_mesh
+    test_example_quad_mesh.cpp
 )
 
 
@@ -70,3 +76,5 @@ add_opencax_example(
     test_triangle_mesh_with_topology
     test_triangle_mesh_with_topology.cpp
 )
+
+
