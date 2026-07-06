@@ -88,3 +88,29 @@ add_opencax_example(
     test_example_hex_mesh.cpp
 )
 
+add_opencax_example(
+    test_triangle_mesh_structured
+    test_triangle_mesh_structured.cpp
+)
+
+
+add_opencax_example(
+    test_gmsh_structured_triangle_mesh
+    test_gmsh_structured_triangle_mesh.cpp
+)
+
+add_opencax_example(
+    test_gmsh_unstructured_triangle_mesh
+    test_gmsh_unstructured_triangle_mesh.cpp
+)
+
+
+add_opencax_example(
+    test_triangle_mesh_bisection_refine
+    test_triangle_mesh_bisection_refine.cpp
+)
+
+add_opencax_example(
+    test_triangle_mesh_uniform_refine
+    test_triangle_mesh_uniform_refine.cpp
+)
