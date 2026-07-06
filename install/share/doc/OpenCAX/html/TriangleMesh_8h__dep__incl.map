@@ -1,5 +1,7 @@
-<map id="/home/xuming/code_ws/OpenCAX/include/OpenCAX/Mesh/TriangleMesh.h" name="/home/xuming/code_ws/OpenCAX/include/OpenCAX/Mesh/TriangleMesh.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,199,60"/>
-<area shape="rect" id="Node000002" href="$MeshModule_8h.html" title=" " alt="" coords="5,108,199,163"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,74,105,108,99,108,99,74"/>
+<map id="/home/xuming/XumingOS/OpenCAX/install/include/OpenCAX/Mesh/TriangleMesh.h" name="/home/xuming/XumingOS/OpenCAX/install/include/OpenCAX/Mesh/TriangleMesh.h">
+<area shape="rect" id="Node000001" title="OpenCAX 二维三角形网格类声明" alt="" coords="134,5,349,60"/>
+<area shape="rect" id="Node000002" href="$MeshModule_8h_source.html" title=" " alt="" coords="5,108,216,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,70,147,110,143,106,195,66"/>
+<area shape="rect" id="Node000003" href="$ScalarFieldViewer_8h_source.html" title=" " alt="" coords="240,108,507,163"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="288,66,340,106,337,110,285,70"/>
 </map>

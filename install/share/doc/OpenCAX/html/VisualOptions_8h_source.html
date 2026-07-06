@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OpenCAX: /home/xuming/code_ws/OpenCAX/include/OpenCAX/Post/VisualOptions.h Source File</title>
+<title>OpenCAX: /home/xuming/XumingOS/OpenCAX/install/include/OpenCAX/Post/Post/VisualOptions.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
   <td id="projectalign">
    <div id="projectname">OpenCAX<span id="projectnumber">&#160;0.1.0</span>
    </div>
-   <div id="projectbrief">OpenCAX C++ CAD/CAE Framework</div>
+   <div id="projectbrief">OpenCAX C++ API Documentation</div>
   </td>
  </tr>
  </tbody>
@@ -98,67 +98,90 @@ $(document).ready(function(){initNavTree('VisualOptions_8h_source.html',''); ini
   <div class="headertitle"><div class="title">VisualOptions.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="VisualOptions_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceOpenCAX.html">OpenCAX</a></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>{</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="foldopen" id="foldopen00006" data-start="{" data-end="};">
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1Color.html">    6</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1Color.html#ab3de6f632c6e36fb626e54d25632875d">    8</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="structOpenCAX_1_1Color.html#ab3de6f632c6e36fb626e54d25632875d">r</a> = 1.0;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1Color.html#a2ce826839047ea4a46f82dba9b4849cd">    9</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="structOpenCAX_1_1Color.html#a2ce826839047ea4a46f82dba9b4849cd">g</a> = 1.0;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1Color.html#a784f3668e59ce7be63554334bf0408cd">   10</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="structOpenCAX_1_1Color.html#a784f3668e59ce7be63554334bf0408cd">b</a> = 1.0;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>};</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">namespace </span>OpenCAX</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>{</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1Color.html">    8</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keywordtype">double</span> r = 1.0;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keywordtype">double</span> g = 1.0;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keywordtype">double</span> b = 1.0;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a>(<span class="keywordtype">double</span> rr, <span class="keywordtype">double</span> gg, <span class="keywordtype">double</span> bb)</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        : r(rr), g(gg), b(bb)</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    }</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>};</div>
 </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1VisualOptions.html">   13</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structOpenCAX_1_1VisualOptions.html">VisualOptions</a></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1VisualOptions.html#adc4b7526ee03aaeec91ce4943966001b">   15</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structOpenCAX_1_1VisualOptions.html#adc4b7526ee03aaeec91ce4943966001b">show_edges</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1VisualOptions.html#a80de25c8ae56a3a3f4c0d356fda18b1b">   16</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structOpenCAX_1_1VisualOptions.html#a80de25c8ae56a3a3f4c0d356fda18b1b">show_points</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1VisualOptions.html#a7bb28b00dfb20b796dc5967dd9f64575">   17</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structOpenCAX_1_1VisualOptions.html#a7bb28b00dfb20b796dc5967dd9f64575">show_node_ids</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1VisualOptions.html#a2caf67db95c55be3276b8f75d1c8f54c">   18</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structOpenCAX_1_1VisualOptions.html#a2caf67db95c55be3276b8f75d1c8f54c">show_cell_ids</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1VisualOptions.html#a700dc5f49c7cb849f9f028ebfc651da2">   20</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="structOpenCAX_1_1VisualOptions.html#a700dc5f49c7cb849f9f028ebfc651da2">point_size</a> = 5.0;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1VisualOptions.html#adebf95c17c37b57c620f9f293029cab2">   21</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="structOpenCAX_1_1VisualOptions.html#adebf95c17c37b57c620f9f293029cab2">line_width</a> = 1.5;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1VisualOptions.html#ad71ec8101a53fb563d306969bf6024ab">   23</a></span>    <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a> <a class="code hl_variable" href="structOpenCAX_1_1VisualOptions.html#ad71ec8101a53fb563d306969bf6024ab">mesh_color</a>{0.8, 0.8, 0.85};</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1VisualOptions.html#aa58e361c2f59ff6b57cdd718a20aa1c2">   24</a></span>    <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a> <a class="code hl_variable" href="structOpenCAX_1_1VisualOptions.html#aa58e361c2f59ff6b57cdd718a20aa1c2">edge_color</a>{0.0, 0.0, 0.0};</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1VisualOptions.html#a46a97d8c9bb5d564a2ed02d2145b5e40">   25</a></span>    <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a> <a class="code hl_variable" href="structOpenCAX_1_1VisualOptions.html#a46a97d8c9bb5d564a2ed02d2145b5e40">point_color</a>{1.0, 0.2, 0.2};</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1VisualOptions.html#a8b92fe89282026a7f1cd6143334f5c6c">   26</a></span>    <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a> <a class="code hl_variable" href="structOpenCAX_1_1VisualOptions.html#a8b92fe89282026a7f1cd6143334f5c6c">node_label_color</a>{1.0, 1.0, 0.0};</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1VisualOptions.html#a81503ab3259092d728294e7a6c8d529e">   27</a></span>    <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a> <a class="code hl_variable" href="structOpenCAX_1_1VisualOptions.html#a81503ab3259092d728294e7a6c8d529e">cell_label_color</a>{0.0, 1.0, 0.0};</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1VisualOptions.html">   22</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structOpenCAX_1_1VisualOptions.html">VisualOptions</a></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// =========================</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// 显示开关</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// =========================</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">bool</span> wireframe = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structOpenCAX_1_1VisualOptions.html#ad3f5fff65b57a35d1ea662b06f84bb51">   29</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="structOpenCAX_1_1VisualOptions.html#ad3f5fff65b57a35d1ea662b06f84bb51">wireframe</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>};</div>
-</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">bool</span> show_nodes = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">bool</span> show_edges = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
-<div class="ttc" id="anamespaceOpenCAX_html"><div class="ttname"><a href="namespaceOpenCAX.html">OpenCAX</a></div><div class="ttdef"><b>Definition</b> <a href="Logger_8h_source.html#l00013">Logger.h:14</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1Color_html"><div class="ttname"><a href="structOpenCAX_1_1Color.html">OpenCAX::Color</a></div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00006">VisualOptions.h:7</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1Color_html_a2ce826839047ea4a46f82dba9b4849cd"><div class="ttname"><a href="structOpenCAX_1_1Color.html#a2ce826839047ea4a46f82dba9b4849cd">OpenCAX::Color::g</a></div><div class="ttdeci">double g</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00009">VisualOptions.h:9</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1Color_html_a784f3668e59ce7be63554334bf0408cd"><div class="ttname"><a href="structOpenCAX_1_1Color.html#a784f3668e59ce7be63554334bf0408cd">OpenCAX::Color::b</a></div><div class="ttdeci">double b</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00010">VisualOptions.h:10</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1Color_html_ab3de6f632c6e36fb626e54d25632875d"><div class="ttname"><a href="structOpenCAX_1_1Color.html#ab3de6f632c6e36fb626e54d25632875d">OpenCAX::Color::r</a></div><div class="ttdeci">double r</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00008">VisualOptions.h:8</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1VisualOptions_html"><div class="ttname"><a href="structOpenCAX_1_1VisualOptions.html">OpenCAX::VisualOptions</a></div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00013">VisualOptions.h:14</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1VisualOptions_html_a2caf67db95c55be3276b8f75d1c8f54c"><div class="ttname"><a href="structOpenCAX_1_1VisualOptions.html#a2caf67db95c55be3276b8f75d1c8f54c">OpenCAX::VisualOptions::show_cell_ids</a></div><div class="ttdeci">bool show_cell_ids</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00018">VisualOptions.h:18</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1VisualOptions_html_a46a97d8c9bb5d564a2ed02d2145b5e40"><div class="ttname"><a href="structOpenCAX_1_1VisualOptions.html#a46a97d8c9bb5d564a2ed02d2145b5e40">OpenCAX::VisualOptions::point_color</a></div><div class="ttdeci">Color point_color</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00025">VisualOptions.h:25</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1VisualOptions_html_a700dc5f49c7cb849f9f028ebfc651da2"><div class="ttname"><a href="structOpenCAX_1_1VisualOptions.html#a700dc5f49c7cb849f9f028ebfc651da2">OpenCAX::VisualOptions::point_size</a></div><div class="ttdeci">double point_size</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00020">VisualOptions.h:20</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1VisualOptions_html_a7bb28b00dfb20b796dc5967dd9f64575"><div class="ttname"><a href="structOpenCAX_1_1VisualOptions.html#a7bb28b00dfb20b796dc5967dd9f64575">OpenCAX::VisualOptions::show_node_ids</a></div><div class="ttdeci">bool show_node_ids</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00017">VisualOptions.h:17</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1VisualOptions_html_a80de25c8ae56a3a3f4c0d356fda18b1b"><div class="ttname"><a href="structOpenCAX_1_1VisualOptions.html#a80de25c8ae56a3a3f4c0d356fda18b1b">OpenCAX::VisualOptions::show_points</a></div><div class="ttdeci">bool show_points</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00016">VisualOptions.h:16</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1VisualOptions_html_a81503ab3259092d728294e7a6c8d529e"><div class="ttname"><a href="structOpenCAX_1_1VisualOptions.html#a81503ab3259092d728294e7a6c8d529e">OpenCAX::VisualOptions::cell_label_color</a></div><div class="ttdeci">Color cell_label_color</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00027">VisualOptions.h:27</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1VisualOptions_html_a8b92fe89282026a7f1cd6143334f5c6c"><div class="ttname"><a href="structOpenCAX_1_1VisualOptions.html#a8b92fe89282026a7f1cd6143334f5c6c">OpenCAX::VisualOptions::node_label_color</a></div><div class="ttdeci">Color node_label_color</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00026">VisualOptions.h:26</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1VisualOptions_html_aa58e361c2f59ff6b57cdd718a20aa1c2"><div class="ttname"><a href="structOpenCAX_1_1VisualOptions.html#aa58e361c2f59ff6b57cdd718a20aa1c2">OpenCAX::VisualOptions::edge_color</a></div><div class="ttdeci">Color edge_color</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00024">VisualOptions.h:24</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1VisualOptions_html_ad3f5fff65b57a35d1ea662b06f84bb51"><div class="ttname"><a href="structOpenCAX_1_1VisualOptions.html#ad3f5fff65b57a35d1ea662b06f84bb51">OpenCAX::VisualOptions::wireframe</a></div><div class="ttdeci">bool wireframe</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00029">VisualOptions.h:29</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1VisualOptions_html_ad71ec8101a53fb563d306969bf6024ab"><div class="ttname"><a href="structOpenCAX_1_1VisualOptions.html#ad71ec8101a53fb563d306969bf6024ab">OpenCAX::VisualOptions::mesh_color</a></div><div class="ttdeci">Color mesh_color</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00023">VisualOptions.h:23</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1VisualOptions_html_adc4b7526ee03aaeec91ce4943966001b"><div class="ttname"><a href="structOpenCAX_1_1VisualOptions.html#adc4b7526ee03aaeec91ce4943966001b">OpenCAX::VisualOptions::show_edges</a></div><div class="ttdeci">bool show_edges</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00015">VisualOptions.h:15</a></div></div>
-<div class="ttc" id="astructOpenCAX_1_1VisualOptions_html_adebf95c17c37b57c620f9f293029cab2"><div class="ttname"><a href="structOpenCAX_1_1VisualOptions.html#adebf95c17c37b57c620f9f293029cab2">OpenCAX::VisualOptions::line_width</a></div><div class="ttdeci">double line_width</div><div class="ttdef"><b>Definition</b> <a href="VisualOptions_8h_source.html#l00021">VisualOptions.h:21</a></div></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">bool</span> show_node_ids = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">bool</span> show_cell_ids = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">bool</span> show_edge_ids = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">bool</span> show_axes = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// =========================</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// 颜色</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// =========================</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a> mesh_color = <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a>(0.85, 0.85, 0.85);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a> edge_color = <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a>(0.05, 0.05, 0.05);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a> node_color = <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a>(1.0, 0.2, 0.2);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a> node_label_color = <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a>(1.0, 1.0, 0.0);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a> cell_label_color = <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a>(0.2, 1.0, 0.2);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a> edge_label_color = <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a>(0.2, 0.8, 1.0);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a> background_color = <a class="code hl_struct" href="structOpenCAX_1_1Color.html">Color</a>(0.1, 0.1, 0.12);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// =========================</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// 样式</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// =========================</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">double</span> line_width = 2.0;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">double</span> point_size = 8.0;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">double</span> edge_width = 2.0;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">int</span> node_label_font_size = 14;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">int</span> cell_label_font_size = 16;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">int</span> edge_label_font_size = 14;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// =========================</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// 窗口</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// =========================</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">int</span> window_width = 1000;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">int</span> window_height = 800;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    std::string window_title = <span class="stringliteral">&quot;OpenCAX Viewer&quot;</span>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>};</div>
+</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>} <span class="comment">// namespace OpenCAX</span></div>
+<div class="ttc" id="astructOpenCAX_1_1Color_html"><div class="ttname"><a href="structOpenCAX_1_1Color.html">OpenCAX::Color</a></div><div class="ttdef"><b>Definition</b> VisualOptions.h:9</div></div>
+<div class="ttc" id="astructOpenCAX_1_1VisualOptions_html"><div class="ttname"><a href="structOpenCAX_1_1VisualOptions.html">OpenCAX::VisualOptions</a></div><div class="ttdef"><b>Definition</b> VisualOptions.h:23</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_4b04495dd6f5d4c7a63282e1dcffe990.html">OpenCAX</a></li><li class="navelem"><a class="el" href="dir_4ce6f047ecedaab8755d668001c3d871.html">Post</a></li><li class="navelem"><a class="el" href="VisualOptions_8h.html">VisualOptions.h</a></li>
-    <li class="footer">Generated on Tue Jun 16 2026 09:19:18 for OpenCAX by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="navelem"><a class="el" href="dir_e3a4aa6ae53c85312025264fe419cff9.html">install</a></li><li class="navelem"><a class="el" href="dir_5c761713bf5d0875d267b95dac50e2aa.html">include</a></li><li class="navelem"><a class="el" href="dir_61b7c5e049e1532df76e44e5503c5b1c.html">OpenCAX</a></li><li class="navelem"><a class="el" href="dir_e7584e27f20a807c974141737d6ea848.html">Post</a></li><li class="navelem"><a class="el" href="dir_3abb70098338793a68655642f4719c3d.html">Post</a></li><li class="navelem"><b>VisualOptions.h</b></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

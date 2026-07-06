@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['boundary_5fid_0',['boundary_id',['../structOpenCAX_1_1MeshNode.html#aeca0f6cfa001ac969de5e622ff21b0e4',1,'OpenCAX::MeshNode']]]
+  ['alternate_5fdiagonal_0',['alternate_diagonal',['../structOpenCAX_1_1TriangleMeshStructuredInfo.html#ab97a14cc9a9fd2a99b1d060751ee89a8',1,'OpenCAX::TriangleMeshStructuredInfo']]]
 ];

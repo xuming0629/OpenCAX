@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['id_0',['id',['../structOpenCAX_1_1MeshNode.html#aea01917a2d9209614e76eb0ba82d563f',1,'OpenCAX::MeshNode::id'],['../structOpenCAX_1_1MeshCell.html#a96114252747efd0e0a757317974e1536',1,'OpenCAX::MeshCell::id']]],
-  ['info_5f_1',['info_',['../classOpenCAX_1_1Mesh.html#a876e223e16700e9b4ff93779a7783c9f',1,'OpenCAX::Mesh']]]
+  ['dimension_0',['dimension',['../structOpenCAX_1_1MeshInfo.html#a5d9a8d8e46b85fce06a84f95456bb164',1,'OpenCAX::MeshInfo']]]
 ];

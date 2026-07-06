@@ -1,4 +1,8 @@
 var searchData=
 [
-  ['physical_5fid_0',['physical_id',['../structOpenCAX_1_1MeshNode.html#adfe00cbcd25ab735a169c2c7167ed91c',1,'OpenCAX::MeshNode::physical_id'],['../structOpenCAX_1_1MeshCell.html#a8eff977e233c8ca5e3a7a51057e4ae6e',1,'OpenCAX::MeshCell::physical_id']]]
+  ['name_0',['name',['../structOpenCAX_1_1MeshInfo.html#adbd75af8b221bf090ce2d7208bbcd7fe',1,'OpenCAX::MeshInfo']]],
+  ['node_5fids_1',['node_ids',['../structOpenCAX_1_1MeshCell.html#ae770b2c94f73c36f7d98ae387683bfbb',1,'OpenCAX::MeshCell::node_ids'],['../structOpenCAX_1_1MeshFace.html#ad9025cf2bd43881c82f4dc502aaeb843',1,'OpenCAX::MeshFace::node_ids']]],
+  ['nodes_5f_2',['nodes_',['../classOpenCAX_1_1Mesh.html#abceb305cf5f807f05143e241575c836e',1,'OpenCAX::Mesh']]],
+  ['nx_3',['nx',['../structOpenCAX_1_1TriangleMeshStructuredInfo.html#aaf3ba6fe5e28a8ed4c64e3c99869063a',1,'OpenCAX::TriangleMeshStructuredInfo']]],
+  ['ny_4',['ny',['../structOpenCAX_1_1TriangleMeshStructuredInfo.html#ac4175b25318ce139fb219af58797d126',1,'OpenCAX::TriangleMeshStructuredInfo']]]
 ];

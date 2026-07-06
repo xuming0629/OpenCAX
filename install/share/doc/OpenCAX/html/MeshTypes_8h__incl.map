@@ -1,7 +1,7 @@
-<map id="/home/xuming/code_ws/OpenCAX/include/OpenCAX/Mesh/MeshTypes.h" name="/home/xuming/code_ws/OpenCAX/include/OpenCAX/Mesh/MeshTypes.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,199,60"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="35,108,89,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,61,76,97,71,94,87,59"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="114,108,173,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="117,59,134,94,129,97,112,61"/>
+<map id="/home/xuming/XumingOS/OpenCAX/install/include/OpenCAX/Mesh/MeshTypes.h" name="/home/xuming/XumingOS/OpenCAX/install/include/OpenCAX/Mesh/MeshTypes.h">
+<area shape="rect" id="Node000001" title="OpenCAX 网格模块基础数据类型定义" alt="" coords="5,5,208,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="39,108,94,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,61,80,97,75,94,92,59"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="119,108,177,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="122,59,139,94,134,97,117,61"/>
 </map>

@@ -73,8 +73,8 @@ add_opencax_example(
 
 
 add_opencax_example(
-    test_triangle_mesh_with_topology
-    test_triangle_mesh_with_topology.cpp
+    test_example_triangle_mesh
+    test_example_triangle_mesh.cpp
 )
 
 add_opencax_example(

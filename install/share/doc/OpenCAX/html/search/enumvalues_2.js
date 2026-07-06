@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['core_0',['Core',['../namespaceOpenCAX.html#a7c11abdf0a5bdc975b3a3873dff66528a83168e6cb289d732cc78427b51f93153',1,'OpenCAX']]],
-  ['critical_1',['Critical',['../namespaceOpenCAX.html#acf5a149791c3ea74c364f9a79f15bca4a278d01e5af56273bae1bb99a98b370cd',1,'OpenCAX']]],
-  ['curve_2',['Curve',['../namespaceOpenCAX.html#a7c11abdf0a5bdc975b3a3873dff66528a2cb4d4a3f8dacd623fa045a44febd476',1,'OpenCAX']]]
+  ['hexa20_0',['Hexa20',['../MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8a17e488c5cedd99c65a77da429965f62b',1,'OpenCAX']]],
+  ['hexa27_1',['Hexa27',['../MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8acc4f147fba3d414139fa38652b769213',1,'OpenCAX']]],
+  ['hexa8_2',['Hexa8',['../MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8abfa7bb6b2412cd02de839f23ea0c7c00',1,'OpenCAX']]]
 ];

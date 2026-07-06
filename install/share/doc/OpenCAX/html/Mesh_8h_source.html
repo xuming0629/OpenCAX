@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OpenCAX: /home/xuming/code_ws/OpenCAX/install/include/OpenCAX/Mesh/Mesh.h Source File</title>
+<title>OpenCAX: /home/xuming/XumingOS/OpenCAX/install/include/OpenCAX/Mesh/Mesh.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -98,107 +98,121 @@ $(document).ready(function(){initNavTree('Mesh_8h_source.html',''); initResizabl
   <div class="headertitle"><div class="title">Mesh.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<a href="Mesh_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;OpenCAX/Core/Config.h&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;OpenCAX/Mesh/MeshTypes.h&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span>OpenCAX</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00032" data-start="{" data-end="};">
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html">   32</a></span><span class="keyword">class </span>OpenCAX_API <a class="code hl_class" href="classOpenCAX_1_1Mesh.html">Mesh</a></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#aa6aa75e068e89614e665dbec133a4d47">   40</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#aa6aa75e068e89614e665dbec133a4d47">~Mesh</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a4ae19bda897de8f90d6270def8bb9f58">   47</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a4ae19bda897de8f90d6270def8bb9f58">clear</a>();</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#ab04db841343fc9af75434140e2da5da0">   52</a></span>    <a class="code hl_struct" href="structOpenCAX_1_1MeshInfo.html">MeshInfo</a>&amp; <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#ab04db841343fc9af75434140e2da5da0">info</a>();</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a2db0ea47e9ce2b01e4c2b4cc7a72a0be">   57</a></span>    <span class="keyword">const</span> <a class="code hl_struct" href="structOpenCAX_1_1MeshInfo.html">MeshInfo</a>&amp; <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a2db0ea47e9ce2b01e4c2b4cc7a72a0be">info</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a4ca9aea09da42357513a63a22ce4e0fa">   62</a></span>    std::vector&lt;MeshNode&gt;&amp; <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a4ca9aea09da42357513a63a22ce4e0fa">nodes</a>();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a57f62a50bd7d997cfadd321a686a85c5">   67</a></span>    std::vector&lt;MeshCell&gt;&amp; <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a57f62a50bd7d997cfadd321a686a85c5">cells</a>();</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#aca9ea04fe3d7570227d6b9a79162f285">   72</a></span>    <span class="keyword">const</span> std::vector&lt;MeshNode&gt;&amp; <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#aca9ea04fe3d7570227d6b9a79162f285">nodes</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &lt;OpenCAX/Core/Config.h&gt;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#include &lt;<a class="code" href="MeshTypes_8h.html">OpenCAX/Mesh/MeshTypes.h</a>&gt;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">namespace </span>OpenCAX</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="};">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html">   64</a></span><span class="keyword">class </span>OpenCAX_API <a class="code hl_class" href="classOpenCAX_1_1Mesh.html">Mesh</a></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>{</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#aa6aa75e068e89614e665dbec133a4d47">   72</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#aa6aa75e068e89614e665dbec133a4d47">~Mesh</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a7bba461241f2b0677805a55975f124d2">   77</a></span>    <span class="keyword">const</span> std::vector&lt;MeshCell&gt;&amp; <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a7bba461241f2b0677805a55975f124d2">cells</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a745b3c25c133bef8b5bd2b053d3cac3e">   87</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a745b3c25c133bef8b5bd2b053d3cac3e">add_node</a>(</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordtype">double</span> x,</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordtype">double</span> y,</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordtype">double</span> z = 0.0</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    );</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a70796f40e806c7246557f688f3d03d95">  100</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a70796f40e806c7246557f688f3d03d95">add_cell</a>(</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        CellType type,</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keyword">const</span> std::vector&lt;int&gt;&amp; node_ids</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    );</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a9d2733b22df89546a34299126306521e">  110</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a9d2733b22df89546a34299126306521e">add_cell</a>(</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        CellType type,</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keyword">const</span> std::vector&lt;int&gt;&amp; node_ids,</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordtype">int</span> physical_id,</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordtype">int</span> material_id = -1,</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keywordtype">int</span> region_id = -1</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    );</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#ad661f15e738f63b1097369dde0e56d33">  121</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#ad661f15e738f63b1097369dde0e56d33">valid_node_id</a>(</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordtype">int</span> node_id</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    ) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#afadde5028212fd9b29a06b697bb70412">  128</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#afadde5028212fd9b29a06b697bb70412">valid_cell_id</a>(</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keywordtype">int</span> cell_id</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    ) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#ae25d48165aecdd76fdcd9689a4ae385d">  135</a></span>    std::size_t <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#ae25d48165aecdd76fdcd9689a4ae385d">num_nodes</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a4ae19bda897de8f90d6270def8bb9f58">   79</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a4ae19bda897de8f90d6270def8bb9f58">clear</a>();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#ab04db841343fc9af75434140e2da5da0">   86</a></span>    <a class="code hl_struct" href="structOpenCAX_1_1MeshInfo.html">MeshInfo</a>&amp; <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#ab04db841343fc9af75434140e2da5da0">info</a>();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a2db0ea47e9ce2b01e4c2b4cc7a72a0be">   93</a></span>    <span class="keyword">const</span> <a class="code hl_struct" href="structOpenCAX_1_1MeshInfo.html">MeshInfo</a>&amp; <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a2db0ea47e9ce2b01e4c2b4cc7a72a0be">info</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a4ca9aea09da42357513a63a22ce4e0fa">  100</a></span>    std::vector&lt;MeshNode&gt;&amp; <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a4ca9aea09da42357513a63a22ce4e0fa">nodes</a>();</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#aca9ea04fe3d7570227d6b9a79162f285">  107</a></span>    <span class="keyword">const</span> std::vector&lt;MeshNode&gt;&amp; <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#aca9ea04fe3d7570227d6b9a79162f285">nodes</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a57f62a50bd7d997cfadd321a686a85c5">  114</a></span>    std::vector&lt;MeshCell&gt;&amp; <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a57f62a50bd7d997cfadd321a686a85c5">cells</a>();</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a7bba461241f2b0677805a55975f124d2">  121</a></span>    <span class="keyword">const</span> std::vector&lt;MeshCell&gt;&amp; <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a7bba461241f2b0677805a55975f124d2">cells</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a745b3c25c133bef8b5bd2b053d3cac3e">  131</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a745b3c25c133bef8b5bd2b053d3cac3e">add_node</a>(</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordtype">double</span> x,</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <span class="keywordtype">double</span> y,</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keywordtype">double</span> z = 0.0</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    );</div>
 <div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a2c9fc2d355b4ea08ba41b31819c6f0fb">  140</a></span>    std::size_t <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a2c9fc2d355b4ea08ba41b31819c6f0fb">num_cells</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a2b2c20f98143e8a2fd6fdb816891deec">  145</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a2b2c20f98143e8a2fd6fdb816891deec">empty</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a876e223e16700e9b4ff93779a7783c9f">  151</a></span>    <a class="code hl_struct" href="structOpenCAX_1_1MeshInfo.html">MeshInfo</a> <a class="code hl_variable" href="classOpenCAX_1_1Mesh.html#a876e223e16700e9b4ff93779a7783c9f">info_</a>;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#abceb305cf5f807f05143e241575c836e">  156</a></span>    std::vector&lt;MeshNode&gt; <a class="code hl_variable" href="classOpenCAX_1_1Mesh.html#abceb305cf5f807f05143e241575c836e">nodes_</a>;</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a2209ea2e0f11191e59f6020af3824227">  161</a></span>    std::vector&lt;MeshCell&gt; <a class="code hl_variable" href="classOpenCAX_1_1Mesh.html#a2209ea2e0f11191e59f6020af3824227">cells_</a>;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>};</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a6f14478962e24dbdb79b0ea4380f1115">  149</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a6f14478962e24dbdb79b0ea4380f1115">add_node</a>(</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keywordtype">double</span> x,</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordtype">double</span> y,</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordtype">double</span> z,</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        <span class="keywordtype">int</span> physical_id,</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordtype">int</span> boundary_id = -1</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    );</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a70796f40e806c7246557f688f3d03d95">  164</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a70796f40e806c7246557f688f3d03d95">add_cell</a>(</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        <a class="code hl_enumeration" href="MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8">CellType</a> type,</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        <span class="keyword">const</span> std::vector&lt;int&gt;&amp; node_ids</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    );</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a9d2733b22df89546a34299126306521e">  181</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a9d2733b22df89546a34299126306521e">add_cell</a>(</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>        <a class="code hl_enumeration" href="MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8">CellType</a> type,</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <span class="keyword">const</span> std::vector&lt;int&gt;&amp; node_ids,</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="keywordtype">int</span> physical_id,</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>        <span class="keywordtype">int</span> material_id = -1,</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        <span class="keywordtype">int</span> region_id = -1</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    );</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#ad661f15e738f63b1097369dde0e56d33">  195</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#ad661f15e738f63b1097369dde0e56d33">valid_node_id</a>(</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>        <span class="keywordtype">int</span> node_id</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    ) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span> </div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#afadde5028212fd9b29a06b697bb70412">  205</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#afadde5028212fd9b29a06b697bb70412">valid_cell_id</a>(</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <span class="keywordtype">int</span> cell_id</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    ) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#ae25d48165aecdd76fdcd9689a4ae385d">  214</a></span>    std::size_t <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#ae25d48165aecdd76fdcd9689a4ae385d">num_nodes</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a2c9fc2d355b4ea08ba41b31819c6f0fb">  221</a></span>    std::size_t <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a2c9fc2d355b4ea08ba41b31819c6f0fb">num_cells</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a2b2c20f98143e8a2fd6fdb816891deec">  228</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#a2b2c20f98143e8a2fd6fdb816891deec">empty</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#abcd5e2cfe13d8a9c440b13f3f8be5758">  241</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classOpenCAX_1_1Mesh.html#abcd5e2cfe13d8a9c440b13f3f8be5758">validate</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a876e223e16700e9b4ff93779a7783c9f">  247</a></span>    <a class="code hl_struct" href="structOpenCAX_1_1MeshInfo.html">MeshInfo</a> <a class="code hl_variable" href="classOpenCAX_1_1Mesh.html#a876e223e16700e9b4ff93779a7783c9f">info_</a>;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#abceb305cf5f807f05143e241575c836e">  252</a></span>    std::vector&lt;MeshNode&gt; <a class="code hl_variable" href="classOpenCAX_1_1Mesh.html#abceb305cf5f807f05143e241575c836e">nodes_</a>;</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno"><a class="line" href="classOpenCAX_1_1Mesh.html#a2209ea2e0f11191e59f6020af3824227">  257</a></span>    std::vector&lt;MeshCell&gt; <a class="code hl_variable" href="classOpenCAX_1_1Mesh.html#a2209ea2e0f11191e59f6020af3824227">cells_</a>;</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>};</div>
 </div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>} <span class="comment">// namespace OpenCAX</span></div>
-<div class="ttc" id="aclassOpenCAX_1_1Mesh_html"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html">OpenCAX::Mesh</a></div><div class="ttdoc">通用网格基础容器</div><div class="ttdef"><b>Definition</b> Mesh.h:33</div></div>
-<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a2209ea2e0f11191e59f6020af3824227"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a2209ea2e0f11191e59f6020af3824227">OpenCAX::Mesh::cells_</a></div><div class="ttdeci">std::vector&lt; MeshCell &gt; cells_</div><div class="ttdoc">单元数组</div><div class="ttdef"><b>Definition</b> Mesh.h:161</div></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>} <span class="comment">// namespace OpenCAX</span></div>
+<div class="ttc" id="aMeshTypes_8h_html"><div class="ttname"><a href="MeshTypes_8h.html">MeshTypes.h</a></div><div class="ttdoc">OpenCAX 网格模块基础数据类型定义</div></div>
+<div class="ttc" id="aMeshTypes_8h_html_a3e2a5ee4438f2217b91245349f39ecf8"><div class="ttname"><a href="MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8">OpenCAX::CellType</a></div><div class="ttdeci">CellType</div><div class="ttdoc">网格单元类型</div><div class="ttdef"><b>Definition</b> MeshTypes.h:72</div></div>
+<div class="ttc" id="aclassOpenCAX_1_1Mesh_html"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html">OpenCAX::Mesh</a></div><div class="ttdoc">通用网格基础容器</div><div class="ttdef"><b>Definition</b> Mesh.h:65</div></div>
+<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a2209ea2e0f11191e59f6020af3824227"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a2209ea2e0f11191e59f6020af3824227">OpenCAX::Mesh::cells_</a></div><div class="ttdeci">std::vector&lt; MeshCell &gt; cells_</div><div class="ttdoc">单元数组</div><div class="ttdef"><b>Definition</b> Mesh.h:257</div></div>
 <div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a2b2c20f98143e8a2fd6fdb816891deec"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a2b2c20f98143e8a2fd6fdb816891deec">OpenCAX::Mesh::empty</a></div><div class="ttdeci">bool empty() const</div><div class="ttdoc">判断网格是否为空</div></div>
 <div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a2c9fc2d355b4ea08ba41b31819c6f0fb"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a2c9fc2d355b4ea08ba41b31819c6f0fb">OpenCAX::Mesh::num_cells</a></div><div class="ttdeci">std::size_t num_cells() const</div><div class="ttdoc">获取单元数量</div></div>
-<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a2db0ea47e9ce2b01e4c2b4cc7a72a0be"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a2db0ea47e9ce2b01e4c2b4cc7a72a0be">OpenCAX::Mesh::info</a></div><div class="ttdeci">const MeshInfo &amp; info() const</div><div class="ttdoc">获取网格信息（只读）</div></div>
+<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a2db0ea47e9ce2b01e4c2b4cc7a72a0be"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a2db0ea47e9ce2b01e4c2b4cc7a72a0be">OpenCAX::Mesh::info</a></div><div class="ttdeci">const MeshInfo &amp; info() const</div><div class="ttdoc">获取网格信息</div></div>
 <div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a4ae19bda897de8f90d6270def8bb9f58"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a4ae19bda897de8f90d6270def8bb9f58">OpenCAX::Mesh::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">清空网格</div></div>
-<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a4ca9aea09da42357513a63a22ce4e0fa"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a4ca9aea09da42357513a63a22ce4e0fa">OpenCAX::Mesh::nodes</a></div><div class="ttdeci">std::vector&lt; MeshNode &gt; &amp; nodes()</div><div class="ttdoc">获取节点数组（可修改）</div></div>
-<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a57f62a50bd7d997cfadd321a686a85c5"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a57f62a50bd7d997cfadd321a686a85c5">OpenCAX::Mesh::cells</a></div><div class="ttdeci">std::vector&lt; MeshCell &gt; &amp; cells()</div><div class="ttdoc">获取单元数组（可修改）</div></div>
+<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a4ca9aea09da42357513a63a22ce4e0fa"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a4ca9aea09da42357513a63a22ce4e0fa">OpenCAX::Mesh::nodes</a></div><div class="ttdeci">std::vector&lt; MeshNode &gt; &amp; nodes()</div><div class="ttdoc">获取节点数组</div></div>
+<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a57f62a50bd7d997cfadd321a686a85c5"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a57f62a50bd7d997cfadd321a686a85c5">OpenCAX::Mesh::cells</a></div><div class="ttdeci">std::vector&lt; MeshCell &gt; &amp; cells()</div><div class="ttdoc">获取单元数组</div></div>
+<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a6f14478962e24dbdb79b0ea4380f1115"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a6f14478962e24dbdb79b0ea4380f1115">OpenCAX::Mesh::add_node</a></div><div class="ttdeci">int add_node(double x, double y, double z, int physical_id, int boundary_id=-1)</div><div class="ttdoc">添加节点</div></div>
 <div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a70796f40e806c7246557f688f3d03d95"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a70796f40e806c7246557f688f3d03d95">OpenCAX::Mesh::add_cell</a></div><div class="ttdeci">int add_cell(CellType type, const std::vector&lt; int &gt; &amp;node_ids)</div><div class="ttdoc">添加单元</div></div>
 <div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a745b3c25c133bef8b5bd2b053d3cac3e"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a745b3c25c133bef8b5bd2b053d3cac3e">OpenCAX::Mesh::add_node</a></div><div class="ttdeci">int add_node(double x, double y, double z=0.0)</div><div class="ttdoc">添加节点</div></div>
-<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a7bba461241f2b0677805a55975f124d2"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a7bba461241f2b0677805a55975f124d2">OpenCAX::Mesh::cells</a></div><div class="ttdeci">const std::vector&lt; MeshCell &gt; &amp; cells() const</div><div class="ttdoc">获取单元数组（只读）</div></div>
-<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a876e223e16700e9b4ff93779a7783c9f"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a876e223e16700e9b4ff93779a7783c9f">OpenCAX::Mesh::info_</a></div><div class="ttdeci">MeshInfo info_</div><div class="ttdoc">网格元信息</div><div class="ttdef"><b>Definition</b> Mesh.h:151</div></div>
+<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a7bba461241f2b0677805a55975f124d2"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a7bba461241f2b0677805a55975f124d2">OpenCAX::Mesh::cells</a></div><div class="ttdeci">const std::vector&lt; MeshCell &gt; &amp; cells() const</div><div class="ttdoc">获取单元数组</div></div>
+<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a876e223e16700e9b4ff93779a7783c9f"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a876e223e16700e9b4ff93779a7783c9f">OpenCAX::Mesh::info_</a></div><div class="ttdeci">MeshInfo info_</div><div class="ttdoc">网格元信息</div><div class="ttdef"><b>Definition</b> Mesh.h:247</div></div>
 <div class="ttc" id="aclassOpenCAX_1_1Mesh_html_a9d2733b22df89546a34299126306521e"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#a9d2733b22df89546a34299126306521e">OpenCAX::Mesh::add_cell</a></div><div class="ttdeci">int add_cell(CellType type, const std::vector&lt; int &gt; &amp;node_ids, int physical_id, int material_id=-1, int region_id=-1)</div><div class="ttdoc">添加单元</div></div>
 <div class="ttc" id="aclassOpenCAX_1_1Mesh_html_aa6aa75e068e89614e665dbec133a4d47"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#aa6aa75e068e89614e665dbec133a4d47">OpenCAX::Mesh::~Mesh</a></div><div class="ttdeci">virtual ~Mesh()=default</div><div class="ttdoc">虚析构函数</div></div>
-<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_ab04db841343fc9af75434140e2da5da0"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#ab04db841343fc9af75434140e2da5da0">OpenCAX::Mesh::info</a></div><div class="ttdeci">MeshInfo &amp; info()</div><div class="ttdoc">获取网格信息（可修改）</div></div>
-<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_abceb305cf5f807f05143e241575c836e"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#abceb305cf5f807f05143e241575c836e">OpenCAX::Mesh::nodes_</a></div><div class="ttdeci">std::vector&lt; MeshNode &gt; nodes_</div><div class="ttdoc">节点数组</div><div class="ttdef"><b>Definition</b> Mesh.h:156</div></div>
-<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_aca9ea04fe3d7570227d6b9a79162f285"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#aca9ea04fe3d7570227d6b9a79162f285">OpenCAX::Mesh::nodes</a></div><div class="ttdeci">const std::vector&lt; MeshNode &gt; &amp; nodes() const</div><div class="ttdoc">获取节点数组（只读）</div></div>
+<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_ab04db841343fc9af75434140e2da5da0"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#ab04db841343fc9af75434140e2da5da0">OpenCAX::Mesh::info</a></div><div class="ttdeci">MeshInfo &amp; info()</div><div class="ttdoc">获取网格信息</div></div>
+<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_abcd5e2cfe13d8a9c440b13f3f8be5758"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#abcd5e2cfe13d8a9c440b13f3f8be5758">OpenCAX::Mesh::validate</a></div><div class="ttdeci">bool validate() const</div><div class="ttdoc">检查网格基础有效性</div></div>
+<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_abceb305cf5f807f05143e241575c836e"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#abceb305cf5f807f05143e241575c836e">OpenCAX::Mesh::nodes_</a></div><div class="ttdeci">std::vector&lt; MeshNode &gt; nodes_</div><div class="ttdoc">节点数组</div><div class="ttdef"><b>Definition</b> Mesh.h:252</div></div>
+<div class="ttc" id="aclassOpenCAX_1_1Mesh_html_aca9ea04fe3d7570227d6b9a79162f285"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#aca9ea04fe3d7570227d6b9a79162f285">OpenCAX::Mesh::nodes</a></div><div class="ttdeci">const std::vector&lt; MeshNode &gt; &amp; nodes() const</div><div class="ttdoc">获取节点数组</div></div>
 <div class="ttc" id="aclassOpenCAX_1_1Mesh_html_ad661f15e738f63b1097369dde0e56d33"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#ad661f15e738f63b1097369dde0e56d33">OpenCAX::Mesh::valid_node_id</a></div><div class="ttdeci">bool valid_node_id(int node_id) const</div><div class="ttdoc">判断节点 ID 是否有效</div></div>
 <div class="ttc" id="aclassOpenCAX_1_1Mesh_html_ae25d48165aecdd76fdcd9689a4ae385d"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#ae25d48165aecdd76fdcd9689a4ae385d">OpenCAX::Mesh::num_nodes</a></div><div class="ttdeci">std::size_t num_nodes() const</div><div class="ttdoc">获取节点数量</div></div>
 <div class="ttc" id="aclassOpenCAX_1_1Mesh_html_afadde5028212fd9b29a06b697bb70412"><div class="ttname"><a href="classOpenCAX_1_1Mesh.html#afadde5028212fd9b29a06b697bb70412">OpenCAX::Mesh::valid_cell_id</a></div><div class="ttdeci">bool valid_cell_id(int cell_id) const</div><div class="ttdoc">判断单元 ID 是否有效</div></div>
-<div class="ttc" id="astructOpenCAX_1_1MeshInfo_html"><div class="ttname"><a href="structOpenCAX_1_1MeshInfo.html">OpenCAX::MeshInfo</a></div><div class="ttdoc">网格基础信息</div><div class="ttdef"><b>Definition</b> MeshTypes.h:319</div></div>
+<div class="ttc" id="astructOpenCAX_1_1MeshInfo_html"><div class="ttname"><a href="structOpenCAX_1_1MeshInfo.html">OpenCAX::MeshInfo</a></div><div class="ttdoc">网格基础信息</div><div class="ttdef"><b>Definition</b> MeshTypes.h:493</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_e3a4aa6ae53c85312025264fe419cff9.html">install</a></li><li class="navelem"><a class="el" href="dir_5c761713bf5d0875d267b95dac50e2aa.html">include</a></li><li class="navelem"><a class="el" href="dir_61b7c5e049e1532df76e44e5503c5b1c.html">OpenCAX</a></li><li class="navelem"><a class="el" href="dir_954e5679e1eb7a0785a916428caefa40.html">Mesh</a></li><li class="navelem"><b>Mesh.h</b></li>
+    <li class="navelem"><a class="el" href="dir_e3a4aa6ae53c85312025264fe419cff9.html">install</a></li><li class="navelem"><a class="el" href="dir_5c761713bf5d0875d267b95dac50e2aa.html">include</a></li><li class="navelem"><a class="el" href="dir_61b7c5e049e1532df76e44e5503c5b1c.html">OpenCAX</a></li><li class="navelem"><a class="el" href="dir_954e5679e1eb7a0785a916428caefa40.html">Mesh</a></li><li class="navelem"><a class="el" href="Mesh_8h.html">Mesh.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>

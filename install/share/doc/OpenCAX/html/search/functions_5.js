@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['node2cell_0',['node2cell',['../classOpenCAX_1_1MeshTopology.html#ae59179eddd11696fe98209c954ceb565',1,'OpenCAX::MeshTopology']]],
-  ['node2edge_1',['node2edge',['../classOpenCAX_1_1MeshTopology.html#a386f5386ef9580476c15cd7ce6f5c033',1,'OpenCAX::MeshTopology']]],
-  ['node2node_2',['node2node',['../classOpenCAX_1_1MeshTopology.html#a2f1856c804fd66002cf21bd0ed3aa998',1,'OpenCAX::MeshTopology']]],
-  ['nodes_3',['nodes',['../classOpenCAX_1_1Mesh.html#a4ca9aea09da42357513a63a22ce4e0fa',1,'OpenCAX::Mesh::nodes()'],['../classOpenCAX_1_1Mesh.html#aca9ea04fe3d7570227d6b9a79162f285',1,'OpenCAX::Mesh::nodes() const']]],
-  ['num_5fcells_4',['num_cells',['../classOpenCAX_1_1Mesh.html#a2c9fc2d355b4ea08ba41b31819c6f0fb',1,'OpenCAX::Mesh']]],
-  ['num_5fedges_5',['num_edges',['../classOpenCAX_1_1MeshTopology.html#ade0776680dad4be8a12acf06c54eaa47',1,'OpenCAX::MeshTopology']]],
-  ['num_5fnodes_6',['num_nodes',['../classOpenCAX_1_1Mesh.html#ae25d48165aecdd76fdcd9689a4ae385d',1,'OpenCAX::Mesh']]],
-  ['num_5ftriangles_7',['num_triangles',['../classOpenCAX_1_1TriangleMesh.html#af23fa88fe0f3532af9219ada86c32b30',1,'OpenCAX::TriangleMesh']]]
+  ['face2cell_0',['face2cell',['../classOpenCAX_1_1MeshTopology.html#acc645e3145beeadab5386a9ae9d7c449',1,'OpenCAX::MeshTopology']]],
+  ['face2edge_1',['face2edge',['../classOpenCAX_1_1MeshTopology.html#adb94bd00926729c2fbef62bc6631bb06',1,'OpenCAX::MeshTopology']]],
+  ['face_5ftypes_2',['face_types',['../classOpenCAX_1_1CellTopology.html#aebba926e69b6bf086c7f677cc5417a53',1,'OpenCAX::CellTopology::face_types()'],['../classOpenCAX_1_1MeshTopology.html#a9340dc1963ae5cb7e8cc4a8220c7d7dd',1,'OpenCAX::MeshTopology::face_types()']]],
+  ['faces_3',['faces',['../classOpenCAX_1_1CellTopology.html#a7ba9ac633157ab11f21f6a0d7d46f736',1,'OpenCAX::CellTopology::faces()'],['../classOpenCAX_1_1MeshTopology.html#a6fe5a07da181771b242ea575edcb21d4',1,'OpenCAX::MeshTopology::faces()']]],
+  ['find_5fcell_4',['find_cell',['../classOpenCAX_1_1MeshPlotter.html#a008357a0008a52b5bdc4e442ccf88cd7',1,'OpenCAX::MeshPlotter']]],
+  ['find_5fedge_5',['find_edge',['../classOpenCAX_1_1MeshPlotter.html#a717a4618ebaf0ff8628b7992628c8cec',1,'OpenCAX::MeshPlotter']]],
+  ['find_5fface_6',['find_face',['../classOpenCAX_1_1MeshPlotter.html#af30b3e5336c77b145544dab8dee22145',1,'OpenCAX::MeshPlotter']]],
+  ['find_5fnode_7',['find_node',['../classOpenCAX_1_1MeshPlotter.html#a7fd8500b046e3510cb4a20897617747f',1,'OpenCAX::MeshPlotter']]]
 ];

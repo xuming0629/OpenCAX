@@ -2,8 +2,10 @@ var searchData=
 [
   ['cell2cell_0',['cell2cell',['../classOpenCAX_1_1MeshTopology.html#ac77334078f0c43261527dc268a4f96e4',1,'OpenCAX::MeshTopology']]],
   ['cell2edge_1',['cell2edge',['../classOpenCAX_1_1MeshTopology.html#a809743e05b144658dd84a882f098f584',1,'OpenCAX::MeshTopology']]],
-  ['cells_2',['cells',['../classOpenCAX_1_1Mesh.html#a57f62a50bd7d997cfadd321a686a85c5',1,'OpenCAX::Mesh::cells()'],['../classOpenCAX_1_1Mesh.html#a7bba461241f2b0677805a55975f124d2',1,'OpenCAX::Mesh::cells() const']]],
-  ['clear_3',['clear',['../classOpenCAX_1_1Mesh.html#a4ae19bda897de8f90d6270def8bb9f58',1,'OpenCAX::Mesh::clear()'],['../classOpenCAX_1_1MeshTopology.html#a3fda21dfb49f6a6ffbe5e82629338b9c',1,'OpenCAX::MeshTopology::clear()']]],
-  ['create_5fstructured_5frectangle_4',['create_structured_rectangle',['../classOpenCAX_1_1TriangleMesh.html#a1602bd84147dc4f94dbe595422158015',1,'OpenCAX::TriangleMesh']]],
-  ['create_5funstructured_5',['create_unstructured',['../classOpenCAX_1_1TriangleMesh.html#aa0f15004cbf3bd467711a1d2f0be8659',1,'OpenCAX::TriangleMesh']]]
+  ['cell2face_2',['cell2face',['../classOpenCAX_1_1MeshTopology.html#a77938437b96588853f90b912eff77fc1',1,'OpenCAX::MeshTopology']]],
+  ['cells_3',['cells',['../classOpenCAX_1_1Mesh.html#a57f62a50bd7d997cfadd321a686a85c5',1,'OpenCAX::Mesh::cells()'],['../classOpenCAX_1_1Mesh.html#a7bba461241f2b0677805a55975f124d2',1,'OpenCAX::Mesh::cells() const']]],
+  ['centroid_4',['centroid',['../classOpenCAX_1_1TriangleMesh.html#a18fcde2b005765681660e4889981e028',1,'OpenCAX::TriangleMesh']]],
+  ['clear_5',['clear',['../classOpenCAX_1_1Mesh.html#a4ae19bda897de8f90d6270def8bb9f58',1,'OpenCAX::Mesh::clear()'],['../classOpenCAX_1_1MeshTopology.html#a3fda21dfb49f6a6ffbe5e82629338b9c',1,'OpenCAX::MeshTopology::clear()']]],
+  ['create_5fstructured_5frectangle_6',['create_structured_rectangle',['../classOpenCAX_1_1TriangleMesh.html#a5540036438d3d1f79b816941e2ec91c1',1,'OpenCAX::TriangleMesh']]],
+  ['create_5funstructured_7',['create_unstructured',['../classOpenCAX_1_1TriangleMesh.html#a3fb16d584f29a3d17170bdf402b78cf6',1,'OpenCAX::TriangleMesh']]]
 ];

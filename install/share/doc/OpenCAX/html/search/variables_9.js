@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['source_0',['source',['../structOpenCAX_1_1MeshInfo.html#afa5c9eaf5eddb3cf8ac7355355ff868a',1,'OpenCAX::MeshInfo']]]
+  ['physical_5fid_0',['physical_id',['../structOpenCAX_1_1MeshNode.html#adfe00cbcd25ab735a169c2c7167ed91c',1,'OpenCAX::MeshNode::physical_id'],['../structOpenCAX_1_1MeshCell.html#a8eff977e233c8ca5e3a7a51057e4ae6e',1,'OpenCAX::MeshCell::physical_id'],['../structOpenCAX_1_1MeshFace.html#ac80eea577e30f80b0350439747f4ae09',1,'OpenCAX::MeshFace::physical_id']]],
+  ['python_5fexecutable_1',['python_executable',['../structOpenCAX_1_1MeshPlotOptions.html#ab865a0c6804f7f66058a05cd003b1b8c',1,'OpenCAX::MeshPlotOptions']]]
 ];

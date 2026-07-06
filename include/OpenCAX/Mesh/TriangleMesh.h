@@ -56,6 +56,35 @@ enum class TriangleMeshSourceType
 };
 
 /**
+ * @brief 网格生成来源信息（扩展版）
+ *
+ * 用于记录 mesh 是如何被创建的，而不仅仅是 structured/unstructured
+ */
+struct TriangleMeshGeneratorInfo
+{
+    /**
+     * @brief 生成器类型
+     */
+    std::string generator = "Unknown";  
+    // 例如: "Structured", "Gmsh", "TetGen", "OBJ", "STL", "User"
+
+    /**
+     * @brief 来源文件（如果有）
+     */
+    std::string source_file;
+
+    /**
+     * @brief 额外描述信息
+     */
+    std::string description;
+
+    /**
+     * @brief 是否来自外部文件
+     */
+    bool from_file = false;
+};
+
+/**
  * @brief 结构三角形网格元信息
  *
  * 用于记录结构化矩形三角网格的生成参数。
@@ -282,6 +311,8 @@ private:
      * @brief 结构网格生成信息
      */
     TriangleMeshStructuredInfo structured_info_;
+
+    TriangleMeshGeneratorInfo generator_info_;
 };
 
 } // namespace OpenCAX

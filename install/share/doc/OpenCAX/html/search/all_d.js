@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['total_5farea_0',['total_area',['../classOpenCAX_1_1TriangleMesh.html#a096ab2c7c0d5af1ddcb43efff66a2092',1,'OpenCAX::TriangleMesh']]],
-  ['triangle_1',['triangle',['../classOpenCAX_1_1TriangleMesh.html#a97e04f98675f4ac202c904e9a3d6b2b7',1,'OpenCAX::TriangleMesh']]],
-  ['triangle_5farea_2',['triangle_area',['../classOpenCAX_1_1TriangleMesh.html#a47d0987652de8d92a9641d9dd3c1cd5a',1,'OpenCAX::TriangleMesh']]],
-  ['triangle_5fcentroid_3',['triangle_centroid',['../classOpenCAX_1_1TriangleMesh.html#a72e9a1e73eadd9ab4414996a65d4e656',1,'OpenCAX::TriangleMesh']]],
-  ['trianglemesh_4',['TriangleMesh',['../classOpenCAX_1_1TriangleMesh.html',1,'OpenCAX']]],
-  ['type_5',['type',['../structOpenCAX_1_1MeshCell.html#aba0a1fdef805b5cc26ee5a55f0f18f7a',1,'OpenCAX::MeshCell']]]
+  ['physical_5fid_0',['physical_id',['../structOpenCAX_1_1MeshNode.html#adfe00cbcd25ab735a169c2c7167ed91c',1,'OpenCAX::MeshNode::physical_id'],['../structOpenCAX_1_1MeshCell.html#a8eff977e233c8ca5e3a7a51057e4ae6e',1,'OpenCAX::MeshCell::physical_id'],['../structOpenCAX_1_1MeshFace.html#ac80eea577e30f80b0350439747f4ae09',1,'OpenCAX::MeshFace::physical_id']]],
+  ['prism15_1',['Prism15',['../MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8aa83cbf1e8e25c2ac98f6e112c138fcc3',1,'OpenCAX']]],
+  ['prism6_2',['Prism6',['../MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8a1759c847b6eabe5e25672703ef6663ab',1,'OpenCAX']]],
+  ['pyramid13_3',['Pyramid13',['../MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8ad8acfb9686b5763429e1cea71a055445',1,'OpenCAX']]],
+  ['pyramid5_4',['Pyramid5',['../MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8a5c9c4ee84fc999f7ab2f0c4e051fdb92',1,'OpenCAX']]],
+  ['python_5fexecutable_5',['python_executable',['../structOpenCAX_1_1MeshPlotOptions.html#ab865a0c6804f7f66058a05cd003b1b8c',1,'OpenCAX::MeshPlotOptions']]]
 ];

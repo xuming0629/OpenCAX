@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OpenCAX: /home/xuming/code_ws/OpenCAX/include/OpenCAX/Mesh/MeshTopology.h File Reference</title>
+<title>OpenCAX: /home/xuming/XumingOS/OpenCAX/install/include/OpenCAX/Mesh/MeshTopology.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
   <td id="projectalign">
    <div id="projectname">OpenCAX<span id="projectnumber">&#160;0.1.0</span>
    </div>
-   <div id="projectbrief">OpenCAX C++ CAD/CAE Framework</div>
+   <div id="projectbrief">OpenCAX C++ API Documentation</div>
   </td>
  </tr>
  </tbody>
@@ -91,29 +91,57 @@ $(document).ready(function(){initNavTree('MeshTopology_8h.html',''); initResizab
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle"><div class="title">MeshTopology.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="Config_8h_source.html">OpenCAX/Core/Config.h</a>&gt;</code><br />
+
+<p>OpenCAX 网格全局拓扑关系构建器声明  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;OpenCAX/Core/Config.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="Mesh_8h_source.html">OpenCAX/Mesh/Mesh.h</a>&gt;</code><br />
 <code>#include &lt;array&gt;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for MeshTopology.h:</div>
-<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for MeshTopology.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="MeshTopology_8h__incl.png" border="0" usemap="#a_2home_2xuming_2XumingOS_2OpenCAX_2install_2include_2OpenCAX_2Mesh_2MeshTopology_8h" alt=""/></div>
+<map name="a_2home_2xuming_2XumingOS_2OpenCAX_2install_2include_2OpenCAX_2Mesh_2MeshTopology_8h" id="a_2home_2xuming_2XumingOS_2OpenCAX_2install_2include_2OpenCAX_2Mesh_2MeshTopology_8h">
+<area shape="rect" title="OpenCAX 网格全局拓扑关系构建器声明" alt="" coords="352,5,571,60"/>
+<area shape="rect" href="Config_8h_source.html" title=" " alt="" coords="25,181,191,207"/>
+<area shape="poly" title=" " alt="" coords="405,62,147,178,145,173,402,58"/>
+<area shape="rect" href="Mesh_8h.html" title="OpenCAX 通用网格基础容器声明" alt="" coords="319,108,483,133"/>
+<area shape="poly" title=" " alt="" coords="445,62,420,98,415,95,441,59"/>
+<area shape="rect" title=" " alt="" coords="123,255,178,280"/>
+<area shape="poly" title=" " alt="" coords="352,38,265,50,219,60,172,74,127,93,84,117,46,147,14,183,9,196,10,208,19,218,32,228,70,244,110,255,109,261,68,249,30,233,15,222,6,210,3,195,10,180,43,143,81,113,124,88,170,69,217,55,264,44,351,33"/>
+<area shape="rect" title=" " alt="" coords="421,255,480,280"/>
+<area shape="poly" title=" " alt="" coords="499,58,532,88,562,125,572,145,578,166,577,187,569,208,554,226,535,240,495,259,493,254,533,236,551,222,565,205,572,186,573,167,567,147,557,128,528,92,495,62"/>
+<area shape="rect" title=" " alt="" coords="489,181,554,207"/>
+<area shape="poly" title=" " alt="" coords="477,59,499,107,518,167,513,169,494,109,473,61"/>
+<area shape="rect" title=" " alt="" coords="629,108,680,133"/>
+<area shape="poly" title=" " alt="" coords="522,58,618,100,616,105,519,63"/>
+<area shape="poly" title=" " alt="" coords="355,136,169,181,168,175,354,131"/>
+<area shape="rect" href="MeshTypes_8h.html" title="OpenCAX 网格模块基础数据类型定义" alt="" coords="215,181,414,207"/>
+<area shape="poly" title=" " alt="" coords="389,135,341,175,338,170,386,131"/>
+<area shape="poly" title=" " alt="" coords="409,133,428,180,447,240,442,242,423,182,404,135"/>
+<area shape="poly" title=" " alt="" coords="422,131,491,172,488,176,419,136"/>
+<area shape="poly" title=" " alt="" coords="290,209,191,252,189,247,287,204"/>
+<area shape="poly" title=" " alt="" coords="338,204,418,246,415,251,335,209"/>
+</map>
 </div>
-<div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="MeshTopology_8h__incl.svg" width="667" height="286"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
-</div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
-  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
-<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
-</div>
-<div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="MeshTopology_8h__dep__incl.svg" width="204" height="168"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="MeshTopology_8h__dep__incl.png" border="0" usemap="#a_2home_2xuming_2XumingOS_2OpenCAX_2install_2include_2OpenCAX_2Mesh_2MeshTopology_8hdep" alt=""/></div>
+<map name="a_2home_2xuming_2XumingOS_2OpenCAX_2install_2include_2OpenCAX_2Mesh_2MeshTopology_8hdep" id="a_2home_2xuming_2XumingOS_2OpenCAX_2install_2include_2OpenCAX_2Mesh_2MeshTopology_8hdep">
+<area shape="rect" title="OpenCAX 网格全局拓扑关系构建器声明" alt="" coords="124,5,343,60"/>
+<area shape="rect" href="MeshModule_8h_source.html" title=" " alt="" coords="5,108,216,163"/>
+<area shape="poly" title=" " alt="" coords="192,71,144,110,141,106,189,67"/>
+<area shape="rect" href="MeshPlotter_8h.html" title="OpenCAX 网格绘图工具类声明" alt="" coords="241,108,471,163"/>
+<area shape="poly" title=" " alt="" coords="278,67,326,106,322,110,274,71"/>
+</map>
 </div>
 </div>
 <p><a href="MeshTopology_8h_source.html">Go to the source code of this file.</a></p>
@@ -123,19 +151,44 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOpenCAX_1_1MeshTopology.html">OpenCAX::MeshTopology</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格拓扑关系构建器  <a href="classOpenCAX_1_1MeshTopology.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespaceOpenCAX" id="r_namespaceOpenCAX"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceOpenCAX.html">OpenCAX</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>OpenCAX 网格全局拓扑关系构建器声明 </p>
+<p>MeshTopology 根据 Mesh 中的 nodes / cells 自动构建全局拓扑关系。</p>
+<p>支持：</p>
+<ul>
+<li>edge2node : edges()</li>
+<li>face2node : faces()</li>
+<li>cell2edge</li>
+<li>cell2face</li>
+<li>edge2cell</li>
+<li>face2cell</li>
+<li>node2edge</li>
+<li>node2face</li>
+<li>node2cell</li>
+<li>node2node</li>
+<li>edge2face</li>
+<li>face2edge</li>
+<li>cell2cell</li>
+<li>boundary_edges</li>
+<li>boundary_faces</li>
+<li>boundary_nodes</li>
+<li>boundary_cells</li>
+</ul>
+<p>设计说明：</p>
+<ol type="1">
+<li>对 2D 面网格，边界通过 edge2cell 判断。 如果一条边只属于一个单元，则该边是边界边。</li>
+<li>对 3D 体网格，边界通过 face2cell 判断。 如果一个面只属于一个单元，则该面是边界面。</li>
+<li>edges_ 保存规范化边 {min(a,b), max(a,b)}。</li>
+<li>faces_ 保存首次出现的局部面节点顺序。 face_map 使用 canonical_face 作为去重 key。 这样既可以正确去重，又不会破坏面的环向顺序。 </li>
+</ol>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_4b04495dd6f5d4c7a63282e1dcffe990.html">OpenCAX</a></li><li class="navelem"><a class="el" href="dir_8c75e55ebf80cb116ab8fc4aa675cc14.html">Mesh</a></li><li class="navelem"><a class="el" href="MeshTopology_8h.html">MeshTopology.h</a></li>
-    <li class="footer">Generated on Tue Jun 16 2026 09:19:18 for OpenCAX by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="navelem"><a class="el" href="dir_e3a4aa6ae53c85312025264fe419cff9.html">install</a></li><li class="navelem"><a class="el" href="dir_5c761713bf5d0875d267b95dac50e2aa.html">include</a></li><li class="navelem"><a class="el" href="dir_61b7c5e049e1532df76e44e5503c5b1c.html">OpenCAX</a></li><li class="navelem"><a class="el" href="dir_954e5679e1eb7a0785a916428caefa40.html">Mesh</a></li><li class="navelem"><a class="el" href="MeshTopology_8h.html">MeshTopology.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>

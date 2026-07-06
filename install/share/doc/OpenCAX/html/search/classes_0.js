@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['logger_0',['Logger',['../classOpenCAX_1_1Logger.html',1,'OpenCAX']]]
+  ['celltopology_0',['CellTopology',['../classOpenCAX_1_1CellTopology.html',1,'OpenCAX']]],
+  ['color_1',['Color',['../structOpenCAX_1_1Color.html',1,'OpenCAX']]]
 ];

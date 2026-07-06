@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vertices_0',['vertices',['../structOpenCAX_1_1ShapeStats.html#a58548972ebafd213bea68b76afc03a90',1,'OpenCAX::ShapeStats']]]
+  ['z_0',['z',['../structOpenCAX_1_1MeshNode.html#a870908b6a5032ed24c31f2aafbab7f11',1,'OpenCAX::MeshNode']]]
 ];

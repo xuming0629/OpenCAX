@@ -1,12 +1,28 @@
 var annotated_dup =
 [
     [ "OpenCAX", null, [
+      [ "CellTopology", "classOpenCAX_1_1CellTopology.html", null ],
+      [ "Color", "structOpenCAX_1_1Color.html", null ],
+      [ "HexMesh", "classOpenCAX_1_1HexMesh.html", null ],
+      [ "HexMeshStructuredInfo", "structOpenCAX_1_1HexMeshStructuredInfo.html", null ],
       [ "Logger", "classOpenCAX_1_1Logger.html", null ],
       [ "Mesh", "classOpenCAX_1_1Mesh.html", "classOpenCAX_1_1Mesh" ],
       [ "MeshCell", "structOpenCAX_1_1MeshCell.html", "structOpenCAX_1_1MeshCell" ],
+      [ "MeshFace", "structOpenCAX_1_1MeshFace.html", "structOpenCAX_1_1MeshFace" ],
       [ "MeshInfo", "structOpenCAX_1_1MeshInfo.html", "structOpenCAX_1_1MeshInfo" ],
       [ "MeshNode", "structOpenCAX_1_1MeshNode.html", "structOpenCAX_1_1MeshNode" ],
+      [ "MeshPlotOptions", "structOpenCAX_1_1MeshPlotOptions.html", "structOpenCAX_1_1MeshPlotOptions" ],
+      [ "MeshPlotter", "classOpenCAX_1_1MeshPlotter.html", null ],
       [ "MeshTopology", "classOpenCAX_1_1MeshTopology.html", "classOpenCAX_1_1MeshTopology" ],
-      [ "TriangleMesh", "classOpenCAX_1_1TriangleMesh.html", "classOpenCAX_1_1TriangleMesh" ]
+      [ "QuadMesh", "classOpenCAX_1_1QuadMesh.html", null ],
+      [ "QuadMeshStructuredInfo", "structOpenCAX_1_1QuadMeshStructuredInfo.html", null ],
+      [ "ScalarFieldViewer", "classOpenCAX_1_1ScalarFieldViewer.html", null ],
+      [ "TetraMesh", "classOpenCAX_1_1TetraMesh.html", null ],
+      [ "TetraMeshStructuredInfo", "structOpenCAX_1_1TetraMeshStructuredInfo.html", null ],
+      [ "TriangleMesh", "classOpenCAX_1_1TriangleMesh.html", "classOpenCAX_1_1TriangleMesh" ],
+      [ "TriangleMeshStructuredInfo", "structOpenCAX_1_1TriangleMeshStructuredInfo.html", "structOpenCAX_1_1TriangleMeshStructuredInfo" ],
+      [ "VisualOptions", "structOpenCAX_1_1VisualOptions.html", null ],
+      [ "VtkConverter", "classOpenCAX_1_1VtkConverter.html", null ],
+      [ "VtkViewer", "classOpenCAX_1_1VtkViewer.html", null ]
     ] ]
 ];

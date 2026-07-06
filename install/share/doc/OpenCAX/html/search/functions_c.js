@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['point2d_0',['point2d',['../classOpenCAX_1_1TriangleMesh.html#ab6e030362728260693f80f1053f73b17',1,'OpenCAX::TriangleMesh']]]
+  ['_7emesh_0',['~Mesh',['../classOpenCAX_1_1Mesh.html#aa6aa75e068e89614e665dbec133a4d47',1,'OpenCAX::Mesh']]]
 ];

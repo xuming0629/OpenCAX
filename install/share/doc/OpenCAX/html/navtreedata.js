@@ -43,7 +43,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"Config_8h_source.html"
+"CellTopology_8h.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

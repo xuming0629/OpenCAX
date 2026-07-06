@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['info_0',['info',['../classOpenCAX_1_1Mesh.html#ab04db841343fc9af75434140e2da5da0',1,'OpenCAX::Mesh::info()'],['../classOpenCAX_1_1Mesh.html#a2db0ea47e9ce2b01e4c2b4cc7a72a0be',1,'OpenCAX::Mesh::info() const']]],
-  ['is_5fpure_5ftriangle_5fmesh_1',['is_pure_triangle_mesh',['../classOpenCAX_1_1TriangleMesh.html#a81d58e6fa5a14ff7d766d1b16786d38f',1,'OpenCAX::TriangleMesh']]]
+  ['edge2cell_0',['edge2cell',['../classOpenCAX_1_1MeshTopology.html#a138d624d36ee8d8ffb34373962ed836e',1,'OpenCAX::MeshTopology']]],
+  ['edge2face_1',['edge2face',['../classOpenCAX_1_1MeshTopology.html#ae5d8779e261948ac41460093f865dd52',1,'OpenCAX::MeshTopology']]],
+  ['edges_2',['edges',['../classOpenCAX_1_1CellTopology.html#a5d225ed4788cc5edfc22445e14d3bb2f',1,'OpenCAX::CellTopology::edges()'],['../classOpenCAX_1_1MeshTopology.html#a2dc0c23d4d41728f2cb282f24c1d043b',1,'OpenCAX::MeshTopology::edges()']]],
+  ['empty_3',['empty',['../classOpenCAX_1_1Mesh.html#a2b2c20f98143e8a2fd6fdb816891deec',1,'OpenCAX::Mesh']]]
 ];
