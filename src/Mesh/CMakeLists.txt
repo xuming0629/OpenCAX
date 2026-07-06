@@ -7,6 +7,9 @@ add_library(OpenCAXMesh
     QuadMesh.cpp
     TetraMesh.cpp
     HexMesh.cpp
+    GmshTriangleMesh.cpp
+    MeshDebugUtils.cpp
+    TriangleMeshRefiner.cpp
   
 )
 

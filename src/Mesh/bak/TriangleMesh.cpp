@@ -1,6 +1,18 @@
 /**
  * @file TriangleMesh.cpp
  * @brief OpenCAX 二维三角形网格类实现
+ *
+ * 本文件实现 TriangleMesh 类。
+ *
+ * 主要功能包括：
+ *
+ * - 结构矩形区域三角网格生成
+ * - 非结构三角网格构造
+ * - 三角形面积计算
+ * - 总面积计算
+ * - 单元质心计算
+ * - 包围盒计算
+ * - 三角形网格合法性检查
  */
 
 #include <OpenCAX/Mesh/TriangleMesh.h>
@@ -18,6 +30,14 @@ namespace
 
 /**
  * @brief 计算三角形在 XY 平面上的有向面积的 2 倍
+ *
+ * 如果返回值大于 0，说明节点顺序在 XY 平面上是逆时针。
+ * 如果返回值小于 0，说明节点顺序在 XY 平面上是顺时针。
+ *
+ * @param a 第一个节点
+ * @param b 第二个节点
+ * @param c 第三个节点
+ * @return XY 平面有向面积的 2 倍
  */
 double signed_area2_xy(
     const MeshNode& a,
@@ -31,6 +51,15 @@ double signed_area2_xy(
 
 /**
  * @brief 将三角形节点顺序调整为 XY 平面逆时针
+ *
+ * @param mesh 网格
+ * @param n0 第一个节点 ID
+ * @param n1 第二个节点 ID
+ * @param n2 第三个节点 ID
+ * @return 逆时针节点顺序
+ *
+ * @note
+ * 如果三角形在 XY 平面退化，则保留原始顺序。
  */
 std::array<int, 3> make_ccw_xy(
     const TriangleMesh& mesh,
@@ -59,11 +88,8 @@ std::array<int, 3> make_ccw_xy(
 
 TriangleMesh::TriangleMesh()
 {
-    info_.name = "TriangleMesh";
-    info_.source = "OpenCAX";
     info_.dimension = MeshDimension::Dim2;
-
-    source_type_ = TriangleMeshSourceType::Unknown;
+    info_.source = "TriangleMesh";
 }
 
 TriangleMesh TriangleMesh::create_structured_rectangle(
@@ -107,11 +133,10 @@ TriangleMesh TriangleMesh::create_structured_rectangle(
     TriangleMesh mesh;
 
     mesh.info_.name = "StructuredTriangleMesh";
-    mesh.info_.source = "OpenCAX::Structured";
+    mesh.info_.source = "Structured";
     mesh.info_.dimension = MeshDimension::Dim2;
 
     mesh.source_type_ = TriangleMeshSourceType::Structured;
-
     mesh.structured_info_.nx = nx;
     mesh.structured_info_.ny = ny;
     mesh.structured_info_.xmin = xmin;
@@ -128,6 +153,22 @@ TriangleMesh TriangleMesh::create_structured_rectangle(
         return j * (nx + 1) + i;
     };
 
+    /*
+     * 生成节点。
+     *
+     * 节点编号规则：
+     *
+     * j = ny:  ...
+     *          6 --- 7 --- 8
+     *          |     |     |
+     *          3 --- 4 --- 5
+     *          |     |     |
+     * j = 0:   0 --- 1 --- 2
+     *
+     * 即：
+     *
+     * node_id(i, j) = j * (nx + 1) + i
+     */
     for (int j = 0; j <= ny; ++j)
     {
         const double y = ymin + static_cast<double>(j) * dy;
@@ -139,6 +180,37 @@ TriangleMesh TriangleMesh::create_structured_rectangle(
         }
     }
 
+    /*
+     * 生成 Triangle3 单元。
+     *
+     * 重要约定：
+     *
+     * 1. 每个三角形节点按逆时针方向排列。
+     * 2. 每个直角三角形的直角点放在 node_ids[1]。
+     *
+     * 对于一个矩形：
+     *
+     * n01 ----- n11
+     *  |         |
+     *  |         |
+     * n00 ----- n10
+     *
+     * 默认对角线 n00 -> n11：
+     *
+     * - {n00, n10, n11}
+     *   逆时针，直角点 n10 在中间。
+     *
+     * - {n11, n01, n00}
+     *   逆时针，直角点 n01 在中间。
+     *
+     * 交错对角线 n10 -> n01：
+     *
+     * - {n01, n00, n10}
+     *   逆时针，直角点 n00 在中间。
+     *
+     * - {n10, n11, n01}
+     *   逆时针，直角点 n11 在中间。
+     */
     for (int j = 0; j < ny; ++j)
     {
         for (int i = 0; i < nx; ++i)
@@ -148,14 +220,12 @@ TriangleMesh TriangleMesh::create_structured_rectangle(
             const int n01 = node_index(i, j + 1);
             const int n11 = node_index(i + 1, j + 1);
 
-            const bool flip =
-                alternate_diagonal &&
-                ((i + j) % 2 == 1);
+            const bool flip = alternate_diagonal && ((i + j) % 2 == 1);
 
             if (!flip)
             {
                 /*
-                 * 对角线 n00 -> n11
+                 * 对角线 n00 -> n11。
                  */
                 mesh.add_cell(
                     CellType::Triangle3,
@@ -170,7 +240,7 @@ TriangleMesh TriangleMesh::create_structured_rectangle(
             else
             {
                 /*
-                 * 对角线 n10 -> n01
+                 * 对角线 n10 -> n01。
                  */
                 mesh.add_cell(
                     CellType::Triangle3,
@@ -193,24 +263,10 @@ TriangleMesh TriangleMesh::create_unstructured(
     const std::vector<std::array<int, 3>>& triangles
 )
 {
-    if (points.empty())
-    {
-        throw std::invalid_argument(
-            "TriangleMesh::create_unstructured: points is empty."
-        );
-    }
-
-    if (triangles.empty())
-    {
-        throw std::invalid_argument(
-            "TriangleMesh::create_unstructured: triangles is empty."
-        );
-    }
-
     TriangleMesh mesh;
 
     mesh.info_.name = "UnstructuredTriangleMesh";
-    mesh.info_.source = "OpenCAX::Unstructured";
+    mesh.info_.source = "Unstructured";
     mesh.info_.dimension = MeshDimension::Dim2;
 
     mesh.source_type_ = TriangleMeshSourceType::Unstructured;
@@ -220,6 +276,18 @@ TriangleMesh TriangleMesh::create_unstructured(
         mesh.add_node(p[0], p[1], p[2]);
     }
 
+    /*
+     * 非结构三角形网格构造。
+     *
+     * 对输入三角形做一个轻量处理：
+     *
+     * - 如果三角形在 XY 平面投影下是顺时针，则交换后两个节点，使其变成逆时针。
+     * - 如果三角形在 XY 平面投影下退化，则保持原始输入顺序。
+     *
+     * @note
+     * 对一般三维曲面网格，严格的方向约定应基于目标法向。
+     * 当前 TriangleMesh 主要服务于二维平面三角网格，因此采用 XY 平面判断。
+     */
     for (const auto& tri : triangles)
     {
         if (!mesh.valid_node_id(tri[0]) ||
@@ -228,15 +296,6 @@ TriangleMesh TriangleMesh::create_unstructured(
         {
             throw std::out_of_range(
                 "TriangleMesh::create_unstructured: invalid node id in triangle."
-            );
-        }
-
-        if (tri[0] == tri[1] ||
-            tri[1] == tri[2] ||
-            tri[2] == tri[0])
-        {
-            throw std::invalid_argument(
-                "TriangleMesh::create_unstructured: duplicated node id in triangle."
             );
         }
 
@@ -268,42 +327,19 @@ void TriangleMesh::set_source_type(
     source_type_ = type;
 }
 
-void TriangleMesh::set_name(
-    const std::string& name
-)
-{
-    info_.name = name;
-}
-
-void TriangleMesh::set_source(
-    const std::string& source
-)
-{
-    info_.source = source;
-}
-
 bool TriangleMesh::is_structured() const
 {
-    return source_type_ == TriangleMeshSourceType::Structured ||
-           source_type_ == TriangleMeshSourceType::GmshStructured;
+    return source_type_ == TriangleMeshSourceType::Structured;
 }
 
 bool TriangleMesh::is_unstructured() const
 {
-    return source_type_ == TriangleMeshSourceType::Unstructured ||
-           source_type_ == TriangleMeshSourceType::GmshUnstructured;
+    return source_type_ == TriangleMeshSourceType::Unstructured;
 }
 
 const TriangleMeshStructuredInfo& TriangleMesh::structured_info() const
 {
     return structured_info_;
-}
-
-void TriangleMesh::set_structured_info(
-    const TriangleMeshStructuredInfo& info
-)
-{
-    structured_info_ = info;
 }
 
 double TriangleMesh::triangle_area(
@@ -338,11 +374,9 @@ double TriangleMesh::area(
         );
     }
 
-    const MeshCell& cell =
-        cells_[static_cast<std::size_t>(cell_id)];
+    const MeshCell& cell = cells_[static_cast<std::size_t>(cell_id)];
 
-    if (cell.type != CellType::Triangle3 ||
-        cell.node_ids.size() != 3)
+    if (cell.type != CellType::Triangle3 || cell.node_ids.size() != 3)
     {
         throw std::runtime_error(
             "TriangleMesh::area: cell is not Triangle3."
@@ -392,11 +426,9 @@ std::array<double, 3> TriangleMesh::centroid(
         );
     }
 
-    const MeshCell& cell =
-        cells_[static_cast<std::size_t>(cell_id)];
+    const MeshCell& cell = cells_[static_cast<std::size_t>(cell_id)];
 
-    if (cell.type != CellType::Triangle3 ||
-        cell.node_ids.size() != 3)
+    if (cell.type != CellType::Triangle3 || cell.node_ids.size() != 3)
     {
         throw std::runtime_error(
             "TriangleMesh::centroid: cell is not Triangle3."
@@ -416,14 +448,9 @@ std::array<double, 3> TriangleMesh::centroid(
         );
     }
 
-    const MeshNode& a =
-        nodes_[static_cast<std::size_t>(n0)];
-
-    const MeshNode& b =
-        nodes_[static_cast<std::size_t>(n1)];
-
-    const MeshNode& c =
-        nodes_[static_cast<std::size_t>(n2)];
+    const MeshNode& a = nodes_[static_cast<std::size_t>(n0)];
+    const MeshNode& b = nodes_[static_cast<std::size_t>(n1)];
+    const MeshNode& c = nodes_[static_cast<std::size_t>(n2)];
 
     return {
         (a.x + b.x + c.x) / 3.0,
@@ -471,8 +498,7 @@ bool TriangleMesh::validate(
     {
         if (error_message)
         {
-            *error_message =
-                "TriangleMesh::validate: mesh has no nodes.";
+            *error_message = "TriangleMesh::validate: mesh has no nodes.";
         }
 
         return false;
@@ -482,8 +508,7 @@ bool TriangleMesh::validate(
     {
         if (error_message)
         {
-            *error_message =
-                "TriangleMesh::validate: mesh has no cells.";
+            *error_message = "TriangleMesh::validate: mesh has no cells.";
         }
 
         return false;
@@ -497,8 +522,7 @@ bool TriangleMesh::validate(
         {
             if (error_message)
             {
-                *error_message =
-                    "TriangleMesh::validate: non-Triangle3 cell found.";
+                *error_message = "TriangleMesh::validate: non-Triangle3 cell found.";
             }
 
             return false;
@@ -508,8 +532,7 @@ bool TriangleMesh::validate(
         {
             if (error_message)
             {
-                *error_message =
-                    "TriangleMesh::validate: Triangle3 cell must have exactly 3 nodes.";
+                *error_message = "TriangleMesh::validate: Triangle3 cell must have exactly 3 nodes.";
             }
 
             return false;
@@ -525,8 +548,7 @@ bool TriangleMesh::validate(
         {
             if (error_message)
             {
-                *error_message =
-                    "TriangleMesh::validate: invalid node id found.";
+                *error_message = "TriangleMesh::validate: invalid node id found.";
             }
 
             return false;
@@ -536,8 +558,7 @@ bool TriangleMesh::validate(
         {
             if (error_message)
             {
-                *error_message =
-                    "TriangleMesh::validate: duplicated node id in triangle.";
+                *error_message = "TriangleMesh::validate: duplicated node id in triangle.";
             }
 
             return false;
@@ -547,8 +568,7 @@ bool TriangleMesh::validate(
         {
             if (error_message)
             {
-                *error_message =
-                    "TriangleMesh::validate: degenerated triangle cell found.";
+                *error_message = "TriangleMesh::validate: degenerated triangle cell found.";
             }
 
             return false;
