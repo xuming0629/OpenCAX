@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['logger_0',['Logger',['../classOpenCAX_1_1Logger.html',1,'OpenCAX']]]
+  ['hexmesh_0',['HexMesh',['../classOpenCAX_1_1HexMesh.html',1,'OpenCAX']]],
+  ['hexmeshstructuredinfo_1',['HexMeshStructuredInfo',['../structOpenCAX_1_1HexMeshStructuredInfo.html',1,'OpenCAX']]]
 ];

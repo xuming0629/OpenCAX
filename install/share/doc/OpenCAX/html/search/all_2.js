@@ -9,9 +9,10 @@ var searchData=
   ['celltopology_6',['CellTopology',['../classOpenCAX_1_1CellTopology.html',1,'OpenCAX']]],
   ['celltopology_2eh_7',['CellTopology.h',['../CellTopology_8h.html',1,'']]],
   ['celltype_8',['CellType',['../MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8',1,'OpenCAX']]],
-  ['centroid_9',['centroid',['../classOpenCAX_1_1TriangleMesh.html#a18fcde2b005765681660e4889981e028',1,'OpenCAX::TriangleMesh']]],
+  ['centroid_9',['centroid',['../classOpenCAX_1_1TriangleMesh.html#a18fcde2b005765681660e4889981e028',1,'OpenCAX::TriangleMesh::centroid(int cell_id) const'],['../classOpenCAX_1_1TriangleMesh.html#a18fcde2b005765681660e4889981e028',1,'OpenCAX::TriangleMesh::centroid(int cell_id) const']]],
   ['clear_10',['clear',['../classOpenCAX_1_1Mesh.html#a4ae19bda897de8f90d6270def8bb9f58',1,'OpenCAX::Mesh::clear()'],['../classOpenCAX_1_1MeshTopology.html#a3fda21dfb49f6a6ffbe5e82629338b9c',1,'OpenCAX::MeshTopology::clear()']]],
   ['color_11',['Color',['../structOpenCAX_1_1Color.html',1,'OpenCAX']]],
-  ['create_5fstructured_5frectangle_12',['create_structured_rectangle',['../classOpenCAX_1_1TriangleMesh.html#a5540036438d3d1f79b816941e2ec91c1',1,'OpenCAX::TriangleMesh']]],
-  ['create_5funstructured_13',['create_unstructured',['../classOpenCAX_1_1TriangleMesh.html#a3fb16d584f29a3d17170bdf402b78cf6',1,'OpenCAX::TriangleMesh']]]
+  ['create_5fstructured_5frectangle_12',['create_structured_rectangle',['../classOpenCAX_1_1TriangleMesh.html#a5540036438d3d1f79b816941e2ec91c1',1,'OpenCAX::TriangleMesh::create_structured_rectangle()'],['../classOpenCAX_1_1GmshTriangleMeshGenerator.html#a5fda4797c1632e6aaf348aef421e02be',1,'OpenCAX::GmshTriangleMeshGenerator::create_structured_rectangle()'],['../classOpenCAX_1_1TriangleMesh.html#a5540036438d3d1f79b816941e2ec91c1',1,'OpenCAX::TriangleMesh::create_structured_rectangle(double xmin, double xmax, double ymin, double ymax, int nx, int ny, bool alternate_diagonal=false)']]],
+  ['create_5funstructured_13',['create_unstructured',['../classOpenCAX_1_1TriangleMesh.html#a3fb16d584f29a3d17170bdf402b78cf6',1,'OpenCAX::TriangleMesh::create_unstructured(const std::vector&lt; std::array&lt; double, 3 &gt; &gt; &amp;points, const std::vector&lt; std::array&lt; int, 3 &gt; &gt; &amp;triangles)'],['../classOpenCAX_1_1TriangleMesh.html#a3fb16d584f29a3d17170bdf402b78cf6',1,'OpenCAX::TriangleMesh::create_unstructured(const std::vector&lt; std::array&lt; double, 3 &gt; &gt; &amp;points, const std::vector&lt; std::array&lt; int, 3 &gt; &gt; &amp;triangles)']]],
+  ['create_5funstructured_5frectangle_14',['create_unstructured_rectangle',['../classOpenCAX_1_1GmshTriangleMeshGenerator.html#a91923804c54e3d8cfbc6adc5b142c2fb',1,'OpenCAX::GmshTriangleMeshGenerator']]]
 ];

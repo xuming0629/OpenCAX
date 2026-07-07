@@ -1,6 +1,11 @@
 var searchData=
 [
-  ['x_0',['x',['../structOpenCAX_1_1MeshNode.html#ae61e64023eaf8a41e86744e0bf3ac2bd',1,'OpenCAX::MeshNode']]],
-  ['xmax_1',['xmax',['../structOpenCAX_1_1TriangleMeshStructuredInfo.html#aef689b4d22f00834c0508c2e30a4a091',1,'OpenCAX::TriangleMeshStructuredInfo']]],
-  ['xmin_2',['xmin',['../structOpenCAX_1_1TriangleMeshStructuredInfo.html#a74a9409165e034a962dbcb693cc4b725',1,'OpenCAX::TriangleMeshStructuredInfo']]]
+  ['valid_5fcell_5fid_0',['valid_cell_id',['../classOpenCAX_1_1Mesh.html#afadde5028212fd9b29a06b697bb70412',1,'OpenCAX::Mesh']]],
+  ['valid_5fnode_5fid_1',['valid_node_id',['../classOpenCAX_1_1Mesh.html#ad661f15e738f63b1097369dde0e56d33',1,'OpenCAX::Mesh']]],
+  ['validate_2',['validate',['../classOpenCAX_1_1TriangleMesh.html#a68660e98449bf45b4ae65f0ada4ba82f',1,'OpenCAX::TriangleMesh::validate()'],['../classOpenCAX_1_1Mesh.html#abcd5e2cfe13d8a9c440b13f3f8be5758',1,'OpenCAX::Mesh::validate()'],['../classOpenCAX_1_1TriangleMesh.html#a68660e98449bf45b4ae65f0ada4ba82f',1,'OpenCAX::TriangleMesh::validate()']]],
+  ['verbose_3',['verbose',['../structOpenCAX_1_1GmshTriangleMeshOptions.html#a4bb5eb3db816169a398d1298d3d069e4',1,'OpenCAX::GmshTriangleMeshOptions']]],
+  ['vertex1_4',['Vertex1',['../MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8abf7a989a052d8b7dd6c6b79fe34cd6fb',1,'OpenCAX']]],
+  ['visualoptions_5',['VisualOptions',['../structOpenCAX_1_1VisualOptions.html',1,'OpenCAX']]],
+  ['vtkconverter_6',['VtkConverter',['../classOpenCAX_1_1VtkConverter.html',1,'OpenCAX']]],
+  ['vtkviewer_7',['VtkViewer',['../classOpenCAX_1_1VtkViewer.html',1,'OpenCAX']]]
 ];

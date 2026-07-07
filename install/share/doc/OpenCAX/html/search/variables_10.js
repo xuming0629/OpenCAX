@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['z_0',['z',['../structOpenCAX_1_1MeshNode.html#a870908b6a5032ed24c31f2aafbab7f11',1,'OpenCAX::MeshNode']]]
+  ['verbose_0',['verbose',['../structOpenCAX_1_1GmshTriangleMeshOptions.html#a4bb5eb3db816169a398d1298d3d069e4',1,'OpenCAX::GmshTriangleMeshOptions']]]
 ];

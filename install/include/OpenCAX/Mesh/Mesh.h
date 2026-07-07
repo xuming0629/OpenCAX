@@ -17,7 +17,7 @@
  * 复杂拓扑关系，例如：
  *
  * - edge2node
- * - face2node
+ * - face2node 
  * - cell2edge
  * - cell2face
  * - edge2cell

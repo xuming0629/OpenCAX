@@ -1,0 +1,32 @@
+<map id="/home/xuming/XumingOS/OpenCAX/install/include/OpenCAX/Mesh/MeshDebugUtils.h" name="/home/xuming/XumingOS/OpenCAX/install/include/OpenCAX/Mesh/MeshDebugUtils.h">
+<area shape="rect" id="Node000001" title="OpenCAX 通用网格调试工具" alt="" coords="399,5,632,60"/>
+<area shape="rect" id="Node000002" href="$Config_8h_source.html" title=" " alt="" coords="23,255,190,280"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="451,63,336,114,272,147,210,184,167,216,130,247,126,243,163,212,208,179,270,143,334,109,449,58"/>
+<area shape="rect" id="Node000003" href="$Mesh_8h.html" title="OpenCAX 通用网格基础容器声明" alt="" coords="282,181,446,207"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="458,62,426,83,398,110,381,139,371,168,366,167,376,136,394,106,423,79,455,58"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="280,328,338,353"/>
+<area shape="poly" id="edge19_Node000001_Node000006" title=" " alt="" coords="399,50,299,72,245,89,191,110,138,138,90,170,47,210,13,256,8,268,13,278,29,291,54,302,122,319,199,329,266,335,266,340,198,334,121,324,52,307,26,296,8,282,3,268,8,253,43,206,87,166,136,133,188,106,243,84,297,67,398,44"/>
+<area shape="rect" id="Node000008" href="$MeshTopology_8h.html" title="OpenCAX 网格全局拓扑关系构建器声明" alt="" coords="408,108,623,133"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="518,60,518,94,513,94,513,60"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="678,181,729,207"/>
+<area shape="poly" id="edge16_Node000001_Node000009" title=" " alt="" coords="567,58,602,80,636,106,666,137,690,168,686,172,662,141,633,110,599,84,564,62"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="698,108,770,133"/>
+<area shape="poly" id="edge17_Node000001_Node000010" title=" " alt="" coords="583,58,693,100,691,105,582,63"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="795,108,855,133"/>
+<area shape="poly" id="edge18_Node000001_Node000011" title=" " alt="" coords="611,57,782,105,781,110,609,63"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="323,209,162,254,160,248,322,204"/>
+<area shape="rect" id="Node000004" href="$MeshTypes_8h.html" title="OpenCAX 网格模块基础数据类型定义" alt="" coords="264,255,463,280"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="366,207,366,241,361,241,361,207"/>
+<area shape="poly" id="edge8_Node000003_Node000006" title=" " alt="" coords="320,209,283,227,267,240,254,256,250,272,256,288,267,303,282,317,279,321,263,307,251,290,245,272,249,253,263,236,280,223,318,204"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="487,255,552,280"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="390,204,483,246,481,251,388,209"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="390,328,444,353"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="375,279,402,316,398,319,370,282"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="357,282,328,319,324,316,353,279"/>
+<area shape="poly" id="edge10_Node000008_Node000002" title=" " alt="" coords="450,136,363,155,270,184,198,217,138,250,135,245,195,212,268,179,362,150,449,131"/>
+<area shape="poly" id="edge11_Node000008_Node000003" title=" " alt="" coords="492,136,402,178,400,173,490,131"/>
+<area shape="poly" id="edge14_Node000008_Node000005" title=" " alt="" coords="550,131,584,150,599,164,611,180,624,207,629,232,626,256,611,282,596,298,579,311,539,329,497,339,459,342,458,337,496,334,537,324,576,306,593,294,607,278,620,254,624,232,619,209,607,183,595,167,581,154,547,136"/>
+<area shape="poly" id="edge15_Node000008_Node000006" title=" " alt="" coords="528,132,549,161,569,199,576,220,579,242,576,263,566,282,536,296,479,311,353,335,352,330,478,305,534,291,562,278,571,261,574,242,571,222,564,201,544,163,524,135"/>
+<area shape="poly" id="edge13_Node000008_Node000007" title=" " alt="" coords="519,134,522,241,516,241,513,134"/>
+<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="547,131,666,176,664,181,545,136"/>
+</map>

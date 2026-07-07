@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['showmesh_0',['ShowMesh',['../MeshPlotter_8h.html#a961a02bb47163a8ad9470e049d6082f5ac7faaceaeb53e0bcbfb9ac7464051d50',1,'OpenCAX']]],
-  ['structured_1',['Structured',['../TriangleMesh_8h.html#a6da0b2379d66ff22b3dc2067cc12356ba854cc9d26f059f347c097abc58efbc94',1,'OpenCAX']]]
+  ['quad4_0',['Quad4',['../MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8a7e543de6ba602d09b9bd5cb5e1eee77c',1,'OpenCAX']]],
+  ['quad8_1',['Quad8',['../MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8a81a164b246c5014e888b66929f52f590',1,'OpenCAX']]],
+  ['quad9_2',['Quad9',['../MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8a4387dc11b1e05099fd1a9e68f24707a1',1,'OpenCAX']]]
 ];
