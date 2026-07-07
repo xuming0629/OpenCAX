@@ -4,92 +4,153 @@
 #include <vtkCellArray.h>
 #include <vtkDataSetMapper.h>
 #include <vtkDoubleArray.h>
+#include <vtkLookupTable.h>
 #include <vtkNamedColors.h>
-#include <vtkPointData.h>
+#include <vtkNew.h>
 #include <vtkPoints.h>
+#include <vtkPointData.h>
 #include <vtkProperty.h>
 #include <vtkRenderer.h>
 #include <vtkRenderWindow.h>
 #include <vtkRenderWindowInteractor.h>
 #include <vtkTriangle.h>
 #include <vtkUnstructuredGrid.h>
-#include <vtkSmartPointer.h>
 
 #include <iostream>
+#include <string>
 
 namespace OpenCAX
 {
 
 void ScalarFieldViewer::showSolution(
     const TriangleMesh& mesh,
-    const Eigen::VectorXd& u,
-    const char* title)
+    const Eigen::VectorXd& values,
+    const char* title
+)
 {
-    if (static_cast<std::size_t>(u.size()) != mesh.num_nodes())
+    showSolution2D(
+        mesh,
+        values,
+        title
+    );
+}
+
+void ScalarFieldViewer::showSolution2D(
+    const TriangleMesh& mesh,
+    const Eigen::VectorXd& values,
+    const char* title
+)
+{
+    if (values.size() != static_cast<int>(mesh.num_nodes()))
     {
-        std::cerr << "[ScalarFieldViewer] solution size mismatch." << std::endl;
+        std::cerr << "[OpenCAX::ScalarFieldViewer] scalar size mismatch. "
+                  << "values.size() = "
+                  << values.size()
+                  << ", mesh.num_nodes() = "
+                  << mesh.num_nodes()
+                  << std::endl;
         return;
     }
 
-    auto points = vtkSmartPointer<vtkPoints>::New();
+    vtkNew<vtkPoints> points;
 
-    for (std::size_t i = 0; i < mesh.num_nodes(); ++i)
+    const auto& nodes = mesh.nodes();
+
+    for (const auto& node : nodes)
     {
-        auto p = mesh.point2d(static_cast<int>(i));
-        points->InsertNextPoint(p[0], p[1], u[static_cast<int>(i)]);
+        points->InsertNextPoint(
+            node.x,
+            node.y,
+            node.z
+        );
     }
 
-    auto cells = vtkSmartPointer<vtkCellArray>::New();
-
-    for (std::size_t cid = 0; cid < mesh.num_triangles(); ++cid)
-    {
-        auto tri = mesh.triangle(cid);
-
-        auto vtk_tri = vtkSmartPointer<vtkTriangle>::New();
-        vtk_tri->GetPointIds()->SetId(0, tri[0]);
-        vtk_tri->GetPointIds()->SetId(1, tri[1]);
-        vtk_tri->GetPointIds()->SetId(2, tri[2]);
-
-        cells->InsertNextCell(vtk_tri);
-    }
-
-    auto grid = vtkSmartPointer<vtkUnstructuredGrid>::New();
+    vtkNew<vtkUnstructuredGrid> grid;
     grid->SetPoints(points);
-    grid->SetCells(VTK_TRIANGLE, cells);
 
-    auto scalars = vtkSmartPointer<vtkDoubleArray>::New();
-    scalars->SetName("u");
+    const auto& cells = mesh.cells();
 
-    for (int i = 0; i < u.size(); ++i)
+    for (const auto& cell : cells)
     {
-        scalars->InsertNextValue(u[i]);
+        if (cell.type != CellType::Triangle3)
+        {
+            continue;
+        }
+
+        if (cell.node_ids.size() != 3)
+        {
+            continue;
+        }
+
+        vtkNew<vtkTriangle> tri;
+
+        tri->GetPointIds()->SetId(
+            0,
+            cell.node_ids[0]
+        );
+
+        tri->GetPointIds()->SetId(
+            1,
+            cell.node_ids[1]
+        );
+
+        tri->GetPointIds()->SetId(
+            2,
+            cell.node_ids[2]
+        );
+
+        grid->InsertNextCell(
+            tri->GetCellType(),
+            tri->GetPointIds()
+        );
     }
 
-    grid->GetPointData()->SetScalars(scalars);
+    vtkNew<vtkDoubleArray> scalars;
+    scalars->SetName("solution");
+    scalars->SetNumberOfComponents(1);
 
-    auto mapper = vtkSmartPointer<vtkDataSetMapper>::New();
+    for (int i = 0; i < values.size(); ++i)
+    {
+        scalars->InsertNextValue(
+            values(i)
+        );
+    }
+
+    grid->GetPointData()->SetScalars(
+        scalars
+    );
+
+    double range[2];
+    scalars->GetRange(range);
+
+    vtkNew<vtkLookupTable> lut;
+    lut->SetNumberOfTableValues(256);
+    lut->SetHueRange(0.667, 0.0);
+    lut->Build();
+
+    vtkNew<vtkDataSetMapper> mapper;
     mapper->SetInputData(grid);
-    mapper->ScalarVisibilityOn();
-    mapper->SetScalarModeToUsePointData();
-    mapper->SetColorModeToMapScalars();
-    mapper->SetScalarRange(u.minCoeff(), u.maxCoeff());
+    mapper->SetLookupTable(lut);
+    mapper->SetScalarRange(range);
 
-    auto actor = vtkSmartPointer<vtkActor>::New();
+    vtkNew<vtkActor> actor;
     actor->SetMapper(mapper);
+    actor->GetProperty()->SetEdgeVisibility(true);
+    actor->GetProperty()->SetLineWidth(1.0);
 
-    auto renderer = vtkSmartPointer<vtkRenderer>::New();
+    vtkNew<vtkRenderer> renderer;
     renderer->AddActor(actor);
-    renderer->SetBackground(0.1, 0.1, 0.12);
+    renderer->SetBackground(1.0, 1.0, 1.0);
 
-    auto window = vtkSmartPointer<vtkRenderWindow>::New();
+    vtkNew<vtkRenderWindow> window;
     window->AddRenderer(renderer);
-    window->SetWindowName(title);
+    window->SetWindowName(
+        title ? title : "Scalar Field"
+    );
     window->SetSize(1000, 800);
 
-    auto interactor = vtkSmartPointer<vtkRenderWindowInteractor>::New();
+    vtkNew<vtkRenderWindowInteractor> interactor;
     interactor->SetRenderWindow(window);
-
-    renderer->ResetCamera();
 
     window->Render();
     interactor->Start();

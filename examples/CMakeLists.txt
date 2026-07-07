@@ -18,7 +18,7 @@ function(add_opencax_example name source)
     if(OPEN_CAX_BUILD_FEM)
         target_link_libraries(${name}
             PRIVATE
-                # OpenCAX::FEM
+                OpenCAX::FEM
                 Eigen3::Eigen
         
         )
@@ -114,3 +114,13 @@ add_opencax_example(
     test_triangle_mesh_uniform_refine
     test_triangle_mesh_uniform_refine.cpp
 )
+
+add_opencax_example(
+    test_poisson2d_p1
+    test_poisson2d_p1.cpp
+)
+
+# add_opencax_example(
+#     test_poisson2d_sparse_lu
+#     test_poisson2d_sparse_lu.cpp
+# )

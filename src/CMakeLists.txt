@@ -19,7 +19,7 @@ endif()
 # ==========================
 # FEM
 # ==========================
-# if(OPEN_CAX_BUILD_FEM)
-#     add_subdirectory(FEM)
-# endif()
+if(OPEN_CAX_BUILD_FEM)
+    add_subdirectory(FEM)
+endif()
 

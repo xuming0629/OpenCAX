@@ -1,19 +1,29 @@
-# add_library(OpenCAXFEM
-#     FEMModel.cpp
-#     Poisson2D.cpp
-# )
+add_library(OpenCAXFEM
+   P1TriangleSpace.cpp
+    Poisson2D.cpp
+    SparseLUSolver.cpp
+    CGSolver.cpp
+    BiCGSTABSolver.cpp
 
-# add_library(OpenCAX::FEM ALIAS OpenCAXFEM)
 
-# target_include_directories(OpenCAXFEM
-#     PUBLIC
-#         ${CMAKE_SOURCE_DIR}/include
-# )
+
+
+
+)
+
+add_library(OpenCAX::FEM ALIAS OpenCAXFEM)
+
+target_include_directories(OpenCAXFEM
+    PUBLIC
+        ${CMAKE_SOURCE_DIR}/include
+)
 
 target_link_libraries(OpenCAXFEM
     PUBLIC
         OpenCAX::Core
         OpenCAX::Mesh
+        OpenCAX::PostViewer
+
 )
 
 if(OPEN_CAX_USE_EIGEN3)
