@@ -4,6 +4,9 @@ add_library(OpenCAXFEM
     SparseLUSolver.cpp
     CGSolver.cpp
     BiCGSTABSolver.cpp
+    ConvergenceStudy2D
+    ErrorNorms2D.cpp
+
 
 
 

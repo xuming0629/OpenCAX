@@ -120,7 +120,12 @@ add_opencax_example(
     test_poisson2d_p1.cpp
 )
 
-# add_opencax_example(
-#     test_poisson2d_sparse_lu
-#     test_poisson2d_sparse_lu.cpp
-# )
+add_opencax_example(
+    test_poisson2d_convergence
+    test_poisson2d_convergence.cpp
+)
+
+add_opencax_example(
+    test_poisson2d_convergence_uniform_refine
+    test_poisson2d_convergence_uniform_refine.cpp
+)

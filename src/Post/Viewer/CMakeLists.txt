@@ -2,6 +2,7 @@ add_library(OpenCAXPostViewer
     VtkViewer.cpp
     VtkConverter.cpp
     ScalarFieldViewer.cpp
+    ConvergencePlotter.cpp
 )
 
 add_library(OpenCAX::PostViewer ALIAS OpenCAXPostViewer)

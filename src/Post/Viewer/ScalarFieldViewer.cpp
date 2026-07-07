@@ -13,6 +13,8 @@
 #include <vtkRenderer.h>
 #include <vtkRenderWindow.h>
 #include <vtkRenderWindowInteractor.h>
+#include <vtkScalarBarActor.h>
+#include <vtkTextProperty.h>
 #include <vtkTriangle.h>
 #include <vtkUnstructuredGrid.h>
 
@@ -125,21 +127,44 @@ void ScalarFieldViewer::showSolution2D(
 
     vtkNew<vtkLookupTable> lut;
     lut->SetNumberOfTableValues(256);
+
+    // 蓝色 -> 红色
     lut->SetHueRange(0.667, 0.0);
+
     lut->Build();
 
     vtkNew<vtkDataSetMapper> mapper;
     mapper->SetInputData(grid);
     mapper->SetLookupTable(lut);
     mapper->SetScalarRange(range);
+    mapper->ScalarVisibilityOn();
 
     vtkNew<vtkActor> actor;
     actor->SetMapper(mapper);
     actor->GetProperty()->SetEdgeVisibility(true);
     actor->GetProperty()->SetLineWidth(1.0);
 
+    // =========================
+    // 右侧 color bar
+    // =========================
+    vtkNew<vtkScalarBarActor> scalarBar;
+    scalarBar->SetLookupTable(lut);
+    scalarBar->SetTitle("u");
+    scalarBar->SetNumberOfLabels(6);
+    scalarBar->SetLabelFormat("%.3e");
+
+    scalarBar->SetWidth(0.08);
+    scalarBar->SetHeight(0.75);
+    scalarBar->SetPosition(0.88, 0.12);
+
+    scalarBar->GetTitleTextProperty()->SetColor(0.0, 0.0, 0.0);
+    scalarBar->GetTitleTextProperty()->SetFontSize(18);
+    scalarBar->GetLabelTextProperty()->SetColor(0.0, 0.0, 0.0);
+    scalarBar->GetLabelTextProperty()->SetFontSize(14);
+
     vtkNew<vtkRenderer> renderer;
     renderer->AddActor(actor);
+    renderer->AddActor2D(scalarBar);
     renderer->SetBackground(1.0, 1.0, 1.0);
 
     vtkNew<vtkRenderWindow> window;
@@ -147,7 +172,9 @@ void ScalarFieldViewer::showSolution2D(
     window->SetWindowName(
         title ? title : "Scalar Field"
     );
-    window->SetSize(1000, 800);
+
+    // 右侧增加 color bar，所以窗口稍微加宽
+    window->SetSize(1100, 800);
 
     vtkNew<vtkRenderWindowInteractor> interactor;
     interactor->SetRenderWindow(window);
