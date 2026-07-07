@@ -16,7 +16,6 @@
  *
  * - TriangleMesh 只负责 OpenCAX 自己的网格数据结构
  * - TriangleMesh 不直接依赖 gmsh.h / netgen / tetgen
- * - 第三方库生成的 points + triangles 统一通过 create_unstructured() 接入
  */
 
 #include <OpenCAX/Core/Config.h>
