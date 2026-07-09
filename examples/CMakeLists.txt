@@ -129,3 +129,26 @@ add_opencax_example(
     test_poisson2d_convergence_uniform_refine
     test_poisson2d_convergence_uniform_refine.cpp
 )
+
+
+add_opencax_example(
+    test_heat_equation2d
+    test_heat_equation2d.cpp
+)
+
+add_opencax_example(
+    test_elasticity2d_cantilever
+    test_elasticity2d_cantilever.cpp
+)
+
+
+add_opencax_example(
+    test_scalar_diffusion2d_material_bc
+    test_scalar_diffusion2d_material_bc.cpp
+)
+
+
+add_opencax_example(
+    test_scalar_diffusion2d_extended
+    test_scalar_diffusion2d_extended.cpp
+)

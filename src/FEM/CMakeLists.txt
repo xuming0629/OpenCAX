@@ -1,17 +1,21 @@
 add_library(OpenCAXFEM
-   P1TriangleSpace.cpp
-    Poisson2D.cpp
+    P1TriangleSpace.cpp
     SparseLUSolver.cpp
     CGSolver.cpp
     BiCGSTABSolver.cpp
-    ConvergenceStudy2D
+    Material.cpp
+    BoundaryManager.cpp
+    TriangleQuadrature.cpp
+    TriangleP1Element.cpp
+    TriangleP2Element.cpp
+    PhysicsProblem2D.cpp
+    Poisson2D.cpp
+    ScalarDiffusion2D.cpp
+    HeatEquation2D.cpp
+    ElasticMaterial2D.cpp
+    Elasticity2D.cpp
     ErrorNorms2D.cpp
-
-
-
-
-
-
+    ConvergenceStudy2D.cpp
 )
 
 add_library(OpenCAX::FEM ALIAS OpenCAXFEM)
