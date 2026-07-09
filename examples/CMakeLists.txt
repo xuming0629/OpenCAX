@@ -153,3 +153,10 @@ add_opencax_example(
     test_scalar_diffusion2d_extended
     test_scalar_diffusion2d_extended.cpp
 )
+
+
+add_opencax_example(
+    test_triangle_mesh_p2
+    test_triangle_mesh_p2.cpp
+)
+
