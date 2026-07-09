@@ -1,7 +1,7 @@
 
 #include <OpenCAX/Post/Viewer/VtkViewer.h>
 #include <OpenCAX/Post/Viewer/VtkConverter.h>
-#include <OpenCAX/Mesh/MeshTopology.h>
+#include <OpenCAX/Mesh2/MeshTopology.h>
 
 #include <vtkActor.h>
 #include <vtkActor2D.h>

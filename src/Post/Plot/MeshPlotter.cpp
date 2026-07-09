@@ -4,7 +4,7 @@
  */
 
 #include <OpenCAX/Post/Plot/MeshPlotter.h>
-#include <OpenCAX/Mesh/CellTopology.h>
+#include <OpenCAX/Mesh2/CellTopology.h>
 
 #include <chrono>
 #include <cstdlib>
@@ -163,7 +163,7 @@ bool MeshPlotter::write_json(
     ofs << "  \"mesh_info\": {\n";
     ofs << "    \"name\": \"" << json_escape(mesh.info().name) << "\",\n";
     ofs << "    \"source\": \"" << json_escape(mesh.info().source) << "\",\n";
-    ofs << "    \"unit\": \"" << json_escape(mesh.info().unit) << "\"\n";
+    // ofs << "    \"unit\": \"" << json_escape(mesh.info().unit) << "\"\n";
     ofs << "  },\n";
 
     ofs << "  \"nodes\": [\n";
