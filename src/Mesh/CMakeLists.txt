@@ -10,6 +10,8 @@ add_library(OpenCAXMesh
     GmshTriangleMesh.cpp
     MeshDebugUtils.cpp
     TriangleMeshRefiner.cpp
+    TriangleMeshOrderConverter.cpp
+
   
 )
 

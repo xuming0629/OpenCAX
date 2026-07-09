@@ -15,6 +15,8 @@ int VtkConverter::toVtkCellType(CellType type)
         return VTK_LINE;
     case CellType::Triangle3:
         return VTK_TRIANGLE;
+    case CellType::Triangle6:
+        return VTK_QUADRATIC_TRIANGLE;
     case CellType::Quad4:
         return VTK_QUAD;
     case CellType::Tetra4:
