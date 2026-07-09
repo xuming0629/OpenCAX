@@ -6,8 +6,8 @@
 #include <OpenCAX/FEM/CGSolver.h>
 #include <OpenCAX/FEM/ConvergenceStudy2D.h>
 
-#include <OpenCAX/Post/ScalarFieldViewer.h>
-#include <OpenCAX/Post/ConvergencePlotter.h>
+#include <OpenCAX/Post/Viewer/ScalarFieldViewer.h>
+#include <OpenCAX/Post/Plot/ConvergencePlotter.h>
 
 #include <cmath>
 #include <iostream>

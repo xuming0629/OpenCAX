@@ -28,6 +28,7 @@ function(add_opencax_example name source)
         target_link_libraries(${name}
             PRIVATE
                 OpenCAX::PostViewer
+                OpenCAX::PostRecovery
         )
     endif()
 

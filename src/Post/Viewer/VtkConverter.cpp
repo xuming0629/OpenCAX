@@ -1,4 +1,4 @@
-#include <OpenCAX/Post/VtkConverter.h>
+#include <OpenCAX/Post/Viewer/VtkConverter.h>
 
 #include <vtkCellType.h>
 #include <vtkIdList.h>

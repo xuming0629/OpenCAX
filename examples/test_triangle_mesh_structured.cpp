@@ -1,7 +1,7 @@
 #include <OpenCAX/Mesh/TriangleMesh.h>
 #include <OpenCAX/Mesh/MeshTopology.h>
 #include <OpenCAX/Mesh/MeshDebugUtils.h>
-#include <OpenCAX/Post/VtkViewer.h>
+#include <OpenCAX/Post/Viewer/VtkViewer.h>
 
 #include <iostream>
 #include <string>

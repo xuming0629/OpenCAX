@@ -1,6 +1,6 @@
 #include <OpenCAX/Mesh/QuadMesh.h>
 #include <OpenCAX/Mesh/MeshTopology.h>
-#include <OpenCAX/Post/VtkViewer.h>
+#include <OpenCAX/Post/Viewer/VtkViewer.h>
 
 #include <iostream>
 #include <vector>

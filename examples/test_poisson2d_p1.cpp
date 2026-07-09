@@ -6,7 +6,7 @@
 #include <OpenCAX/FEM/Poisson2D.h>
 #include <OpenCAX/FEM/CGSolver.h>
 
-#include <OpenCAX/Post/ScalarFieldViewer.h>
+#include <OpenCAX/Post/Viewer/ScalarFieldViewer.h>
 
 #include <iostream>
 #include <memory>

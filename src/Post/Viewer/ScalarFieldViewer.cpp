@@ -1,4 +1,4 @@
-#include <OpenCAX/Post/ScalarFieldViewer.h>
+#include <OpenCAX/Post/Viewer/ScalarFieldViewer.h>
 
 #include <vtkActor.h>
 #include <vtkCellArray.h>

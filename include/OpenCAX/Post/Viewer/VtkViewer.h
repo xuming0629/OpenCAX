@@ -1,7 +1,7 @@
 #pragma once
 
 #include <OpenCAX/Mesh/Mesh.h>
-#include <OpenCAX/Post/VisualOptions.h>
+#include <OpenCAX/Post/Viewer/VisualOptions.h>
 
 namespace OpenCAX
 {

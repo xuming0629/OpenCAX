@@ -3,7 +3,7 @@
  * @brief OpenCAX 网格绘图工具类实现
  */
 
-#include <OpenCAX/Post/MeshPlotter.h>
+#include <OpenCAX/Post/Plot/MeshPlotter.h>
 #include <OpenCAX/Mesh/CellTopology.h>
 
 #include <chrono>

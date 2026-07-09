@@ -1,4 +1,4 @@
-#include <OpenCAX/Post/ConvergencePlotter.h>
+#include <OpenCAX/Post/Plot/ConvergencePlotter.h>
 
 #include <fstream>
 

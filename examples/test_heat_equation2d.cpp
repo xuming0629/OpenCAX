@@ -5,7 +5,7 @@
 #include <OpenCAX/FEM/HeatEquation2D.h>
 #include <OpenCAX/FEM/CGSolver.h>
 
-#include <OpenCAX/Post/ScalarFieldViewer.h>
+#include <OpenCAX/Post/Viewer/ScalarFieldViewer.h>
 
 #include <cmath>
 #include <iostream>

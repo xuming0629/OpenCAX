@@ -1,5 +1,10 @@
+# ============================================================
+# OpenCAX Post Plot
+# ============================================================
+
 add_library(OpenCAXPostPlot
     MeshPlotter.cpp
+    ConvergencePlotter.cpp
 )
 
 add_library(OpenCAX::PostPlot ALIAS OpenCAXPostPlot)
@@ -24,6 +29,7 @@ target_link_libraries(OpenCAXPostPlot
     PUBLIC
         OpenCAX::Core
         OpenCAX::Mesh
+        OpenCAX::FEM
 )
 
 set_target_properties(OpenCAXPostPlot PROPERTIES
@@ -38,6 +44,7 @@ install(TARGETS OpenCAXPostPlot
     RUNTIME DESTINATION bin
 )
 
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/OpenCAX/Post
+install(
+    DIRECTORY ${CMAKE_SOURCE_DIR}/include/OpenCAX/Post/Plot
     DESTINATION include/OpenCAX/Post
 )

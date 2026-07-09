@@ -1,6 +1,6 @@
 #include <OpenCAX/Mesh/GmshTriangleMesh.h>
 #include <OpenCAX/Mesh/MeshTopology.h>
-#include <OpenCAX/Post/VtkViewer.h>
+#include <OpenCAX/Post/Viewer/VtkViewer.h>
 #include <OpenCAX/Mesh/MeshDebugUtils.h>
 
 #include <iostream>
