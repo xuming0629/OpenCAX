@@ -333,39 +333,46 @@ double TriangleMesh::area(
 {
     if (!valid_cell_id(cell_id))
     {
-        throw std::out_of_range(
-            "TriangleMesh::area: invalid cell id."
-        );
+        return 0.0;
     }
 
     const MeshCell& cell =
         cells_[static_cast<std::size_t>(cell_id)];
 
-    if (cell.type != CellType::Triangle3 ||
+    if (cell.type != CellType::Triangle3 &&
+        cell.type != CellType::Triangle6)
+    {
+        return 0.0;
+    }
+
+    if (cell.type == CellType::Triangle3 &&
         cell.node_ids.size() != 3)
     {
-        throw std::runtime_error(
-            "TriangleMesh::area: cell is not Triangle3."
-        );
+        return 0.0;
     }
 
-    const int n0 = cell.node_ids[0];
-    const int n1 = cell.node_ids[1];
-    const int n2 = cell.node_ids[2];
-
-    if (!valid_node_id(n0) ||
-        !valid_node_id(n1) ||
-        !valid_node_id(n2))
+    if (cell.type == CellType::Triangle6 &&
+        cell.node_ids.size() != 6)
     {
-        throw std::runtime_error(
-            "TriangleMesh::area: invalid node id in cell."
-        );
+        return 0.0;
     }
 
-    return triangle_area(
-        nodes_[static_cast<std::size_t>(n0)],
-        nodes_[static_cast<std::size_t>(n1)],
-        nodes_[static_cast<std::size_t>(n2)]
+    /*
+     * Triangle6 使用前三个角点计算几何面积。
+     */
+    const MeshNode& a =
+        nodes_[static_cast<std::size_t>(cell.node_ids[0])];
+
+    const MeshNode& b =
+        nodes_[static_cast<std::size_t>(cell.node_ids[1])];
+
+    const MeshNode& c =
+        nodes_[static_cast<std::size_t>(cell.node_ids[2])];
+
+    return TriangleMesh::triangle_area(
+        a,
+        b,
+        c
     );
 }
 
@@ -380,50 +387,32 @@ double TriangleMesh::total_area() const
 
     return result;
 }
-
 std::array<double, 3> TriangleMesh::centroid(
     int cell_id
 ) const
 {
     if (!valid_cell_id(cell_id))
     {
-        throw std::out_of_range(
-            "TriangleMesh::centroid: invalid cell id."
-        );
+        return {0.0, 0.0, 0.0};
     }
 
     const MeshCell& cell =
         cells_[static_cast<std::size_t>(cell_id)];
 
-    if (cell.type != CellType::Triangle3 ||
-        cell.node_ids.size() != 3)
+    if (cell.type != CellType::Triangle3 &&
+        cell.type != CellType::Triangle6)
     {
-        throw std::runtime_error(
-            "TriangleMesh::centroid: cell is not Triangle3."
-        );
-    }
-
-    const int n0 = cell.node_ids[0];
-    const int n1 = cell.node_ids[1];
-    const int n2 = cell.node_ids[2];
-
-    if (!valid_node_id(n0) ||
-        !valid_node_id(n1) ||
-        !valid_node_id(n2))
-    {
-        throw std::runtime_error(
-            "TriangleMesh::centroid: invalid node id in cell."
-        );
+        return {0.0, 0.0, 0.0};
     }
 
     const MeshNode& a =
-        nodes_[static_cast<std::size_t>(n0)];
+        nodes_[static_cast<std::size_t>(cell.node_ids[0])];
 
     const MeshNode& b =
-        nodes_[static_cast<std::size_t>(n1)];
+        nodes_[static_cast<std::size_t>(cell.node_ids[1])];
 
     const MeshNode& c =
-        nodes_[static_cast<std::size_t>(n2)];
+        nodes_[static_cast<std::size_t>(cell.node_ids[2])];
 
     return {
         (a.x + b.x + c.x) / 3.0,
@@ -489,78 +478,198 @@ bool TriangleMesh::validate(
         return false;
     }
 
-    for (std::size_t ci = 0; ci < cells_.size(); ++ci)
+    for (const auto& cell : cells_)
     {
-        const MeshCell& cell = cells_[ci];
-
-        if (cell.type != CellType::Triangle3)
+        if (cell.type != CellType::Triangle3 &&
+            cell.type != CellType::Triangle6)
         {
             if (error_message)
             {
                 *error_message =
-                    "TriangleMesh::validate: non-Triangle3 cell found.";
+                    "TriangleMesh::validate: unsupported triangle cell type.";
             }
 
             return false;
         }
 
-        if (cell.node_ids.size() != 3)
+        if (cell.type == CellType::Triangle3)
+        {
+            if (cell.node_ids.size() != 3)
+            {
+                if (error_message)
+                {
+                    *error_message =
+                        "TriangleMesh::validate: Triangle3 cell must have 3 nodes.";
+                }
+
+                return false;
+            }
+        }
+
+        if (cell.type == CellType::Triangle6)
+        {
+            if (cell.node_ids.size() != 6)
+            {
+                if (error_message)
+                {
+                    *error_message =
+                        "TriangleMesh::validate: Triangle6 cell must have 6 nodes.";
+                }
+
+                return false;
+            }
+        }
+
+        for (int node_id : cell.node_ids)
+        {
+            if (!valid_node_id(node_id))
+            {
+                if (error_message)
+                {
+                    *error_message =
+                        "TriangleMesh::validate: invalid node id found.";
+                }
+
+                return false;
+            }
+        }
+
+        /*
+         * Triangle6 面积仍然使用前三个角点计算。
+         *
+         * Triangle6 节点顺序：
+         *   [v0, v1, v2, m01, m12, m20]
+         */
+        const MeshNode& a =
+            nodes_[static_cast<std::size_t>(cell.node_ids[0])];
+
+        const MeshNode& b =
+            nodes_[static_cast<std::size_t>(cell.node_ids[1])];
+
+        const MeshNode& c =
+            nodes_[static_cast<std::size_t>(cell.node_ids[2])];
+
+        const double aera =
+            TriangleMesh::triangle_area(
+                a,
+                b,
+                c
+            );
+
+        if (aera <= area_eps)
         {
             if (error_message)
             {
                 *error_message =
-                    "TriangleMesh::validate: Triangle3 cell must have exactly 3 nodes.";
+                    "TriangleMesh::validate: non-positive triangle area found.";
             }
 
             return false;
         }
-
-        const int n0 = cell.node_ids[0];
-        const int n1 = cell.node_ids[1];
-        const int n2 = cell.node_ids[2];
-
-        if (!valid_node_id(n0) ||
-            !valid_node_id(n1) ||
-            !valid_node_id(n2))
-        {
-            if (error_message)
-            {
-                *error_message =
-                    "TriangleMesh::validate: invalid node id found.";
-            }
-
-            return false;
-        }
-
-        if (n0 == n1 || n1 == n2 || n2 == n0)
-        {
-            if (error_message)
-            {
-                *error_message =
-                    "TriangleMesh::validate: duplicated node id in triangle.";
-            }
-
-            return false;
-        }
-
-        if (area(static_cast<int>(ci)) <= area_eps)
-        {
-            if (error_message)
-            {
-                *error_message =
-                    "TriangleMesh::validate: degenerated triangle cell found.";
-            }
-
-            return false;
-        }
-    }
-
-    if (error_message)
-    {
-        error_message->clear();
     }
 
     return true;
 }
+
+// bool TriangleMesh::validate(
+//     std::string* error_message,
+//     double area_eps
+// ) const
+// {
+//     if (nodes_.empty())
+//     {
+//         if (error_message)
+//         {
+//             *error_message =
+//                 "TriangleMesh::validate: mesh has no nodes.";
+//         }
+
+//         return false;
+//     }
+
+//     if (cells_.empty())
+//     {
+//         if (error_message)
+//         {
+//             *error_message =
+//                 "TriangleMesh::validate: mesh has no cells.";
+//         }
+
+//         return false;
+//     }
+
+//     for (std::size_t ci = 0; ci < cells_.size(); ++ci)
+//     {
+//         const MeshCell& cell = cells_[ci];
+
+//         if (cell.type != CellType::Triangle3)
+//         {
+//             if (error_message)
+//             {
+//                 *error_message =
+//                     "TriangleMesh::validate: non-Triangle3 cell found.";
+//             }
+
+//             return false;
+//         }
+
+//         if (cell.node_ids.size() != 3)
+//         {
+//             if (error_message)
+//             {
+//                 *error_message =
+//                     "TriangleMesh::validate: Triangle3 cell must have exactly 3 nodes.";
+//             }
+
+//             return false;
+//         }
+
+//         const int n0 = cell.node_ids[0];
+//         const int n1 = cell.node_ids[1];
+//         const int n2 = cell.node_ids[2];
+
+//         if (!valid_node_id(n0) ||
+//             !valid_node_id(n1) ||
+//             !valid_node_id(n2))
+//         {
+//             if (error_message)
+//             {
+//                 *error_message =
+//                     "TriangleMesh::validate: invalid node id found.";
+//             }
+
+//             return false;
+//         }
+
+//         if (n0 == n1 || n1 == n2 || n2 == n0)
+//         {
+//             if (error_message)
+//             {
+//                 *error_message =
+//                     "TriangleMesh::validate: duplicated node id in triangle.";
+//             }
+
+//             return false;
+//         }
+
+//         if (area(static_cast<int>(ci)) <= area_eps)
+//         {
+//             if (error_message)
+//             {
+//                 *error_message =
+//                     "TriangleMesh::validate: degenerated triangle cell found.";
+//             }
+
+//             return false;
+//         }
+//     }
+
+//     if (error_message)
+//     {
+//         error_message->clear();
+//     }
+
+//     return true;
+// }
 
 } // namespace OpenCAX

@@ -2,8 +2,9 @@
 #include <OpenCAX/Mesh/TriangleMeshOrderConverter.h>
 #include <OpenCAX/Mesh/MeshTopology.h>
 #include <OpenCAX/Mesh/MeshDebugUtils.h>
-
+#include <OpenCAX/Post/Viewer/VisualOptions.h>
 #include <OpenCAX/Post/Viewer/VtkViewer.h>
+
 
 #include <iostream>
 #include <string>
@@ -19,8 +20,8 @@ int main()
             1.0,
             0.0,
             1.0,
-            2,
-            2
+            1,
+            1
         );
 
     std::string error;
@@ -128,11 +129,25 @@ int main()
     );
 
     /*
-     * 3. 显示二阶网格
-     */
-    OpenCAX::VtkViewer::showMeshWithIds(
-        quadratic_mesh
+    * 3. 显示二阶网格
+    */
+    OpenCAX::VisualOptions option;
+
+    option.show_node_ids = true;
+    option.show_cell_ids = true;
+    option.show_edge_ids = false;
+
+    option.show_nodes = true;
+    option.show_edges = true;
+    option.show_axes = true;
+
+    option.window_title = "Quadratic Triangle6 Mesh";
+
+    OpenCAX::VtkViewer::showMesh(
+        quadratic_mesh,
+        option
     );
 
     return 0;
+
 }
