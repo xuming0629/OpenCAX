@@ -19,12 +19,13 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 # =========================================
 option(OPEN_CAX_BUILD_EXAMPLES "Build examples" ON)
 option(OPEN_CAX_BUILD_TESTS    "Build tests" ON)
-
 option(OPEN_CAX_BUILD_LOGGING  "Build logging module" ON)
+
 
 option(OPEN_CAX_BUILD_MESH      "Build old mesh module" ON)
 option(OPEN_CAX_BUILD_MESH2     "Build new mesh2 module" ON)
 option(OPEN_CAX_BUILD_MESHING   "Build meshing module" ON)
+
 
 option(OPEN_CAX_BUILD_POST     "Build post-processing module" ON)
 option(OPEN_CAX_BUILD_FEM      "Build FEM module" ON)
@@ -32,8 +33,8 @@ option(OPEN_CAX_BUILD_FEM      "Build FEM module" ON)
 
 option(OPEN_CAX_BUILD_PYTHON   "Build python bindings" ON)
 
-
 option(OPEN_CAX_BUILD_DOCS "Build API documentation" ON)
+
 option(OPEN_CAX_USE_EIGEN3 "Enable Eigen3 support" ON)
 # =========================================
 # Backend Options

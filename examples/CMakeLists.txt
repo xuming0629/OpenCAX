@@ -272,3 +272,9 @@ add_opencax_example(
     test_meshing_refine
     test_meshing_refine.cpp
 )
+
+add_opencax_example(
+    test_quad_mesh
+    test_quad_mesh.cpp
+)
+
