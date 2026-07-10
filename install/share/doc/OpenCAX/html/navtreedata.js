@@ -30,7 +30,7 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", null ],
+        [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ]
       ] ]
@@ -43,7 +43,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"CellTopology_8h.html"
+"Config_8h_source.html",
+"classOpenCAX_1_1Mesh.html#a57f62a50bd7d997cfadd321a686a85c5",
+"structOpenCAX_1_1TriangleMeshGeneratorInfo.html#a7ced2379b4acfc4b1b780fb146652996"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

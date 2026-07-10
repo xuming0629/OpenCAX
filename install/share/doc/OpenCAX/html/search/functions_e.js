@@ -1,17 +1,8 @@
 var searchData=
 [
-  ['scale_0',['scale',['../classOpenCAX_1_1GeometryOps.html#a8a65c07c7f4c71b69777bd5e1b653a3a',1,'OpenCAX::GeometryOps']]],
-  ['section_1',['section',['../classOpenCAX_1_1GeometryOps.html#a1a85dc59510daa8cd3f98dcb4e352fe8',1,'OpenCAX::GeometryOps']]],
-  ['setlevel_2',['setlevel',['../classOpenCAX_1_1Logger.html#a97f97625d5f356959c9c509b0826c515',1,'OpenCAX::Logger::setLevel(LogLevel level)'],['../classOpenCAX_1_1Logger.html#afdb30c1ad8d8ed4ae8971695d9fd1745',1,'OpenCAX::Logger::setLevel(const std::string &amp;level)']]],
-  ['setmesh_3',['setMesh',['../classOpenCAX_1_1FEMModel.html#a2b2488668a28d8537c25098c5609d2cc',1,'OpenCAX::FEMModel']]],
-  ['setocc_4',['setOcc',['../classOpenCAX_1_1Shape.html#a50f36a5c8d3c4bb54cc2ced60ed07430',1,'OpenCAX::Shape']]],
-  ['shape_5',['shape',['../classOpenCAX_1_1Shape.html#a52085f46ec47d4cf78741ca60f94b39b',1,'OpenCAX::Shape::Shape()'],['../classOpenCAX_1_1Shape.html#a406eb006781a194378d6e6753f9f1069',1,'OpenCAX::Shape::Shape(const TopoDS_Shape &amp;shape)']]],
-  ['shells_6',['shells',['../classOpenCAX_1_1GeometryAnalysis.html#ab2c68ae09203c569cc959dc86c2eeb0a',1,'OpenCAX::GeometryAnalysis']]],
-  ['showmesh_7',['showmesh',['../classOpenCAX_1_1VtkViewer.html#a66f354f63a9a6e8b6c6aa722a4075499',1,'OpenCAX::VtkViewer::showMesh(const Mesh &amp;mesh)'],['../classOpenCAX_1_1VtkViewer.html#addafe7332778a459ce15e792c68db1a0',1,'OpenCAX::VtkViewer::showMesh(const Mesh &amp;mesh, const VisualOptions &amp;options)']]],
-  ['showmeshwithcellids_8',['showMeshWithCellIds',['../classOpenCAX_1_1VtkViewer.html#a28969fc056d5ac51a4e33a0d6f900579',1,'OpenCAX::VtkViewer']]],
-  ['showmeshwithids_9',['showMeshWithIds',['../classOpenCAX_1_1VtkViewer.html#ae790e3d4880df9728cf6efff7dff819b',1,'OpenCAX::VtkViewer']]],
-  ['showmeshwithnodeids_10',['showMeshWithNodeIds',['../classOpenCAX_1_1VtkViewer.html#af9f2e261089392d89c8a68d0252e0fa3',1,'OpenCAX::VtkViewer']]],
-  ['shutdown_11',['shutdown',['../classOpenCAX_1_1Logger.html#a9e1d2960744b483efaa4e504ac04e1dd',1,'OpenCAX::Logger']]],
-  ['signed_5ftriangle_5farea_12',['signed_triangle_area',['../classOpenCAX_1_1TriangleMesh.html#afe3947cba5617b83cfa7349e51d462a5',1,'OpenCAX::TriangleMesh']]],
-  ['solids_13',['solids',['../classOpenCAX_1_1GeometryAnalysis.html#abad027b5b7d077734fd555424e0d97ba',1,'OpenCAX::GeometryAnalysis']]]
+  ['valid_5fcell_5fid_0',['valid_cell_id',['../classOpenCAX_1_1Mesh.html#afadde5028212fd9b29a06b697bb70412',1,'OpenCAX::Mesh::valid_cell_id(int cell_id) const'],['../classOpenCAX_1_1Mesh.html#afadde5028212fd9b29a06b697bb70412',1,'OpenCAX::Mesh::valid_cell_id(int cell_id) const']]],
+  ['valid_5fnode_5fid_1',['valid_node_id',['../classOpenCAX_1_1Mesh.html#ad661f15e738f63b1097369dde0e56d33',1,'OpenCAX::Mesh::valid_node_id(int node_id) const'],['../classOpenCAX_1_1Mesh.html#ad661f15e738f63b1097369dde0e56d33',1,'OpenCAX::Mesh::valid_node_id(int node_id) const']]],
+  ['validate_2',['validate',['../classOpenCAX_1_1TriangleMesh.html#a68660e98449bf45b4ae65f0ada4ba82f',1,'OpenCAX::TriangleMesh::validate()'],['../classOpenCAX_1_1Mesh.html#abcd5e2cfe13d8a9c440b13f3f8be5758',1,'OpenCAX::Mesh::validate()'],['../classOpenCAX_1_1TriangleMesh.html#a68660e98449bf45b4ae65f0ada4ba82f',1,'OpenCAX::TriangleMesh::validate()'],['../classOpenCAX_1_1HexMesh.html#a6b8063571af7d447b222d641e2428996',1,'OpenCAX::HexMesh::validate()'],['../classOpenCAX_1_1Mesh.html#aa92509da88075b6fb1af05d98f252dd9',1,'OpenCAX::Mesh::validate()'],['../classOpenCAX_1_1QuadMesh.html#a7069999cb5d3382c34a6a370c7a9b3b2',1,'OpenCAX::QuadMesh::validate()'],['../classOpenCAX_1_1TetraMesh.html#ab8705004f8d7a82a88ba95c3324c9aef',1,'OpenCAX::TetraMesh::validate()'],['../classOpenCAX_1_1TriangleMesh.html#aede302570cae08e882d4f817f72cc4c4',1,'OpenCAX::TriangleMesh::validate()']]],
+  ['vertex_5findices_3',['vertex_indices',['../classOpenCAX_1_1CellTopology.html#a3529fa1a4f7512602491a7af3a2f7577',1,'OpenCAX::CellTopology']]],
+  ['visual_5fedges_4',['visual_edges',['../classOpenCAX_1_1CellTopology.html#a46410bf461e25f34d92b7d89eec3ae24',1,'OpenCAX::CellTopology']]]
 ];

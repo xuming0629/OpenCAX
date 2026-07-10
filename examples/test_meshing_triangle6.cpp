@@ -3,13 +3,20 @@
 #include <OpenCAX/Mesh2/MeshDebugUtils.h>
 #include <OpenCAX/Post/Viewer/VisualOptions.h>
 #include <OpenCAX/Post/Viewer/VtkViewer.h>
+#include <OpenCAX/Core/Logger.h>
+#include <OpenCAX/Core/LogMacros.h>
 
 
 #include <iostream>
 #include <string>
 
 int main()
-{
+{   
+    // OpenCAX::Logger::init(
+    //     OpenCAX::LogLevel::Info,
+    //     "OpenCAX_mesh.log"
+    // );
+
     auto mesh = OpenCAX::StructuredMeshGenerator::rectangle_tri6(
         0.0, 1.0,
         0.0, 1.0,
@@ -25,11 +32,11 @@ int main()
 
     OpenCAX::MeshTopology topo;
     topo.build(mesh);
-
-    std::cout << "nodes = " << mesh.num_nodes() << "\n";
-    std::cout << "cells = " << mesh.num_cells() << "\n";
-    std::cout << "area  = " << mesh.total_area() << "\n";
-    std::cout << "topology edges = " << topo.num_edges() << "\n";
+    OpenCAX::MeshDebugUtils::print_mesh(mesh);
+    OpenCAX_MESH_INFO("nodes num = {}", mesh.num_nodes());
+    OpenCAX_MESH_INFO("cells num = {}", mesh.num_cells());
+    OpenCAX_MESH_INFO("area  = {}", mesh.total_area());
+    OpenCAX_MESH_INFO("topology edges = {}", topo.num_edges());
 
     OpenCAX::MeshDebugUtils::print_topology(topo);
 

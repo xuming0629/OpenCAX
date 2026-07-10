@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['gmshtrianglemeshgenerator_0',['GmshTriangleMeshGenerator',['../classOpenCAX_1_1GmshTriangleMeshGenerator.html',1,'OpenCAX']]],
-  ['gmshtrianglemeshoptions_1',['GmshTriangleMeshOptions',['../structOpenCAX_1_1GmshTriangleMeshOptions.html',1,'OpenCAX']]]
+  ['fieldrecovery2d_0',['FieldRecovery2D',['../classOpenCAX_1_1FieldRecovery2D.html',1,'OpenCAX']]]
 ];

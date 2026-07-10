@@ -23,6 +23,7 @@ var classOpenCAX_1_1TriangleMesh =
     [ "structured_info", "classOpenCAX_1_1TriangleMesh.html#a77b22ee641cd7b69ea6aeae5edb83736", null ],
     [ "total_area", "classOpenCAX_1_1TriangleMesh.html#a096ab2c7c0d5af1ddcb43efff66a2092", null ],
     [ "total_area", "classOpenCAX_1_1TriangleMesh.html#a096ab2c7c0d5af1ddcb43efff66a2092", null ],
+    [ "validate", "classOpenCAX_1_1TriangleMesh.html#aede302570cae08e882d4f817f72cc4c4", null ],
     [ "validate", "classOpenCAX_1_1TriangleMesh.html#a68660e98449bf45b4ae65f0ada4ba82f", null ],
     [ "validate", "classOpenCAX_1_1TriangleMesh.html#a68660e98449bf45b4ae65f0ada4ba82f", null ]
 ];

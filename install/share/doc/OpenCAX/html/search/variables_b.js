@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['physical_5fid_0',['physical_id',['../structOpenCAX_1_1MeshNode.html#adfe00cbcd25ab735a169c2c7167ed91c',1,'OpenCAX::MeshNode::physical_id'],['../structOpenCAX_1_1MeshCell.html#a8eff977e233c8ca5e3a7a51057e4ae6e',1,'OpenCAX::MeshCell::physical_id'],['../structOpenCAX_1_1MeshFace.html#ac80eea577e30f80b0350439747f4ae09',1,'OpenCAX::MeshFace::physical_id']]],
-  ['python_5fexecutable_1',['python_executable',['../structOpenCAX_1_1MeshPlotOptions.html#ab865a0c6804f7f66058a05cd003b1b8c',1,'OpenCAX::MeshPlotOptions']]]
+  ['optimize_0',['optimize',['../structOpenCAX_1_1GmshTriangleMeshOptions.html#af3930b8cb042cc091d84af61fd9b5b6a',1,'OpenCAX::GmshTriangleMeshOptions']]],
+  ['order_1',['order',['../structOpenCAX_1_1MeshCell.html#a08e7d59b37bc337ab4f64c021e3bcbe4',1,'OpenCAX::MeshCell']]],
+  ['output_5fpath_2',['output_path',['../structOpenCAX_1_1MeshPlotOptions.html#af02058f07591cc1aeae003e63df2f143',1,'OpenCAX::MeshPlotOptions']]]
 ];

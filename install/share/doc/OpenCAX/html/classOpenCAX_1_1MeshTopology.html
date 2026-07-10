@@ -100,7 +100,7 @@ $(document).ready(function(){initNavTree('classOpenCAX_1_1MeshTopology.html','')
 <p>网格拓扑关系构建器  
  <a href="classOpenCAX_1_1MeshTopology.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="MeshTopology_8h_source.html">MeshTopology.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Mesh_2MeshTopology_8h_source.html">MeshTopology.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for OpenCAX::MeshTopology:</div>
 <div class="dyncontent">
@@ -134,7 +134,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 <tr class="memitem:a6fe5a07da181771b242ea575edcb21d4" id="r_a6fe5a07da181771b242ea575edcb21d4"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOpenCAX_1_1MeshTopology.html#a6fe5a07da181771b242ea575edcb21d4">faces</a> () const</td></tr>
 <tr class="memdesc:a6fe5a07da181771b242ea575edcb21d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取全局面到节点关系 face2node  <br /></td></tr>
 <tr class="separator:a6fe5a07da181771b242ea575edcb21d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9340dc1963ae5cb7e8cc4a8220c7d7dd" id="r_a9340dc1963ae5cb7e8cc4a8220c7d7dd"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8">CellType</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOpenCAX_1_1MeshTopology.html#a9340dc1963ae5cb7e8cc4a8220c7d7dd">face_types</a> () const</td></tr>
+<tr class="memitem:a9340dc1963ae5cb7e8cc4a8220c7d7dd" id="r_a9340dc1963ae5cb7e8cc4a8220c7d7dd"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="Mesh_2MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8">CellType</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOpenCAX_1_1MeshTopology.html#a9340dc1963ae5cb7e8cc4a8220c7d7dd">face_types</a> () const</td></tr>
 <tr class="memdesc:a9340dc1963ae5cb7e8cc4a8220c7d7dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取全局面类型  <br /></td></tr>
 <tr class="separator:a9340dc1963ae5cb7e8cc4a8220c7d7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a809743e05b144658dd84a882f098f584" id="r_a809743e05b144658dd84a882f098f584"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOpenCAX_1_1MeshTopology.html#a809743e05b144658dd84a882f098f584">cell2edge</a> () const</td></tr>
@@ -182,9 +182,121 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 <tr class="memitem:a43e8308a71c30d5309350d18319ec487" id="r_a43e8308a71c30d5309350d18319ec487"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOpenCAX_1_1MeshTopology.html#a43e8308a71c30d5309350d18319ec487">boundary_cells</a> () const</td></tr>
 <tr class="memdesc:a43e8308a71c30d5309350d18319ec487"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取边界单元 ID  <br /></td></tr>
 <tr class="separator:a43e8308a71c30d5309350d18319ec487"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fda21dfb49f6a6ffbe5e82629338b9c" id="r_a3fda21dfb49f6a6ffbe5e82629338b9c"><td class="memItemLeft" align="right" valign="top"><a id="a3fda21dfb49f6a6ffbe5e82629338b9c" name="a3fda21dfb49f6a6ffbe5e82629338b9c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
+<tr class="memdesc:a3fda21dfb49f6a6ffbe5e82629338b9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">清空所有拓扑数据 <br /></td></tr>
+<tr class="separator:a3fda21dfb49f6a6ffbe5e82629338b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1d852c55e617ca705f3f176a03ac7ce" id="r_ab1d852c55e617ca705f3f176a03ac7ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOpenCAX_1_1MeshTopology.html#ab1d852c55e617ca705f3f176a03ac7ce">build</a> (const <a class="el" href="classOpenCAX_1_1Mesh.html">Mesh</a> &amp;mesh, <a class="el" href="Mesh2_2MeshTopology_8h.html#a836828ed05c4dc0561b8b9397ef594b5">TopologyLevel</a> <a class="el" href="classOpenCAX_1_1MeshTopology.html#adcb8d30c12633e11f3036362877d342a">level</a>=<a class="el" href="Mesh2_2MeshTopology_8h.html#a836828ed05c4dc0561b8b9397ef594b5abbd47109890259c0127154db1af26c75">TopologyLevel::Full</a>)</td></tr>
+<tr class="memdesc:ab1d852c55e617ca705f3f176a03ac7ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据网格构建拓扑  <br /></td></tr>
+<tr class="separator:ab1d852c55e617ca705f3f176a03ac7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60a74561ef4661f67b7850662604ebc2" id="r_a60a74561ef4661f67b7850662604ebc2"><td class="memItemLeft" align="right" valign="top"><a id="a60a74561ef4661f67b7850662604ebc2" name="a60a74561ef4661f67b7850662604ebc2"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>built</b> () const</td></tr>
+<tr class="memdesc:a60a74561ef4661f67b7850662604ebc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">判断拓扑是否已经构建 <br /></td></tr>
+<tr class="separator:a60a74561ef4661f67b7850662604ebc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcb8d30c12633e11f3036362877d342a" id="r_adcb8d30c12633e11f3036362877d342a"><td class="memItemLeft" align="right" valign="top"><a id="adcb8d30c12633e11f3036362877d342a" name="adcb8d30c12633e11f3036362877d342a"></a>
+<a class="el" href="Mesh2_2MeshTopology_8h.html#a836828ed05c4dc0561b8b9397ef594b5">TopologyLevel</a>&#160;</td><td class="memItemRight" valign="bottom"><b>level</b> () const</td></tr>
+<tr class="memdesc:adcb8d30c12633e11f3036362877d342a"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取当前拓扑等级 <br /></td></tr>
+<tr class="separator:adcb8d30c12633e11f3036362877d342a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e9b8cb1780144aa7631db192b93e315" id="r_a2e9b8cb1780144aa7631db192b93e315"><td class="memItemLeft" align="right" valign="top"><a id="a2e9b8cb1780144aa7631db192b93e315" name="a2e9b8cb1780144aa7631db192b93e315"></a>
+std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>num_nodes</b> () const</td></tr>
+<tr class="memdesc:a2e9b8cb1780144aa7631db192b93e315"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格节点数量 <br /></td></tr>
+<tr class="separator:a2e9b8cb1780144aa7631db192b93e315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f47661eb2c25dc97b6fe91e9c4db6d9" id="r_a1f47661eb2c25dc97b6fe91e9c4db6d9"><td class="memItemLeft" align="right" valign="top"><a id="a1f47661eb2c25dc97b6fe91e9c4db6d9" name="a1f47661eb2c25dc97b6fe91e9c4db6d9"></a>
+std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>num_cells</b> () const</td></tr>
+<tr class="memdesc:a1f47661eb2c25dc97b6fe91e9c4db6d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">网格单元数量 <br /></td></tr>
+<tr class="separator:a1f47661eb2c25dc97b6fe91e9c4db6d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade0776680dad4be8a12acf06c54eaa47" id="r_ade0776680dad4be8a12acf06c54eaa47"><td class="memItemLeft" align="right" valign="top"><a id="ade0776680dad4be8a12acf06c54eaa47" name="ade0776680dad4be8a12acf06c54eaa47"></a>
+std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>num_edges</b> () const</td></tr>
+<tr class="memdesc:ade0776680dad4be8a12acf06c54eaa47"><td class="mdescLeft">&#160;</td><td class="mdescRight">边数量 <br /></td></tr>
+<tr class="separator:ade0776680dad4be8a12acf06c54eaa47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1524486320656e9ff80d7b2c8ec48b2" id="r_ad1524486320656e9ff80d7b2c8ec48b2"><td class="memItemLeft" align="right" valign="top"><a id="ad1524486320656e9ff80d7b2c8ec48b2" name="ad1524486320656e9ff80d7b2c8ec48b2"></a>
+std::size_t&#160;</td><td class="memItemRight" valign="bottom"><b>num_faces</b> () const</td></tr>
+<tr class="memdesc:ad1524486320656e9ff80d7b2c8ec48b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">面数量 <br /></td></tr>
+<tr class="separator:ad1524486320656e9ff80d7b2c8ec48b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dc0c23d4d41728f2cb282f24c1d043b" id="r_a2dc0c23d4d41728f2cb282f24c1d043b"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::array&lt; int, 2 &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOpenCAX_1_1MeshTopology.html#a2dc0c23d4d41728f2cb282f24c1d043b">edges</a> () const</td></tr>
+<tr class="memdesc:a2dc0c23d4d41728f2cb282f24c1d043b"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取所有边  <br /></td></tr>
+<tr class="separator:a2dc0c23d4d41728f2cb282f24c1d043b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fe5a07da181771b242ea575edcb21d4" id="r_a6fe5a07da181771b242ea575edcb21d4"><td class="memItemLeft" align="right" valign="top"><a id="a6fe5a07da181771b242ea575edcb21d4" name="a6fe5a07da181771b242ea575edcb21d4"></a>
+const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>faces</b> () const</td></tr>
+<tr class="memdesc:a6fe5a07da181771b242ea575edcb21d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取所有面 <br /></td></tr>
+<tr class="separator:a6fe5a07da181771b242ea575edcb21d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9340dc1963ae5cb7e8cc4a8220c7d7dd" id="r_a9340dc1963ae5cb7e8cc4a8220c7d7dd"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="Mesh_2MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8">CellType</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOpenCAX_1_1MeshTopology.html#a9340dc1963ae5cb7e8cc4a8220c7d7dd">face_types</a> () const</td></tr>
+<tr class="memdesc:a9340dc1963ae5cb7e8cc4a8220c7d7dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">面类型  <br /></td></tr>
+<tr class="separator:a9340dc1963ae5cb7e8cc4a8220c7d7dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a809743e05b144658dd84a882f098f584" id="r_a809743e05b144658dd84a882f098f584"><td class="memItemLeft" align="right" valign="top"><a id="a809743e05b144658dd84a882f098f584" name="a809743e05b144658dd84a882f098f584"></a>
+const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>cell2edge</b> () const</td></tr>
+<tr class="memdesc:a809743e05b144658dd84a882f098f584"><td class="mdescLeft">&#160;</td><td class="mdescRight">单元到边 <br /></td></tr>
+<tr class="separator:a809743e05b144658dd84a882f098f584"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77938437b96588853f90b912eff77fc1" id="r_a77938437b96588853f90b912eff77fc1"><td class="memItemLeft" align="right" valign="top"><a id="a77938437b96588853f90b912eff77fc1" name="a77938437b96588853f90b912eff77fc1"></a>
+const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>cell2face</b> () const</td></tr>
+<tr class="memdesc:a77938437b96588853f90b912eff77fc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">单元到面 <br /></td></tr>
+<tr class="separator:a77938437b96588853f90b912eff77fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a138d624d36ee8d8ffb34373962ed836e" id="r_a138d624d36ee8d8ffb34373962ed836e"><td class="memItemLeft" align="right" valign="top"><a id="a138d624d36ee8d8ffb34373962ed836e" name="a138d624d36ee8d8ffb34373962ed836e"></a>
+const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>edge2cell</b> () const</td></tr>
+<tr class="memdesc:a138d624d36ee8d8ffb34373962ed836e"><td class="mdescLeft">&#160;</td><td class="mdescRight">边到单元 <br /></td></tr>
+<tr class="separator:a138d624d36ee8d8ffb34373962ed836e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc645e3145beeadab5386a9ae9d7c449" id="r_acc645e3145beeadab5386a9ae9d7c449"><td class="memItemLeft" align="right" valign="top"><a id="acc645e3145beeadab5386a9ae9d7c449" name="acc645e3145beeadab5386a9ae9d7c449"></a>
+const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>face2cell</b> () const</td></tr>
+<tr class="memdesc:acc645e3145beeadab5386a9ae9d7c449"><td class="mdescLeft">&#160;</td><td class="mdescRight">面到单元 <br /></td></tr>
+<tr class="separator:acc645e3145beeadab5386a9ae9d7c449"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a386f5386ef9580476c15cd7ce6f5c033" id="r_a386f5386ef9580476c15cd7ce6f5c033"><td class="memItemLeft" align="right" valign="top"><a id="a386f5386ef9580476c15cd7ce6f5c033" name="a386f5386ef9580476c15cd7ce6f5c033"></a>
+const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>node2edge</b> () const</td></tr>
+<tr class="memdesc:a386f5386ef9580476c15cd7ce6f5c033"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点关联边 <br /></td></tr>
+<tr class="separator:a386f5386ef9580476c15cd7ce6f5c033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a92e06db76ccf5e58a9660aa9efa76a" id="r_a0a92e06db76ccf5e58a9660aa9efa76a"><td class="memItemLeft" align="right" valign="top"><a id="a0a92e06db76ccf5e58a9660aa9efa76a" name="a0a92e06db76ccf5e58a9660aa9efa76a"></a>
+const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>node2face</b> () const</td></tr>
+<tr class="memdesc:a0a92e06db76ccf5e58a9660aa9efa76a"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点关联面 <br /></td></tr>
+<tr class="separator:a0a92e06db76ccf5e58a9660aa9efa76a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae59179eddd11696fe98209c954ceb565" id="r_ae59179eddd11696fe98209c954ceb565"><td class="memItemLeft" align="right" valign="top"><a id="ae59179eddd11696fe98209c954ceb565" name="ae59179eddd11696fe98209c954ceb565"></a>
+const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>node2cell</b> () const</td></tr>
+<tr class="memdesc:ae59179eddd11696fe98209c954ceb565"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点关联单元 <br /></td></tr>
+<tr class="separator:ae59179eddd11696fe98209c954ceb565"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f1856c804fd66002cf21bd0ed3aa998" id="r_a2f1856c804fd66002cf21bd0ed3aa998"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOpenCAX_1_1MeshTopology.html#a2f1856c804fd66002cf21bd0ed3aa998">node2node</a> () const</td></tr>
+<tr class="memdesc:a2f1856c804fd66002cf21bd0ed3aa998"><td class="mdescLeft">&#160;</td><td class="mdescRight">节点邻接节点  <br /></td></tr>
+<tr class="separator:a2f1856c804fd66002cf21bd0ed3aa998"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d8779e261948ac41460093f865dd52" id="r_ae5d8779e261948ac41460093f865dd52"><td class="memItemLeft" align="right" valign="top"><a id="ae5d8779e261948ac41460093f865dd52" name="ae5d8779e261948ac41460093f865dd52"></a>
+const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>edge2face</b> () const</td></tr>
+<tr class="memdesc:ae5d8779e261948ac41460093f865dd52"><td class="mdescLeft">&#160;</td><td class="mdescRight">边关联面 <br /></td></tr>
+<tr class="separator:ae5d8779e261948ac41460093f865dd52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb94bd00926729c2fbef62bc6631bb06" id="r_adb94bd00926729c2fbef62bc6631bb06"><td class="memItemLeft" align="right" valign="top"><a id="adb94bd00926729c2fbef62bc6631bb06" name="adb94bd00926729c2fbef62bc6631bb06"></a>
+const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>face2edge</b> () const</td></tr>
+<tr class="memdesc:adb94bd00926729c2fbef62bc6631bb06"><td class="mdescLeft">&#160;</td><td class="mdescRight">面关联边 <br /></td></tr>
+<tr class="separator:adb94bd00926729c2fbef62bc6631bb06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac77334078f0c43261527dc268a4f96e4" id="r_ac77334078f0c43261527dc268a4f96e4"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOpenCAX_1_1MeshTopology.html#ac77334078f0c43261527dc268a4f96e4">cell2cell</a> () const</td></tr>
+<tr class="memdesc:ac77334078f0c43261527dc268a4f96e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">单元邻接单元  <br /></td></tr>
+<tr class="separator:ac77334078f0c43261527dc268a4f96e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a281d3b08c17437efd5c7a305d510cf73" id="r_a281d3b08c17437efd5c7a305d510cf73"><td class="memItemLeft" align="right" valign="top"><a id="a281d3b08c17437efd5c7a305d510cf73" name="a281d3b08c17437efd5c7a305d510cf73"></a>
+const std::vector&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>boundary_edges</b> () const</td></tr>
+<tr class="memdesc:a281d3b08c17437efd5c7a305d510cf73"><td class="mdescLeft">&#160;</td><td class="mdescRight">边界边 <br /></td></tr>
+<tr class="separator:a281d3b08c17437efd5c7a305d510cf73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f747f3ff45b0d4f410cebdfd80bc45e" id="r_a8f747f3ff45b0d4f410cebdfd80bc45e"><td class="memItemLeft" align="right" valign="top"><a id="a8f747f3ff45b0d4f410cebdfd80bc45e" name="a8f747f3ff45b0d4f410cebdfd80bc45e"></a>
+const std::vector&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>boundary_faces</b> () const</td></tr>
+<tr class="memdesc:a8f747f3ff45b0d4f410cebdfd80bc45e"><td class="mdescLeft">&#160;</td><td class="mdescRight">边界面 <br /></td></tr>
+<tr class="separator:a8f747f3ff45b0d4f410cebdfd80bc45e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26d24601d21b22cf6632ddfd03af47fc" id="r_a26d24601d21b22cf6632ddfd03af47fc"><td class="memItemLeft" align="right" valign="top"><a id="a26d24601d21b22cf6632ddfd03af47fc" name="a26d24601d21b22cf6632ddfd03af47fc"></a>
+const std::vector&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>boundary_nodes</b> () const</td></tr>
+<tr class="memdesc:a26d24601d21b22cf6632ddfd03af47fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">边界节点 <br /></td></tr>
+<tr class="separator:a26d24601d21b22cf6632ddfd03af47fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43e8308a71c30d5309350d18319ec487" id="r_a43e8308a71c30d5309350d18319ec487"><td class="memItemLeft" align="right" valign="top"><a id="a43e8308a71c30d5309350d18319ec487" name="a43e8308a71c30d5309350d18319ec487"></a>
+const std::vector&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>boundary_cells</b> () const</td></tr>
+<tr class="memdesc:a43e8308a71c30d5309350d18319ec487"><td class="mdescLeft">&#160;</td><td class="mdescRight">边界单元 <br /></td></tr>
+<tr class="separator:a43e8308a71c30d5309350d18319ec487"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>网格拓扑关系构建器 </p>
+<p>OpenCAX 全局网格拓扑类</p>
+<p><a class="el" href="classOpenCAX_1_1MeshTopology.html" title="网格拓扑关系构建器">MeshTopology</a> 是 <a class="el" href="classOpenCAX_1_1Mesh.html" title="通用网格基础容器">Mesh</a> 的拓扑扩展。</p>
+<p><a class="el" href="classOpenCAX_1_1Mesh.html" title="通用网格基础容器">Mesh</a>: </p><pre class="fragment">节点 + 单元
+</pre><p><a class="el" href="classOpenCAX_1_1MeshTopology.html" title="网格拓扑关系构建器">MeshTopology</a>: </p><pre class="fragment">节点/边/面/单元之间关系
+</pre><p>典型应用：</p>
+<ul>
+<li>FEM 装配</li>
+<li>边界条件搜索</li>
+<li>网格遍历</li>
+<li>自适应加密</li>
+<li>后处理</li>
+<li>网格质量分析 </li>
+</ul>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a43e8308a71c30d5309350d18319ec487" name="a43e8308a71c30d5309350d18319ec487"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a43e8308a71c30d5309350d18319ec487">&#9670;&#160;</a></span>boundary_cells()</h2>
@@ -284,7 +396,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 </div>
 </div>
 <a id="aaa3aa5e188e7f114c23b95c0fbb05b7f" name="aaa3aa5e188e7f114c23b95c0fbb05b7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa3aa5e188e7f114c23b95c0fbb05b7f">&#9670;&#160;</a></span>build()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa3aa5e188e7f114c23b95c0fbb05b7f">&#9670;&#160;</a></span>build() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -303,6 +415,43 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">mesh</td><td>输入网格 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab1d852c55e617ca705f3f176a03ac7ce" name="ab1d852c55e617ca705f3f176a03ac7ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1d852c55e617ca705f3f176a03ac7ce">&#9670;&#160;</a></span>build() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OpenCAX::MeshTopology::build </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classOpenCAX_1_1Mesh.html">Mesh</a> &amp;&#160;</td>
+          <td class="paramname"><em>mesh</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="Mesh2_2MeshTopology_8h.html#a836828ed05c4dc0561b8b9397ef594b5">TopologyLevel</a>&#160;</td>
+          <td class="paramname"><em>level</em> = <code><a class="el" href="Mesh2_2MeshTopology_8h.html#a836828ed05c4dc0561b8b9397ef594b5abbd47109890259c0127154db1af26c75">TopologyLevel::Full</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>根据网格构建拓扑 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mesh</td><td>输入网格</td></tr>
+    <tr><td class="paramname">level</td><td>构建等级 </td></tr>
   </table>
   </dd>
 </dl>
@@ -330,7 +479,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 </div>
 </div>
 <a id="ac77334078f0c43261527dc268a4f96e4" name="ac77334078f0c43261527dc268a4f96e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac77334078f0c43261527dc268a4f96e4">&#9670;&#160;</a></span>cell2cell()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac77334078f0c43261527dc268a4f96e4">&#9670;&#160;</a></span>cell2cell() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -354,6 +503,31 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 <li>两个单元共享一个面，则互为相邻单元。</li>
 </ul>
 <dl class="section return"><dt>Returns</dt><dd>cell2cell 关系 </dd></dl>
+
+</div>
+</div>
+<a id="ac77334078f0c43261527dc268a4f96e4" name="ac77334078f0c43261527dc268a4f96e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac77334078f0c43261527dc268a4f96e4">&#9670;&#160;</a></span>cell2cell() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; std::vector&lt; int &gt; &gt; &amp; OpenCAX::MeshTopology::cell2cell </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>单元邻接单元 </p>
+<p>FEM:</p>
+<p>用于：</p>
+<ul>
+<li>domain decomposition</li>
+<li>adaptive refinement </li>
+</ul>
 
 </div>
 </div>
@@ -440,7 +614,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 </div>
 </div>
 <a id="a2dc0c23d4d41728f2cb282f24c1d043b" name="a2dc0c23d4d41728f2cb282f24c1d043b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2dc0c23d4d41728f2cb282f24c1d043b">&#9670;&#160;</a></span>edges()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dc0c23d4d41728f2cb282f24c1d043b">&#9670;&#160;</a></span>edges() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -457,6 +631,27 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 <p>获取全局边到节点关系 edge2node </p>
 <p>每条边保存两个节点 ID。</p>
 <dl class="section return"><dt>Returns</dt><dd>全局边数组 </dd></dl>
+
+</div>
+</div>
+<a id="a2dc0c23d4d41728f2cb282f24c1d043b" name="a2dc0c23d4d41728f2cb282f24c1d043b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dc0c23d4d41728f2cb282f24c1d043b">&#9670;&#160;</a></span>edges() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; std::array&lt; int, 2 &gt; &gt; &amp; OpenCAX::MeshTopology::edges </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取所有边 </p>
+<p>edge:</p>
+<p>{ node0, node1 } </p>
 
 </div>
 </div>
@@ -502,13 +697,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 </div>
 </div>
 <a id="a9340dc1963ae5cb7e8cc4a8220c7d7dd" name="a9340dc1963ae5cb7e8cc4a8220c7d7dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9340dc1963ae5cb7e8cc4a8220c7d7dd">&#9670;&#160;</a></span>face_types()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9340dc1963ae5cb7e8cc4a8220c7d7dd">&#9670;&#160;</a></span>face_types() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::vector&lt; <a class="el" href="MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8">CellType</a> &gt; &amp; OpenCAX::MeshTopology::face_types </td>
+          <td class="memname">const std::vector&lt; <a class="el" href="Mesh_2MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8">CellType</a> &gt; &amp; OpenCAX::MeshTopology::face_types </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -519,6 +714,27 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 <p>获取全局面类型 </p>
 <p>与 <a class="el" href="classOpenCAX_1_1MeshTopology.html#a6fe5a07da181771b242ea575edcb21d4" title="获取全局面到节点关系 face2node">faces()</a> 一一对应。</p>
 <dl class="section return"><dt>Returns</dt><dd>面类型数组 </dd></dl>
+
+</div>
+</div>
+<a id="a9340dc1963ae5cb7e8cc4a8220c7d7dd" name="a9340dc1963ae5cb7e8cc4a8220c7d7dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9340dc1963ae5cb7e8cc4a8220c7d7dd">&#9670;&#160;</a></span>face_types() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="Mesh_2MeshTypes_8h.html#a3e2a5ee4438f2217b91245349f39ecf8">CellType</a> &gt; &amp; OpenCAX::MeshTopology::face_types </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>面类型 </p>
+<p>例如：</p>
+<p>Triangle3 Quad4 </p>
 
 </div>
 </div>
@@ -604,7 +820,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 </div>
 </div>
 <a id="a2f1856c804fd66002cf21bd0ed3aa998" name="a2f1856c804fd66002cf21bd0ed3aa998"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f1856c804fd66002cf21bd0ed3aa998">&#9670;&#160;</a></span>node2node()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f1856c804fd66002cf21bd0ed3aa998">&#9670;&#160;</a></span>node2node() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -621,6 +837,27 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 <p>获取节点到相邻节点关系 </p>
 <p>两个节点共享一条边，则互为相邻节点。</p>
 <dl class="section return"><dt>Returns</dt><dd>node2node 关系 </dd></dl>
+
+</div>
+</div>
+<a id="a2f1856c804fd66002cf21bd0ed3aa998" name="a2f1856c804fd66002cf21bd0ed3aa998"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f1856c804fd66002cf21bd0ed3aa998">&#9670;&#160;</a></span>node2node() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; std::vector&lt; int &gt; &gt; &amp; OpenCAX::MeshTopology::node2node </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>节点邻接节点 </p>
+<p>图结构：</p>
+<p>node graph </p>
 
 </div>
 </div>
@@ -664,8 +901,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/xuming/XumingOS/OpenCAX/install/include/OpenCAX/Mesh/<a class="el" href="MeshTopology_8h_source.html">MeshTopology.h</a></li>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/xuming/XumingOS/OpenCAX/install/include/OpenCAX/Mesh/<a class="el" href="Mesh_2MeshTopology_8h_source.html">MeshTopology.h</a></li>
+<li>/home/xuming/XumingOS/OpenCAX/install/include/OpenCAX/Mesh2/<a class="el" href="Mesh2_2MeshTopology_8h_source.html">MeshTopology.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

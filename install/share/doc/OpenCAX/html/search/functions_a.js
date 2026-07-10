@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['to_5fstring_0',['to_string',['../classOpenCAX_1_1CellTopology.html#a3d69687f0100c688c595a333d6db7378',1,'OpenCAX::CellTopology']]],
-  ['total_5farea_1',['total_area',['../classOpenCAX_1_1TriangleMesh.html#a096ab2c7c0d5af1ddcb43efff66a2092',1,'OpenCAX::TriangleMesh::total_area() const'],['../classOpenCAX_1_1TriangleMesh.html#a096ab2c7c0d5af1ddcb43efff66a2092',1,'OpenCAX::TriangleMesh::total_area() const']]],
-  ['triangle_5farea_2',['triangle_area',['../classOpenCAX_1_1TriangleMesh.html#a134a7be3de870e0e6cb1deab886001d1',1,'OpenCAX::TriangleMesh']]],
-  ['trianglemesh_3',['trianglemesh',['../classOpenCAX_1_1TriangleMesh.html#a0cb1f2f4508594eb6f6569fc642dadfc',1,'OpenCAX::TriangleMesh::TriangleMesh()'],['../classOpenCAX_1_1TriangleMesh.html#a0cb1f2f4508594eb6f6569fc642dadfc',1,'OpenCAX::TriangleMesh::TriangleMesh()']]]
+  ['recovernodalfluxmagnitude_0',['recoverNodalFluxMagnitude',['../classOpenCAX_1_1FieldRecovery2D.html#ad1985f1b4d1f8707b9bd6cee440ff4d8',1,'OpenCAX::FieldRecovery2D']]],
+  ['recovernodalfluxx_1',['recoverNodalFluxX',['../classOpenCAX_1_1FieldRecovery2D.html#a5f6881781420fa7b92ab359fa1b358e1',1,'OpenCAX::FieldRecovery2D']]],
+  ['recovernodalfluxy_2',['recoverNodalFluxY',['../classOpenCAX_1_1FieldRecovery2D.html#aefba010d12e30565f376582cd37a620d',1,'OpenCAX::FieldRecovery2D']]],
+  ['recovernodalgradientmagnitude_3',['recoverNodalGradientMagnitude',['../classOpenCAX_1_1FieldRecovery2D.html#a0f0824b514fdb26df60a50f845434c4b',1,'OpenCAX::FieldRecovery2D']]]
 ];

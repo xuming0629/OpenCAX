@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['y_0',['y',['../structOpenCAX_1_1MeshNode.html#a85222983b82e7cca3bf019bcb040e117',1,'OpenCAX::MeshNode']]],
-  ['ymax_1',['ymax',['../structOpenCAX_1_1TriangleMeshStructuredInfo.html#ab84a49b229cda7e8c63c514e6914be02',1,'OpenCAX::TriangleMeshStructuredInfo']]],
-  ['ymin_2',['ymin',['../structOpenCAX_1_1TriangleMeshStructuredInfo.html#a96efcabafb3099c078652f4a188231cc',1,'OpenCAX::TriangleMeshStructuredInfo']]]
+  ['x_0',['x',['../structOpenCAX_1_1MeshNode.html#ae61e64023eaf8a41e86744e0bf3ac2bd',1,'OpenCAX::MeshNode']]],
+  ['xmax_1',['xmax',['../structOpenCAX_1_1TriangleMeshStructuredInfo.html#aef689b4d22f00834c0508c2e30a4a091',1,'OpenCAX::TriangleMeshStructuredInfo']]],
+  ['xmin_2',['xmin',['../structOpenCAX_1_1TriangleMeshStructuredInfo.html#a74a9409165e034a962dbcb693cc4b725',1,'OpenCAX::TriangleMeshStructuredInfo']]]
 ];
