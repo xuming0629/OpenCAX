@@ -812,12 +812,12 @@ void MeshTopology::build(
 
 
 
-    for(auto& v:cell2edge_)
-        sort_unique(v);
+    // for(auto& v:cell2edge_)
+    //     sort_unique(v);
 
 
-    for(auto& v:cell2face_)
-        sort_unique(v);
+    // for(auto& v:cell2face_)
+    //     sort_unique(v);
 
 
     for(auto& v:edge2cell_)

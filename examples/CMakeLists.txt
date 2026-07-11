@@ -278,3 +278,17 @@ add_opencax_example(
     test_quad_mesh.cpp
 )
 
+add_opencax_example(
+    test_meshing_quda8
+    test_meshing_quda8.cpp
+)
+
+add_opencax_example(
+    test_meshing_tetra4
+    test_meshing_tetra4.cpp
+)
+
+add_opencax_example(
+    test_meshing_hex8
+    test_meshing_hex8.cpp
+)

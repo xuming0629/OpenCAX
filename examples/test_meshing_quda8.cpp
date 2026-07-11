@@ -10,7 +10,7 @@
 
 int main()
 {
-    auto mesh = OpenCAX::StructuredMeshGenerator::rectangle_tri3(
+    auto mesh = OpenCAX::StructuredMeshGenerator::rectangle_quad8(
         0.0, 1.0,
         0.0, 1.0,
         2, 2
@@ -37,13 +37,13 @@ int main()
 
     option.show_node_ids = true;
     option.show_cell_ids = true;
-    option.show_edge_ids = true;
+    option.show_edge_ids = false;
 
     option.show_nodes = true;
     option.show_edges = true;
     option.show_axes = true;
 
-    option.window_title = "Quadratic Triangle3 Mesh";
+    option.window_title = "Quadratic Quad Mesh";
 
     OpenCAX::VtkViewer::showMesh(
         mesh,
