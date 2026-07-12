@@ -1,6 +1,6 @@
 #include <OpenCAX/Post/Recovery/FieldRecovery2D.h>
 
-#include <OpenCAX/Mesh2/MeshTypes.h>
+#include <OpenCAX/Mesh/MeshTypes.h>
 
 #include <cmath>
 #include <iostream>

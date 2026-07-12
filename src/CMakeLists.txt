@@ -2,17 +2,10 @@ add_subdirectory(Core)
 add_subdirectory(Geometry)
 
 # ==========================
-# Old Mesh
+# Mesh
 # ==========================
 if(OPEN_CAX_BUILD_MESH)
     add_subdirectory(Mesh)
-endif()
-
-# ==========================
-# New Mesh2
-# ==========================
-if(OPEN_CAX_BUILD_MESH2)
-    add_subdirectory(Mesh2)
 endif()
 
 # ==========================

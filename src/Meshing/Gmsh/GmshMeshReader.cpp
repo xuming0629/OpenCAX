@@ -1,6 +1,6 @@
 #include <OpenCAX/Meshing/Gmsh/GmshMeshReader.h>
 #include <OpenCAX/Meshing/Gmsh/GmshElementMap.h>
-#include <OpenCAX/Mesh2/CellTopology.h>
+#include <OpenCAX/Mesh/CellTopology.h>
 
 #ifdef OPEN_CAX_HAS_GMSH
 #include <gmsh.h>

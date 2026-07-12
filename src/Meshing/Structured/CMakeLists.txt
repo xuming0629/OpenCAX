@@ -33,7 +33,7 @@ target_compile_definitions(OpenCAXMeshingStructured
 target_link_libraries(OpenCAXMeshingStructured
     PUBLIC
         OpenCAX::Core
-        OpenCAX::Mesh2
+        OpenCAX::Mesh
         OpenCAX::MeshingHighOrder
 )
 

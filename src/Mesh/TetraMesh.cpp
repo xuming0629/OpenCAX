@@ -2,8 +2,6 @@
 
 #include <algorithm>
 #include <cmath>
-#include <limits>
-#include <sstream>
 #include <stdexcept>
 
 namespace OpenCAX
@@ -11,505 +9,102 @@ namespace OpenCAX
 
 TetraMesh::TetraMesh()
 {
+    info_.name = "TetraMesh";
+    info_.source = "OpenCAX";
     info_.dimension = MeshDimension::Dim3;
-    info_.source = "TetraMesh";
-
-    source_type_ = TetraMeshSourceType::Unknown;
 }
 
-// =============================
-// structured
-// =============================
-TetraMesh TetraMesh::create_structured_box(
-    double xmin,
-    double xmax,
-    double ymin,
-    double ymax,
-    double zmin,
-    double zmax,
-    int nx,
-    int ny,
-    int nz
-)
+TetraMesh TetraMesh::create_structured_box(double xmin, double xmax, double ymin, double ymax, double zmin, double zmax, int nx, int ny, int nz)
 {
-    if (nx <= 0)
-    {
-        throw std::invalid_argument(
-            "TetraMesh::create_structured_box: nx must be positive."
-        );
-    }
-
-    if (ny <= 0)
-    {
-        throw std::invalid_argument(
-            "TetraMesh::create_structured_box: ny must be positive."
-        );
-    }
-
-    if (nz <= 0)
-    {
-        throw std::invalid_argument(
-            "TetraMesh::create_structured_box: nz must be positive."
-        );
-    }
-
-    if (!(xmax > xmin))
-    {
-        throw std::invalid_argument(
-            "TetraMesh::create_structured_box: xmax must be greater than xmin."
-        );
-    }
-
-    if (!(ymax > ymin))
-    {
-        throw std::invalid_argument(
-            "TetraMesh::create_structured_box: ymax must be greater than ymin."
-        );
-    }
-
-    if (!(zmax > zmin))
-    {
-        throw std::invalid_argument(
-            "TetraMesh::create_structured_box: zmax must be greater than zmin."
-        );
-    }
+    if (nx <= 0 || ny <= 0 || nz <= 0) throw std::invalid_argument("TetraMesh::create_structured_box: nx/ny/nz must be positive.");
+    if (!(xmax > xmin) || !(ymax > ymin) || !(zmax > zmin)) throw std::invalid_argument("TetraMesh::create_structured_box: invalid bounds.");
 
     TetraMesh mesh;
-
     mesh.info_.name = "StructuredTetraMesh";
-    mesh.info_.source = "Structured";
-    mesh.info_.dimension = MeshDimension::Dim3;
+    mesh.info_.source = "OpenCAX::Structured";
+    mesh.info_.source_type = MeshSourceType::Structured;
+    mesh.info_.structured = true;
+    mesh.structured_info_ = {nx, ny, nz, xmin, xmax, ymin, ymax, zmin, zmax};
 
-    mesh.source_type_ = TetraMeshSourceType::Structured;
+    const double dx=(xmax-xmin)/nx, dy=(ymax-ymin)/ny, dz=(zmax-zmin)/nz;
+    auto nid=[nx,ny](int i,int j,int k){ return k*(ny+1)*(nx+1)+j*(nx+1)+i; };
 
-    mesh.structured_info_.nx = nx;
-    mesh.structured_info_.ny = ny;
-    mesh.structured_info_.nz = nz;
+    for(int k=0;k<=nz;++k) for(int j=0;j<=ny;++j) for(int i=0;i<=nx;++i)
+        mesh.add_node(xmin+i*dx, ymin+j*dy, zmin+k*dz);
 
-    mesh.structured_info_.xmin = xmin;
-    mesh.structured_info_.xmax = xmax;
-
-    mesh.structured_info_.ymin = ymin;
-    mesh.structured_info_.ymax = ymax;
-
-    mesh.structured_info_.zmin = zmin;
-    mesh.structured_info_.zmax = zmax;
-
-    const double dx = (xmax - xmin) / static_cast<double>(nx);
-    const double dy = (ymax - ymin) / static_cast<double>(ny);
-    const double dz = (zmax - zmin) / static_cast<double>(nz);
-
-    // nodes
-    for (int k = 0; k <= nz; ++k)
+    for(int k=0;k<nz;++k) for(int j=0;j<ny;++j) for(int i=0;i<nx;++i)
     {
-        for (int j = 0; j <= ny; ++j)
-        {
-            for (int i = 0; i <= nx; ++i)
-            {
-                mesh.add_node(
-                    xmin + static_cast<double>(i) * dx,
-                    ymin + static_cast<double>(j) * dy,
-                    zmin + static_cast<double>(k) * dz
-                );
-            }
-        }
+        int n0=nid(i,j,k), n1=nid(i+1,j,k), n2=nid(i+1,j+1,k), n3=nid(i,j+1,k);
+        int n4=nid(i,j,k+1), n5=nid(i+1,j,k+1), n6=nid(i+1,j+1,k+1), n7=nid(i,j+1,k+1);
+        mesh.add_cell(CellType::Tetra4,{n0,n1,n2,n6});
+        mesh.add_cell(CellType::Tetra4,{n0,n2,n3,n6});
+        mesh.add_cell(CellType::Tetra4,{n0,n3,n7,n6});
+        mesh.add_cell(CellType::Tetra4,{n0,n7,n4,n6});
+        mesh.add_cell(CellType::Tetra4,{n0,n4,n5,n6});
+        mesh.add_cell(CellType::Tetra4,{n0,n5,n1,n6});
     }
-
-    auto nid = [nx, ny](int i, int j, int k)
-    {
-        return k * (ny + 1) * (nx + 1)
-             + j * (nx + 1)
-             + i;
-    };
-
-    // cells
-    for (int k = 0; k < nz; ++k)
-    {
-        for (int j = 0; j < ny; ++j)
-        {
-            for (int i = 0; i < nx; ++i)
-            {
-                int n0 = nid(i,     j,     k);
-                int n1 = nid(i + 1, j,     k);
-                int n2 = nid(i + 1, j + 1, k);
-                int n3 = nid(i,     j + 1, k);
-
-                int n4 = nid(i,     j,     k + 1);
-                int n5 = nid(i + 1, j,     k + 1);
-                int n6 = nid(i + 1, j + 1, k + 1);
-                int n7 = nid(i,     j + 1, k + 1);
-
-                /*
-                 * 一个 Hexa8 结构块拆成 6 个 Tetra4。
-                 *
-                 * 节点约定：
-                 *
-                 * bottom:
-                 *
-                 * n3 ---- n2
-                 * |       |
-                 * n0 ---- n1
-                 *
-                 * top:
-                 *
-                 * n7 ---- n6
-                 * |       |
-                 * n4 ---- n5
-                 *
-                 * 使用主对角线 n0 -> n6。
-                 */
-                mesh.add_cell(CellType::Tetra4, {n0, n1, n2, n6});
-                mesh.add_cell(CellType::Tetra4, {n0, n2, n3, n6});
-                mesh.add_cell(CellType::Tetra4, {n0, n3, n7, n6});
-                mesh.add_cell(CellType::Tetra4, {n0, n7, n4, n6});
-                mesh.add_cell(CellType::Tetra4, {n0, n4, n5, n6});
-                mesh.add_cell(CellType::Tetra4, {n0, n5, n1, n6});
-            }
-        }
-    }
-
     return mesh;
 }
 
-// =============================
-// unstructured
-// =============================
-TetraMesh TetraMesh::create_unstructured(
-    const std::vector<std::array<double, 3>>& points,
-    const std::vector<std::array<int, 4>>& tets
-)
+TetraMesh TetraMesh::create_unstructured(const std::vector<std::array<double,3>>& points, const std::vector<std::array<int,4>>& tets)
 {
     TetraMesh mesh;
-
     mesh.info_.name = "UnstructuredTetraMesh";
-    mesh.info_.source = "Unstructured";
-    mesh.info_.dimension = MeshDimension::Dim3;
-
-    mesh.source_type_ = TetraMeshSourceType::Unstructured;
-
-    for (const auto& p : points)
+    mesh.info_.source = "OpenCAX::Unstructured";
+    mesh.info_.source_type = MeshSourceType::Unstructured;
+    for (const auto& p: points) mesh.add_node(p[0],p[1],p[2]);
+    for (const auto& t: tets)
     {
-        mesh.add_node(p[0], p[1], p[2]);
+        for (int id: t) if(!mesh.valid_node_id(id)) throw std::out_of_range("TetraMesh::create_unstructured: invalid node id.");
+        mesh.add_cell(CellType::Tetra4,{t[0],t[1],t[2],t[3]});
     }
-
-    int n = static_cast<int>(points.size());
-
-    for (size_t i = 0; i < tets.size(); ++i)
-    {
-        const auto& t = tets[i];
-
-        for (int k = 0; k < 4; ++k)
-        {
-            if (t[k] < 0 || t[k] >= n)
-            {
-                throw std::runtime_error(
-                    "TetraMesh::create_unstructured: invalid tetra node index."
-                );
-            }
-        }
-
-        mesh.add_cell(
-            CellType::Tetra4,
-            {t[0], t[1], t[2], t[3]}
-        );
-    }
-
     return mesh;
 }
 
-// =============================
-TetraMeshSourceType TetraMesh::source_type() const
+void TetraMesh::set_structured_info(const StructuredGridInfo3D& info){ structured_info_=info; }
+const StructuredGridInfo3D& TetraMesh::structured_info() const { return structured_info_; }
+
+double TetraMesh::signed_tetra_volume6(const MeshNode& a,const MeshNode& b,const MeshNode& c,const MeshNode& d)
 {
-    return source_type_;
+    const double ux=b.x-a.x, uy=b.y-a.y, uz=b.z-a.z;
+    const double vx=c.x-a.x, vy=c.y-a.y, vz=c.z-a.z;
+    const double wx=d.x-a.x, wy=d.y-a.y, wz=d.z-a.z;
+    return ux*(vy*wz-vz*wy)-uy*(vx*wz-vz*wx)+uz*(vx*wy-vy*wx);
 }
 
-void TetraMesh::set_source_type(
-    TetraMeshSourceType type
-)
+double TetraMesh::tetra_volume(const MeshNode& a,const MeshNode& b,const MeshNode& c,const MeshNode& d)
+{ return std::abs(signed_tetra_volume6(a,b,c,d))/6.0; }
+
+double TetraMesh::volume(int cell_id) const
 {
-    source_type_ = type;
+    if(!valid_cell_id(cell_id)) return 0.0;
+    const auto& c=cells_[cell_id];
+    if((c.type!=CellType::Tetra4 && c.type!=CellType::Tetra10) || c.node_ids.size()<4) return 0.0;
+    return tetra_volume(nodes_[c.node_ids[0]],nodes_[c.node_ids[1]],nodes_[c.node_ids[2]],nodes_[c.node_ids[3]]);
 }
 
-bool TetraMesh::is_structured() const
+double TetraMesh::total_volume() const { double s=0; for(std::size_t i=0;i<cells_.size();++i) s+=volume(static_cast<int>(i)); return s; }
+
+std::array<double,3> TetraMesh::centroid(int cell_id) const
 {
-    return source_type_ == TetraMeshSourceType::Structured;
+    if(!valid_cell_id(cell_id)) return {0,0,0};
+    const auto& c=cells_[cell_id]; if(c.node_ids.size()<4) return {0,0,0};
+    const auto& a=nodes_[c.node_ids[0]]; const auto& b=nodes_[c.node_ids[1]]; const auto& d=nodes_[c.node_ids[2]]; const auto& e=nodes_[c.node_ids[3]];
+    return {(a.x+b.x+d.x+e.x)/4.0,(a.y+b.y+d.y+e.y)/4.0,(a.z+b.z+d.z+e.z)/4.0};
 }
 
-bool TetraMesh::is_unstructured() const
+bool TetraMesh::validate(std::string* error_message,double volume_eps) const
 {
-    return source_type_ == TetraMeshSourceType::Unstructured;
+    if(!Mesh::validate(error_message)) return false;
+    for(std::size_t i=0;i<cells_.size();++i)
+    {
+        const auto& c=cells_[i];
+        if(c.type!=CellType::Tetra4 && c.type!=CellType::Tetra10) { if(error_message)*error_message="TetraMesh::validate: unsupported tetra cell type."; return false; }
+        if(volume(static_cast<int>(i))<=volume_eps){ if(error_message)*error_message="TetraMesh::validate: non-positive tetra volume."; return false; }
+    }
+    if(error_message) error_message->clear(); return true;
 }
 
-const TetraMeshStructuredInfo& TetraMesh::structured_info() const
-{
-    return structured_info_;
-}
-
-// =============================
-// volume
-// =============================
-double TetraMesh::tetra_volume(
-    const MeshNode& a,
-    const MeshNode& b,
-    const MeshNode& c,
-    const MeshNode& d
-)
-{
-    const double ux = b.x - a.x;
-    const double uy = b.y - a.y;
-    const double uz = b.z - a.z;
-
-    const double vx = c.x - a.x;
-    const double vy = c.y - a.y;
-    const double vz = c.z - a.z;
-
-    const double wx = d.x - a.x;
-    const double wy = d.y - a.y;
-    const double wz = d.z - a.z;
-
-    const double det =
-        ux * (vy * wz - vz * wy)
-      - uy * (vx * wz - vz * wx)
-      + uz * (vx * wy - vy * wx);
-
-    return std::abs(det) / 6.0;
-}
-
-double TetraMesh::volume(
-    int cell_id
-) const
-{
-    if (!valid_cell_id(cell_id))
-    {
-        throw std::out_of_range(
-            "TetraMesh::volume: invalid cell id."
-        );
-    }
-
-    const auto& c = cells()[static_cast<std::size_t>(cell_id)];
-
-    if (c.type != CellType::Tetra4 || c.node_ids.size() != 4)
-    {
-        throw std::runtime_error(
-            "TetraMesh::volume: cell is not Tetra4."
-        );
-    }
-
-    const int n0 = c.node_ids[0];
-    const int n1 = c.node_ids[1];
-    const int n2 = c.node_ids[2];
-    const int n3 = c.node_ids[3];
-
-    if (!valid_node_id(n0) ||
-        !valid_node_id(n1) ||
-        !valid_node_id(n2) ||
-        !valid_node_id(n3))
-    {
-        throw std::runtime_error(
-            "TetraMesh::volume: invalid node id in cell."
-        );
-    }
-
-    return tetra_volume(
-        nodes()[static_cast<std::size_t>(n0)],
-        nodes()[static_cast<std::size_t>(n1)],
-        nodes()[static_cast<std::size_t>(n2)],
-        nodes()[static_cast<std::size_t>(n3)]
-    );
-}
-
-// =============================
-double TetraMesh::total_volume() const
-{
-    double s = 0.0;
-
-    for (size_t i = 0; i < num_cells(); ++i)
-    {
-        s += volume(static_cast<int>(i));
-    }
-
-    return s;
-}
-
-// =============================
-std::array<double, 3> TetraMesh::centroid(
-    int cell_id
-) const
-{
-    if (!valid_cell_id(cell_id))
-    {
-        throw std::out_of_range(
-            "TetraMesh::centroid: invalid cell id."
-        );
-    }
-
-    const auto& c = cells()[static_cast<std::size_t>(cell_id)];
-
-    if (c.type != CellType::Tetra4 || c.node_ids.size() != 4)
-    {
-        throw std::runtime_error(
-            "TetraMesh::centroid: cell is not Tetra4."
-        );
-    }
-
-    const int n0 = c.node_ids[0];
-    const int n1 = c.node_ids[1];
-    const int n2 = c.node_ids[2];
-    const int n3 = c.node_ids[3];
-
-    if (!valid_node_id(n0) ||
-        !valid_node_id(n1) ||
-        !valid_node_id(n2) ||
-        !valid_node_id(n3))
-    {
-        throw std::runtime_error(
-            "TetraMesh::centroid: invalid node id in cell."
-        );
-    }
-
-    const auto& p0 = nodes()[static_cast<std::size_t>(n0)];
-    const auto& p1 = nodes()[static_cast<std::size_t>(n1)];
-    const auto& p2 = nodes()[static_cast<std::size_t>(n2)];
-    const auto& p3 = nodes()[static_cast<std::size_t>(n3)];
-
-    return {
-        0.25 * (p0.x + p1.x + p2.x + p3.x),
-        0.25 * (p0.y + p1.y + p2.y + p3.y),
-        0.25 * (p0.z + p1.z + p2.z + p3.z)
-    };
-}
-
-// =============================
-std::array<double, 6> TetraMesh::bounds() const
-{
-    if (num_nodes() == 0)
-    {
-        return {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-    }
-
-    double xmin = std::numeric_limits<double>::max();
-    double ymin = std::numeric_limits<double>::max();
-    double zmin = std::numeric_limits<double>::max();
-
-    double xmax = std::numeric_limits<double>::lowest();
-    double ymax = std::numeric_limits<double>::lowest();
-    double zmax = std::numeric_limits<double>::lowest();
-
-    for (size_t i = 0; i < num_nodes(); ++i)
-    {
-        const auto& p = nodes()[i];
-
-        xmin = std::min(xmin, p.x);
-        ymin = std::min(ymin, p.y);
-        zmin = std::min(zmin, p.z);
-
-        xmax = std::max(xmax, p.x);
-        ymax = std::max(ymax, p.y);
-        zmax = std::max(zmax, p.z);
-    }
-
-    return {xmin, xmax, ymin, ymax, zmin, zmax};
-}
-
-// =============================
-bool TetraMesh::validate(
-    std::string* error_message,
-    double volume_eps
-) const
-{
-    if (num_nodes() == 0)
-    {
-        if (error_message)
-        {
-            *error_message = "TetraMesh::validate: mesh has no nodes.";
-        }
-
-        return false;
-    }
-
-    if (num_cells() == 0)
-    {
-        if (error_message)
-        {
-            *error_message = "TetraMesh::validate: mesh has no cells.";
-        }
-
-        return false;
-    }
-
-    for (size_t i = 0; i < num_cells(); ++i)
-    {
-        const auto& c = cells()[i];
-
-        if (c.type != CellType::Tetra4)
-        {
-            if (error_message)
-            {
-                *error_message = "TetraMesh::validate: non-Tetra4 cell found.";
-            }
-
-            return false;
-        }
-
-        if (c.node_ids.size() != 4)
-        {
-            if (error_message)
-            {
-                *error_message = "TetraMesh::validate: Tetra4 cell must have exactly 4 nodes.";
-            }
-
-            return false;
-        }
-
-        const int n0 = c.node_ids[0];
-        const int n1 = c.node_ids[1];
-        const int n2 = c.node_ids[2];
-        const int n3 = c.node_ids[3];
-
-        if (!valid_node_id(n0) ||
-            !valid_node_id(n1) ||
-            !valid_node_id(n2) ||
-            !valid_node_id(n3))
-        {
-            if (error_message)
-            {
-                *error_message = "TetraMesh::validate: invalid node id found.";
-            }
-
-            return false;
-        }
-
-        if (n0 == n1 || n0 == n2 || n0 == n3 ||
-            n1 == n2 || n1 == n3 ||
-            n2 == n3)
-        {
-            if (error_message)
-            {
-                *error_message = "TetraMesh::validate: duplicated node id in tetra.";
-            }
-
-            return false;
-        }
-
-        double v = volume(static_cast<int>(i));
-
-        if (v <= volume_eps)
-        {
-            if (error_message)
-            {
-                *error_message = "TetraMesh::validate: degenerated tetra cell found.";
-            }
-
-            return false;
-        }
-    }
-
-    if (error_message)
-    {
-        error_message->clear();
-    }
-
-    return true;
-}
+bool TetraMesh::validate(std::string* error_message) const { return validate(error_message,1.0e-14); }
 
 } // namespace OpenCAX

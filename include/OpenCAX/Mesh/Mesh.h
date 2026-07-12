@@ -2,131 +2,167 @@
 
 /**
  * @file Mesh.h
- * @brief OpenCAX 通用网格基础容器声明
+ * @brief OpenCAX Mesh 通用网格基础容器
  *
- * Mesh 是 OpenCAX 网格模块的基础数据结构。
+ * Mesh 是 OpenCAX 网格核心数据结构。
  *
- * 它负责保存：
+ * 负责：
  *
- * - 网格基础信息 MeshInfo
- * - 网格节点 MeshNode
- * - 网格单元 MeshCell
+ * - 保存节点 MeshNode
+ * - 保存单元 MeshCell
+ * - 保存 MeshInfo
  *
- * Mesh 本身只负责基础数据存储，不负责复杂拓扑关系。
- *
- * 复杂拓扑关系，例如：
+ * 不负责：
  *
  * - edge2node
- * - face2node 
  * - cell2edge
- * - cell2face
- * - edge2cell
- * - face2cell
- * - node2cell
- * - node2node
  * - cell2cell
+ * - boundary
  *
- * 应由 MeshTopology 构建。
- */
-
-#include <OpenCAX/Core/Config.h>
-#include <OpenCAX/Mesh/MeshTypes.h>
-
-#include <cstddef>
-#include <vector>
-
-namespace OpenCAX
-{
-
-/**
- * @brief 通用网格基础容器
+ * 这些由 MeshTopology 完成。
  *
- * Mesh 是 OpenCAX 网格模块的基础容器类。
- *
- * 它统一保存节点、单元和网格元信息。
- *
- * 设计原则：
- *
- * - Mesh 只负责数据存储
- * - MeshTopology 负责拓扑关系构建
- * - TriangleMesh / QuadMesh / TetraMesh / HexMesh 等派生类负责特定网格的几何计算
- *
- * 支持派生：
+ * Mesh 是所有网格类型的基类：
  *
  * - TriangleMesh
  * - QuadMesh
  * - TetraMesh
  * - HexMesh
  *
- * @note
- * Mesh 中节点 ID 和单元 ID 默认从 0 开始连续编号。
+ */
+
+
+#include <OpenCAX/Core/Config.h>
+#include <OpenCAX/Mesh/MeshTypes.h>
+
+#include <array>
+#include <cstddef>
+#include <memory>
+#include <string>
+#include <vector>
+
+
+namespace OpenCAX
+{
+
+
+/**
+ * @brief 通用网格基础类
  */
 class OpenCAX_API Mesh
 {
+
 public:
-    /**
-     * @brief 虚析构函数
-     *
-     * 支持通过基类指针安全释放派生类对象。
-     */
+
     virtual ~Mesh() = default;
 
+
+public:
+
     /**
-     * @brief 清空网格
-     *
-     * 清空网格元信息、节点数组和单元数组。
+     * @brief 清空所有网格数据
      */
     void clear();
 
+
+
+    // =====================================================
+    // Mesh 信息
+    // =====================================================
+
+
     /**
      * @brief 获取网格信息
-     *
-     * @return 可修改的 MeshInfo 引用
      */
     MeshInfo& info();
 
+
     /**
-     * @brief 获取网格信息
-     *
-     * @return 只读 MeshInfo 引用
+     * @brief 获取只读网格信息
      */
     const MeshInfo& info() const;
 
+
+
+    /**
+     * @brief 设置网格名称
+     */
+    void set_name(
+        const std::string& name
+    );
+
+
+    /**
+     * @brief 设置网格来源
+     *
+     * 例如：
+     *
+     * - Structured
+     * - Gmsh
+     * - TetGen
+     */
+    void set_source(
+        const std::string& source
+    );
+
+
+    /**
+     * @brief 设置网格维度
+     */
+    void set_dimension(
+        MeshDimension dim
+    );
+
+
+    /**
+     * @brief 设置网格来源类型
+     */
+    void set_source_type(
+        MeshSourceType type
+    );
+
+
+
+    // =====================================================
+    // 节点管理
+    // =====================================================
+
+
     /**
      * @brief 获取节点数组
-     *
-     * @return 可修改的节点数组引用
      */
     std::vector<MeshNode>& nodes();
 
+
     /**
-     * @brief 获取节点数组
-     *
-     * @return 只读节点数组引用
+     * @brief 获取只读节点数组
      */
     const std::vector<MeshNode>& nodes() const;
 
-    /**
-     * @brief 获取单元数组
-     *
-     * @return 可修改的单元数组引用
-     */
-    std::vector<MeshCell>& cells();
+
 
     /**
-     * @brief 获取单元数组
+     * @brief 获取节点
      *
-     * @return 只读单元数组引用
+     * @param id 节点编号
      */
-    const std::vector<MeshCell>& cells() const;
+    MeshNode& node(
+        int id
+    );
+
+
+    /**
+     * @brief 获取只读节点
+     */
+    const MeshNode& node(
+        int id
+    ) const;
+
+
 
     /**
      * @brief 添加节点
      *
-     * @param x X 坐标
-     * @param y Y 坐标
-     * @param z Z 坐标，二维平面网格通常为 0
-     * @return 新增节点 ID
+     * @return 新节点 ID
      */
     int add_node(
         double x,
@@ -134,127 +170,253 @@ public:
         double z = 0.0
     );
 
+
     /**
-     * @brief 添加节点
+     * @brief 添加带属性节点
      *
-     * 可同时指定物理分组 ID 和边界 ID。
+     * 用于：
      *
-     * @param x X 坐标
-     * @param y Y 坐标
-     * @param z Z 坐标
-     * @param physical_id 物理分组 ID
-     * @param boundary_id 边界 ID
-     * @return 新增节点 ID
+     * - Gmsh Physical Group
+     * - CAD Vertex
+     * - Boundary
      */
     int add_node(
         double x,
         double y,
         double z,
         int physical_id,
-        int boundary_id = -1
+        int boundary_id = -1,
+        int geometry_id = -1
     );
+
+
+
+    // =====================================================
+    // 单元管理
+    // =====================================================
+
+
+    /**
+     * @brief 获取单元数组
+     */
+    std::vector<MeshCell>& cells();
+
+
+    /**
+     * @brief 获取只读单元数组
+     */
+    const std::vector<MeshCell>& cells() const;
+
+
+
+    /**
+     * @brief 获取单元
+     */
+    MeshCell& cell(
+        int id
+    );
+
+
+    /**
+     * @brief 获取只读单元
+     */
+    const MeshCell& cell(
+        int id
+    ) const;
+
+
 
     /**
      * @brief 添加单元
-     *
-     * @param type 单元类型
-     * @param node_ids 单元节点 ID 列表
-     * @return 新增单元 ID
      */
     int add_cell(
         CellType type,
         const std::vector<int>& node_ids
     );
 
+
+
     /**
-     * @brief 添加单元
+     * @brief 添加带属性单元
      *
-     * 可同时指定物理分组、材料和区域 ID。
+     * 支持：
      *
-     * @param type 单元类型
-     * @param node_ids 单元节点 ID 列表
-     * @param physical_id 物理分组 ID
-     * @param material_id 材料 ID
-     * @param region_id 区域 ID
-     * @return 新增单元 ID
+     * - material_id
+     * - region_id
+     * - physical_id
      */
     int add_cell(
         CellType type,
         const std::vector<int>& node_ids,
         int physical_id,
         int material_id = -1,
-        int region_id = -1
+        int region_id = -1,
+        int geometry_id = -1
     );
 
+
+
+    // =====================================================
+    // 查询
+    // =====================================================
+
+
     /**
-     * @brief 判断节点 ID 是否有效
-     *
-     * @param node_id 节点 ID
-     * @return 如果节点 ID 有效，返回 true；否则返回 false
+     * @brief 判断节点编号是否合法
      */
     bool valid_node_id(
         int node_id
     ) const;
 
+
     /**
-     * @brief 判断单元 ID 是否有效
-     *
-     * @param cell_id 单元 ID
-     * @return 如果单元 ID 有效，返回 true；否则返回 false
+     * @brief 判断单元编号是否合法
      */
     bool valid_cell_id(
         int cell_id
     ) const;
 
+
+
     /**
-     * @brief 获取节点数量
-     *
-     * @return 节点数量
+     * @brief 节点数量
      */
     std::size_t num_nodes() const;
 
+
     /**
-     * @brief 获取单元数量
-     *
-     * @return 单元数量
+     * @brief 单元数量
      */
     std::size_t num_cells() const;
 
+
+
     /**
-     * @brief 判断网格是否为空
-     *
-     * @return 如果没有节点且没有单元，返回 true；否则返回 false
+     * @brief 是否为空
      */
     bool empty() const;
 
+
+
     /**
-     * @brief 检查网格基础有效性
+     * @brief 获取网格包围盒
      *
-     * 检查内容：
+     * 返回：
      *
-     * - 所有单元节点 ID 是否有效
-     * - 所有单元类型是否不是 Unknown
-     * - 所有节点和单元 ID 是否与数组下标一致
-     *
-     * @return 如果网格基础数据有效，返回 true；否则返回 false
+     * {
+     * xmin,
+     * xmax,
+     * ymin,
+     * ymax,
+     * zmin,
+     * zmax
+     * }
      */
-    bool validate() const;
+    std::array<double,6> bounds() const;
+
+
+
+    /**
+     * @brief 网格基础合法性检查
+     *
+     * 检查：
+     *
+     * - node id 连续
+     * - cell id 连续
+     * - node_ids 有效
+     * - CellType 合法
+     */
+    virtual bool validate(
+        std::string* error_message = nullptr
+    ) const;
+
+
+
+    // =====================================================
+    // 高级接口
+    // =====================================================
+
+
+    /**
+     * @brief 深复制网格
+     *
+     * 用于：
+     *
+     * - refine
+     * - high order conversion
+     * - optimization
+     */
+    virtual std::shared_ptr<Mesh> clone() const;
+
+
+
+    /**
+     * @brief 获取网格最高阶次
+     *
+     * 例如：
+     *
+     * Triangle3:
+     *
+     * return 1
+     *
+     * Triangle6:
+     *
+     * return 2
+     */
+    int order() const;
+
+
+
+    /**
+     * @brief 判断是否高阶网格
+     */
+    bool is_high_order() const;
+
+
+
+    /**
+     * @brief 获取单元类型集合
+     *
+     * 返回：
+     *
+     * Triangle3
+     * Triangle6
+     * Quad4
+     */
+    std::vector<CellType> cell_types() const;
+
+
+
+    /**
+     * @brief 获取节点维度
+     *
+     * 对 MeshDimension 的辅助判断
+     */
+    MeshDimension dimension() const;
+
+
 
 protected:
+
     /**
-     * @brief 网格元信息
+     * @brief 网格信息
      */
     MeshInfo info_;
+
 
     /**
      * @brief 节点数组
      */
     std::vector<MeshNode> nodes_;
 
+
     /**
      * @brief 单元数组
      */
     std::vector<MeshCell> cells_;
+
 };
+
+
 
 } // namespace OpenCAX

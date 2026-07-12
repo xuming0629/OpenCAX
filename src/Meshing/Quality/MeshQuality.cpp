@@ -1,8 +1,8 @@
 #include <OpenCAX/Meshing/Quality/MeshQuality.h>
-#include <OpenCAX/Mesh2/CellTopology.h>
-#include <OpenCAX/Mesh2/TriangleMesh.h>
-#include <OpenCAX/Mesh2/TetraMesh.h>
-#include <OpenCAX/Mesh2/HexMesh.h>
+#include <OpenCAX/Mesh/CellTopology.h>
+#include <OpenCAX/Mesh/TriangleMesh.h>
+#include <OpenCAX/Mesh/TetraMesh.h>
+#include <OpenCAX/Mesh/HexMesh.h>
 
 #include <algorithm>
 #include <limits>

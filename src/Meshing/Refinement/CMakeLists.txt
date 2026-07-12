@@ -23,7 +23,7 @@ target_compile_definitions(OpenCAXMeshingRefinement
 target_link_libraries(OpenCAXMeshingRefinement
     PUBLIC
         OpenCAX::Core
-        OpenCAX::Mesh2
+        OpenCAX::Mesh
 )
 
 set_target_properties(OpenCAXMeshingRefinement PROPERTIES

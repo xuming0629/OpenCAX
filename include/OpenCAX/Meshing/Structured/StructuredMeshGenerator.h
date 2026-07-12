@@ -1,10 +1,10 @@
 #pragma once
 
 #include <OpenCAX/Core/Config.h>
-#include <OpenCAX/Mesh2/TriangleMesh.h>
-#include <OpenCAX/Mesh2/QuadMesh.h>
-#include <OpenCAX/Mesh2/TetraMesh.h>
-#include <OpenCAX/Mesh2/HexMesh.h>
+#include <OpenCAX/Mesh/TriangleMesh.h>
+#include <OpenCAX/Mesh/QuadMesh.h>
+#include <OpenCAX/Mesh/TetraMesh.h>
+#include <OpenCAX/Mesh/HexMesh.h>
 
 namespace OpenCAX
 {

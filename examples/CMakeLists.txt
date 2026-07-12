@@ -49,15 +49,7 @@ function(add_opencax_example name source)
         )
     endif()
 
-    # ------------------------------------------------------------
-    # New Mesh2
-    # ------------------------------------------------------------
-    if(OPEN_CAX_BUILD_MESH2 AND TARGET OpenCAX::Mesh2)
-        target_link_libraries(${name}
-            PRIVATE
-                OpenCAX::Mesh2
-        )
-    endif()
+
 
     # ------------------------------------------------------------
     # Meshing

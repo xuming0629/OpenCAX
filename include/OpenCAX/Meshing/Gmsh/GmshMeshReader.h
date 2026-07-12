@@ -1,9 +1,9 @@
 #pragma once
 
 #include <OpenCAX/Core/Config.h>
-#include <OpenCAX/Mesh2/Mesh.h>
-#include <OpenCAX/Mesh2/TriangleMesh.h>
-#include <OpenCAX/Mesh2/TetraMesh.h>
+#include <OpenCAX/Mesh/Mesh.h>
+#include <OpenCAX/Mesh/TriangleMesh.h>
+#include <OpenCAX/Mesh/TetraMesh.h>
 
 #include <string>
 

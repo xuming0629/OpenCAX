@@ -33,7 +33,7 @@ target_compile_definitions(OpenCAXMeshingHighOrder
 target_link_libraries(OpenCAXMeshingHighOrder
     PUBLIC
         OpenCAX::Core
-        OpenCAX::Mesh2
+        OpenCAX::Mesh
 )
 
 set_target_properties(OpenCAXMeshingHighOrder PROPERTIES

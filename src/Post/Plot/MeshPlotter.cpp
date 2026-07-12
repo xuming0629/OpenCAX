@@ -4,7 +4,7 @@
  */
 
 #include <OpenCAX/Post/Plot/MeshPlotter.h>
-#include <OpenCAX/Mesh2/CellTopology.h>
+#include <OpenCAX/Mesh/CellTopology.h>
 
 #include <chrono>
 #include <cstdlib>

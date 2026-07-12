@@ -1,7 +1,7 @@
 #pragma once
 
 #include <OpenCAX/Core/Config.h>
-#include <OpenCAX/Mesh2/Mesh.h>
+#include <OpenCAX/Mesh/Mesh.h>
 
 #include <vector>
 

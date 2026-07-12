@@ -29,7 +29,7 @@ target_compile_definitions(OpenCAXMeshingQuality
 target_link_libraries(OpenCAXMeshingQuality
     PUBLIC
         OpenCAX::Core
-        OpenCAX::Mesh2
+        OpenCAX::Mesh
 )
 
 set_target_properties(OpenCAXMeshingQuality PROPERTIES

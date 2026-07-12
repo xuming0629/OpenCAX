@@ -4,18 +4,84 @@
  * @file MeshTypes.h
  * @brief OpenCAX 网格模块基础数据类型定义
  *
- * 本文件定义 OpenCAX Mesh 模块中最基础的数据结构和枚举类型。
+ * 本文件定义 OpenCAX Mesh 模块最基础的数据结构。
  *
  * 主要包括：
  *
- * - CellType      : 网格单元类型
- * - MeshDimension : 网格拓扑维度
- * - MeshNode      : 网格节点
- * - MeshCell      : 网格单元
- * - MeshFace      : 网格面
- * - MeshInfo      : 网格基础信息
+ * - MeshDimension    : 网格拓扑维度
+ * - CellType         : 网格单元类型
+ * - MeshOrder        : 网格单元阶次
+ * - MeshElementFamily: 单元族类型
+ * - MeshSourceType   : 网格来源类型
+ * - MeshNode         : 网格节点
+ * - MeshCell         : 网格单元
+ * - MeshInfo         : 网格描述信息
+ * - StructuredGridInfo2D : 二维结构网格参数
+ * - StructuredGridInfo3D : 三维结构网格参数
  *
- * 这些类型是 Mesh、MeshTopology、CellTopology、FEM、IO、Post 等模块的基础依赖。
+ * 设计目标：
+ *
+ * 1. MeshTypes 只负责定义数据结构，不负责算法。
+ *
+ * 2. Mesh:
+ *
+ *    - 保存节点
+ *    - 保存单元
+ *    - 保存网格元信息
+ *
+ * 3. MeshTopology:
+ *
+ *    - edge2node
+ *    - cell2edge
+ *    - edge2cell
+ *    - node2cell
+ *    - cell2cell
+ *
+ * 4. Meshing:
+ *
+ *    - 结构网格生成
+ *    - Gmsh 网格导入
+ *    - 网格加密
+ *    - 高阶网格转换
+ *
+ * 5. FEM:
+ *
+ *    - 使用 MeshCell::node_ids
+ *    - 使用 CellType 判断单元类型
+ *    - 使用 order 判断有限元阶次
+ *
+ * @note
+ * 高阶单元统一存储所有节点。
+ *
+ * 例如：
+ *
+ * Triangle6:
+ *
+ * ```
+ * node_ids =
+ * {
+ *     v0,
+ *     v1,
+ *     v2,
+ *     m01,
+ *     m12,
+ *     m20
+ * };
+ * ```
+ *
+ * 其中：
+ *
+ * - v0/v1/v2 为角点
+ * - m01/m12/m20 为边中点
+ *
+ * @note
+ * MeshTopology 默认按照角点构建数学拓扑。
+ * 高阶节点主要用于：
+ *
+ * - FEM 插值
+ * - 高阶积分
+ * - VTK 显示
+ *
  */
 
 #include <string>
@@ -24,503 +90,606 @@
 namespace OpenCAX
 {
 
-/**
- * @brief 网格单元类型
- *
- * CellType 用于描述 MeshCell 的拓扑类型。
- *
- * 设计目标：
- *
- * - 支持 0D 点单元
- * - 支持 1D 边网格
- * - 支持 2D 面网格
- * - 支持 3D 体网格
- * - 支持后续 FEM 高阶单元扩展
- *
- * 常见一阶单元：
- *
- * - Vertex1   : 单节点点单元
- * - Line2     : 二节点线单元
- * - Triangle3 : 三节点一阶三角形单元
- * - Quad4     : 四节点一阶四边形单元
- * - Tetra4    : 四节点一阶四面体单元
- * - Hexa8     : 八节点一阶六面体单元
- * - Prism6    : 六节点三棱柱单元
- * - Pyramid5  : 五节点金字塔单元
- *
- * 常见二阶单元：
- *
- * - Line3     : 三节点二阶线单元
- * - Triangle6 : 六节点二阶三角形单元
- * - Quad8     : 八节点二阶四边形单元
- * - Quad9     : 九节点二阶四边形单元
- * - Tetra10   : 十节点二阶四面体单元
- * - Hexa20    : 二十节点二阶六面体单元
- * - Hexa27    : 二十七节点二阶六面体单元
- * - Prism15   : 十五节点二阶三棱柱单元
- * - Pyramid13 : 十三节点二阶金字塔单元
- *
- * @note
- * 当前 MeshTopology 构建拓扑关系时，高阶单元默认只使用角点拓扑。
- * 例如 Triangle6 仍按 Triangle3 的三条边处理。
- *
- * @note
- * 高阶边节点、面节点、体内部节点等信息应由 FEMElement 或后续专门的
- * HighOrderTopology 工具处理。
- */
-enum class CellType
-{
     /**
-     * @brief 未知或未支持的单元类型
-     */
-    Unknown = 0,
-
-    /**
-     * @brief 点单元，1 个节点
-     */
-    Vertex1,
-
-    /**
-     * @brief 一阶线单元，2 个节点
-     */
-    Line2,
-
-    /**
-     * @brief 二阶线单元，3 个节点
-     */
-    Line3,
-
-    /**
-     * @brief 一阶三角形单元，3 个节点
-     */
-    Triangle3,
-
-    /**
-     * @brief 二阶三角形单元，6 个节点
-     */
-    Triangle6,
-
-    /**
-     * @brief 一阶四边形单元，4 个节点
-     */
-    Quad4,
-
-    /**
-     * @brief 二阶四边形单元，8 个节点
-     */
-    Quad8,
-
-    /**
-     * @brief 二阶四边形单元，9 个节点
-     */
-    Quad9,
-
-    /**
-     * @brief 一阶四面体单元，4 个节点
-     */
-    Tetra4,
-
-    /**
-     * @brief 二阶四面体单元，10 个节点
-     */
-    Tetra10,
-
-    /**
-     * @brief 一阶六面体单元，8 个节点
-     */
-    Hexa8,
-
-    /**
-     * @brief 二阶六面体单元，20 个节点
-     */
-    Hexa20,
-
-    /**
-     * @brief 二阶六面体单元，27 个节点
-     */
-    Hexa27,
-
-    /**
-     * @brief 一阶三棱柱单元，6 个节点
-     */
-    Prism6,
-
-    /**
-     * @brief 二阶三棱柱单元，15 个节点
-     */
-    Prism15,
-
-    /**
-     * @brief 一阶金字塔单元，5 个节点
-     */
-    Pyramid5,
-
-    /**
-     * @brief 二阶金字塔单元，13 个节点
-     */
-    Pyramid13
-};
-
-/**
- * @brief 网格维度
- *
- * MeshDimension 描述网格的拓扑维度，而不是几何坐标维度。
- *
- * 示例：
- *
- * - Dim0 : 点网格，例如离散点单元
- * - Dim1 : 线网格，例如边界线、梁单元、曲线网格
- * - Dim2 : 面网格，例如三角形网格、四边形网格、曲面网格
- * - Dim3 : 体网格，例如四面体网格、六面体网格、体域网格
- *
- * @note
- * 即使是 Dim2 网格，节点仍然可以存储 x/y/z。
- * 例如三维空间中的曲面三角网格，它的拓扑维度是 Dim2，
- * 但几何坐标维度是三维。
- */
-enum class MeshDimension
-{
-    /**
-     * @brief 未知维度
-     */
-    Unknown = -1,
-
-    /**
-     * @brief 零维网格
-     */
-    Dim0 = 0,
-
-    /**
-     * @brief 一维网格
-     */
-    Dim1 = 1,
-
-    /**
-     * @brief 二维网格
-     */
-    Dim2 = 2,
-
-    /**
-     * @brief 三维网格
-     */
-    Dim3 = 3
-};
-
-/**
- * @brief 网格节点
- *
- * MeshNode 表示一个网格节点。
- *
- * 所有网格统一使用三维坐标：
- *
- * - 0D 网格：使用 x/y/z 表示空间点
- * - 1D 网格：可只使用 x，或使用 x/y/z 表示空间曲线
- * - 2D 平面网格：使用 x/y，z = 0
- * - 2D 曲面网格：使用 x/y/z
- * - 3D 体网格：使用 x/y/z
- *
- * 字段说明：
- *
- * - id          : 节点编号
- * - x/y/z       : 节点坐标
- * - physical_id : 物理分组编号，通常对应 Gmsh Physical Group
- * - boundary_id : 边界编号，用于 FEM 边界条件
- */
-struct MeshNode
-{
-    /**
-     * @brief 节点 ID
+     * @brief 网格拓扑维度
      *
-     * 通常从 0 开始连续编号。
-     */
-    int id = -1;
-
-    /**
-     * @brief X 坐标
-     */
-    double x = 0.0;
-
-    /**
-     * @brief Y 坐标
-     */
-    double y = 0.0;
-
-    /**
-     * @brief Z 坐标
+     * MeshDimension 表示单元的拓扑维度，而不是坐标维度。
      *
-     * 对于二维平面网格，通常为 0。
+     * 示例：
+     *
+     * 三维空间中的三角曲面：
+     *
+     * - 坐标:
+     *   (x,y,z)
+     *
+     * - 拓扑维度:
+     *   Dim2
+     *
+     * 因为它仍然是二维面单元。
      */
-    double z = 0.0;
+    enum class MeshDimension
+    {
+        /**
+         * @brief 未知维度
+         */
+        Unknown = -1,
+
+        /**
+         * @brief 零维网格
+         *
+         * 例如：
+         *
+         * - 点
+         */
+        Dim0 = 0,
+
+        /**
+         * @brief 一维网格
+         *
+         * 例如：
+         *
+         * - Line2
+         * - Line3
+         */
+        Dim1 = 1,
+
+        /**
+         * @brief 二维网格
+         *
+         * 例如：
+         *
+         * - Triangle
+         * - Quad
+         */
+        Dim2 = 2,
+
+        /**
+         * @brief 三维网格
+         *
+         * 例如：
+         *
+         * - Tetra
+         * - Hexa
+         */
+        Dim3 = 3
+    };
 
     /**
-     * @brief 物理分组 ID
+     * @brief 网格单元类型
      *
-     * 可用于记录 Gmsh Physical Group。
+     * CellType 描述有限元或者几何离散中的单元类型。
+     *
+     * 包括：
+     *
+     * - 一维单元
+     * - 二维单元
+     * - 三维单元
+     * - 一阶单元
+     * - 二阶高阶单元
+     *
+     * 命名规则：
+     *
+     * ```
+     * 类型 + 节点数量
+     * ```
+     *
+     * 例如：
+     *
+     * Triangle3:
+     *
+     * - Triangle
+     * - 3 个节点
+     * - 一阶三角形
+     *
+     * Triangle6:
+     *
+     * - Triangle
+     * - 6 个节点
+     * - 二阶三角形
      */
-    int physical_id = -1;
+    enum class CellType
+    {
+        /**
+         * @brief 未知单元
+         */
+        Unknown = 0,
 
-    /**
-     * @brief 边界 ID
-     *
-     * 用于 FEM 中施加 Dirichlet / Neumann 等边界条件。
-     */
-    int boundary_id = -1;
-};
+        /**
+         * @brief 点单元
+         *
+         * 一个节点。
+         */
+        Vertex1,
 
-/**
- * @brief 网格单元
- *
- * MeshCell 表示一个网格单元。
- *
- * 通过 type 描述单元类型，
- * 通过 node_ids 描述单元与节点的连接关系。
- *
- * 示例：
- *
- * Triangle3:
- *
- * @code
- * type = CellType::Triangle3;
- * node_ids = {0, 1, 2};
- * @endcode
- *
- * Quad4:
- *
- * @code
- * type = CellType::Quad4;
- * node_ids = {0, 1, 2, 3};
- * @endcode
- *
- * Tetra4:
- *
- * @code
- * type = CellType::Tetra4;
- * node_ids = {0, 1, 2, 3};
- * @endcode
- *
- * Hexa8:
- *
- * @code
- * type = CellType::Hexa8;
- * node_ids = {0, 1, 2, 3, 4, 5, 6, 7};
- * @endcode
- *
- * 字段说明：
- *
- * - id          : 单元编号
- * - type        : 单元类型
- * - node_ids    : 单元包含的节点 ID
- * - order       : 单元阶次，一阶为 1，二阶为 2
- * - physical_id : 物理分组 ID，通常对应 Gmsh Physical Group
- * - material_id : 材料 ID，用于 FEM 材料映射
- * - region_id   : 几何区域 ID，例如不同体域、面域
- */
-struct MeshCell
-{
-    /**
-     * @brief 单元 ID
-     *
-     * 通常从 0 开始连续编号。
-     */
-    int id = -1;
+        /**
+         * @brief 二节点线单元
+         */
+        Line2,
 
-    /**
-     * @brief 单元类型
-     */
-    CellType type = CellType::Unknown;
+        /**
+         * @brief 三节点二阶线单元
+         *
+         * 节点：
+         *
+         * ```
+         * v0 - m01 - v1
+         * ```
+         */
+        Line3,
 
-    /**
-     * @brief 单元节点连接关系
-     *
-     * 存储构成该单元的节点 ID。
-     *
-     * 节点顺序应遵循 OpenCAX 统一约定，
-     * 后续可与 Gmsh / VTK / FEM 单元顺序进行映射。
-     */
-    std::vector<int> node_ids;
+        /**
+         * @brief 三节点一阶三角形
+         *
+         * 节点：
+         *
+         * ```
+         *      v2
+         *     / \
+         *    /   \
+         *   v0---v1
+         * ```
+         */
+        Triangle3,
+
+        /**
+         * @brief 六节点二阶三角形
+         *
+         * 节点：
+         *
+         * ```
+         *      v2
+         *     / \
+         *   m20 m12
+         *   /     \
+         * v0--m01--v1
+         * ```
+         */
+        Triangle6,
+
+        /**
+         * @brief 四节点四边形
+         *
+         * 一阶 Quad 单元。
+         */
+        Quad4,
+
+        /**
+         * @brief 八节点二阶四边形
+         */
+        Quad8,
+
+        /**
+         * @brief 九节点二阶四边形
+         *
+         * 包含中心节点。
+         */
+        Quad9,
+
+        /**
+         * @brief 四节点四面体
+         */
+        Tetra4,
+
+        /**
+         * @brief 十节点二阶四面体
+         */
+        Tetra10,
+
+        /**
+         * @brief 八节点六面体
+         */
+        Hexa8,
+
+        /**
+         * @brief 二十节点二阶六面体
+         */
+        Hexa20,
+
+        /**
+         * @brief 二十七节点二阶六面体
+         */
+        Hexa27,
+
+        /**
+         * @brief 六节点三棱柱
+         */
+        Prism6,
+
+        /**
+         * @brief 十五节点二阶三棱柱
+         */
+        Prism15,
+
+        /**
+         * @brief 五节点金字塔
+         */
+        Pyramid5,
+
+        /**
+         * @brief 十三节点二阶金字塔
+         */
+        Pyramid13
+    };
 
     /**
      * @brief 单元阶次
      *
-     * 一阶单元：
-     *
-     * - Vertex1
-     * - Line2
-     * - Triangle3
-     * - Quad4
-     * - Tetra4
-     * - Hexa8
-     * - Prism6
-     * - Pyramid5
-     *
-     * 二阶单元：
-     *
-     * - Line3
-     * - Triangle6
-     * - Quad8
-     * - Quad9
-     * - Tetra10
-     * - Hexa20
-     * - Hexa27
-     * - Prism15
-     * - Pyramid13
-     */
-    int order = 1;
-
-    /**
-     * @brief 物理分组 ID
-     *
-     * 常用于记录 Gmsh Physical Group。
-     */
-    int physical_id = -1;
-
-    /**
-     * @brief 材料 ID
-     *
-     * FEM 中用于将单元映射到材料参数。
-     */
-    int material_id = -1;
-
-    /**
-     * @brief 区域 ID
-     *
-     * 可用于区分几何区域、体域、面域。
-     */
-    int region_id = -1;
-};
-
-/**
- * @brief 网格面
- *
- * MeshFace 表示三维体网格中的一个拓扑面。
- *
- * MeshFace 通常由 MeshTopology 构建，用于描述：
- *
- * - face2node : 面到节点
- * - face2cell : 面到相邻单元
- * - cell2face : 单元到面
- *
- * 示例：
- *
- * Tetra4 的面通常是 Triangle3。
- *
- * @code
- * type = CellType::Triangle3;
- * node_ids = {0, 1, 2};
- * cell_ids = {0};
- * @endcode
- *
- * Hexa8 的面通常是 Quad4。
- *
- * @code
- * type = CellType::Quad4;
- * node_ids = {0, 1, 2, 3};
- * cell_ids = {0, 1};
- * @endcode
- *
- * @note
- * MeshFace 是拓扑层结构，主要用于全局邻接关系和边界识别。
- * 对于 FEM 中需要面的局部方向、法向、Jacobian 等信息的场景，
- * 应由具体 FEMElement 或 CellTopology 的扩展接口处理。
- */
-struct MeshFace
-{
-    /**
-     * @brief 面 ID
-     *
-     * 通常从 0 开始连续编号。
-     */
-    int id = -1;
-
-    /**
-     * @brief 面类型
-     *
-     * 常见取值：
-     *
-     * - Triangle3
-     * - Quad4
-     */
-    CellType type = CellType::Unknown;
-
-    /**
-     * @brief 面节点连接关系
-     *
-     * 存储构成该面的节点 ID。
-     */
-    std::vector<int> node_ids;
-
-    /**
-     * @brief 相邻单元 ID 列表
-     *
-     * 边界面通常只有 1 个相邻单元。
-     * 内部面通常有 2 个相邻单元。
-     */
-    std::vector<int> cell_ids;
-
-    /**
-     * @brief 是否为边界面
-     */
-    bool boundary = false;
-
-    /**
-     * @brief 物理分组 ID
-     *
-     * 可用于记录边界面的物理分组。
-     */
-    int physical_id = -1;
-
-    /**
-     * @brief 边界 ID
-     *
-     * 用于 FEM 中施加边界条件。
-     */
-    int boundary_id = -1;
-};
-
-/**
- * @brief 网格基础信息
- *
- * MeshInfo 保存网格级别的元信息。
- *
- * 包括：
- *
- * - name      : 网格名称
- * - source    : 网格来源，例如 Gmsh、TetGen、Structured、Imported
- * - unit      : 网格单位
- * - dimension : 网格拓扑维度
- */
-struct MeshInfo
-{
-    /**
-     * @brief 网格名称
-     */
-    std::string name;
-
-    /**
-     * @brief 网格来源
+     * 用于 FEM 插值阶次判断。
      *
      * 示例：
      *
-     * - "Structured"
-     * - "Gmsh"
-     * - "TetGen"
-     * - "Netgen"
-     * - "STL"
-     * - "VTK"
+     * - Triangle3 -> Linear
+     * - Triangle6 -> Quadratic
      */
-    std::string source;
+    enum class MeshOrder
+    {
+        /**
+         * @brief 未知阶次
+         */
+        Unknown = 0,
+
+        /**
+         * @brief 一阶单元
+         */
+        Linear = 1,
+
+        /**
+         * @brief 二阶高阶单元
+         */
+        Quadratic = 2
+    };
 
     /**
-     * @brief 网格单位
+     * @brief 单元族类型
      *
-     * 默认使用 m。
+     * 用于按照几何族分类。
+     *
+     * 例如：
+     *
+     * Triangle3/Triangle6:
+     *
+     * ```
+     * MeshElementFamily::Triangle
+     * ```
      */
-    std::string unit = "m";
+    enum class MeshElementFamily
+    {
+        Unknown,
+
+        Vertex,
+
+        Line,
+
+        Triangle,
+
+        Quadrilateral,
+
+        Tetrahedron,
+
+        Hexahedron,
+
+        Prism,
+
+        Pyramid,
+
+        Mixed
+    };
 
     /**
-     * @brief 网格拓扑维度
+     * @brief 网格来源类型
+     *
+     * 描述网格如何生成。
      */
-    MeshDimension dimension = MeshDimension::Unknown;
-};
+    enum class MeshSourceType
+    {
+        /**
+         * @brief 未知来源
+         */
+        Unknown,
+
+        /**
+         * @brief OpenCAX 内置结构网格
+         */
+        Structured,
+
+        /**
+         * @brief 非结构网格
+         */
+        Unstructured,
+
+        /**
+         * @brief Gmsh 生成
+         */
+        Gmsh,
+
+        /**
+         * @brief TetGen 生成
+         */
+        TetGen,
+
+        /**
+         * @brief 外部导入
+         */
+        Imported,
+
+        /**
+         * @brief 网格加密产生
+         */
+        Refined,
+
+        /**
+         * @brief 高阶转换产生
+         *
+         * 例如：
+         *
+         * Triangle3
+         *
+         * 转换为：
+         *
+         * Triangle6
+         */
+        HighOrderConverted
+    };
+
+    /**
+     * @brief 网格节点
+     *
+     * MeshNode 表示有限元节点或者几何离散节点。
+     *
+     * 所有节点统一采用三维坐标：
+     *
+     * - 2D 网格:
+     *
+     *   z = 0
+     *
+     * - 曲面网格:
+     *
+     *   x/y/z
+     *
+     * - 3D 网格:
+     *
+     *   x/y/z
+     */
+    struct MeshNode
+    {
+        /**
+         * @brief 节点编号
+         *
+         * 从 0 开始连续编号。
+         */
+        int id = -1;
+
+        /**
+         * @brief 空间坐标 X
+         */
+        double x = 0.0;
+
+        /**
+         * @brief 空间坐标 Y
+         */
+        double y = 0.0;
+
+        /**
+         * @brief 空间坐标 Z
+         */
+        double z = 0.0;
+
+        /**
+         * @brief 物理分组编号
+         *
+         * 对应：
+         *
+         * - Gmsh Physical Group
+         * - CAD 拓扑区域
+         */
+        int physical_id = -1;
+
+        /**
+         * @brief 边界编号
+         *
+         * 用于：
+         *
+         * - Dirichlet 边界
+         * - Neumann 边界
+         */
+        int boundary_id = -1;
+
+        /**
+         * @brief 几何实体编号
+         *
+         * 对应 CAD:
+         *
+         * - Vertex
+         * - Edge
+         * - Face
+         */
+        int geometry_id = -1;
+    };
+
+    /**
+     * @brief 网格单元
+     *
+     * MeshCell 保存一个有限元单元的完整信息。
+     */
+    struct MeshCell
+    {
+        /**
+         * @brief 单元编号
+         */
+        int id = -1;
+
+        /**
+         * @brief 单元类型
+         */
+        CellType type = CellType::Unknown;
+
+        /**
+         * @brief 单元节点连接关系
+         *
+         * 存储该单元包含的节点编号。
+         *
+         * 示例：
+         *
+         * Triangle3:
+         *
+         * ```
+         * {0,1,2}
+         * ```
+         *
+         * Triangle6:
+         *
+         * ```
+         * {0,1,2,3,4,5}
+         * ```
+         */
+        std::vector<int> node_ids;
+
+        /**
+         * @brief 单元阶次
+         *
+         * 例如：
+         *
+         * - 1 一阶
+         * - 2 二阶
+         */
+        int order = 0;
+
+        /**
+         * @brief 物理区域编号
+         *
+         * 用于：
+         *
+         * - 材料映射
+         * - 多物理区域
+         */
+        int physical_id = -1;
+
+        /**
+         * @brief 材料编号
+         *
+         * FEM:
+         *
+         * ```
+         * material_id -> Material
+         * ```
+         */
+        int material_id = -1;
+
+        /**
+         * @brief 区域编号
+         *
+         * 用于多个几何区域管理。
+         */
+        int region_id = -1;
+
+        /**
+         * @brief 几何实体编号
+         */
+        int geometry_id = -1;
+    };
+
+    /**
+     * @brief 网格信息
+     *
+     * 保存整个 Mesh 的描述信息。
+     */
+    struct MeshInfo
+    {
+        /**
+         * @brief 网格名称
+         */
+        std::string name = "OpenCAXMesh";
+
+        /**
+         * @brief 网格来源
+         *
+         * 示例：
+         *
+         * - Structured
+         * - Gmsh
+         * - TetGen
+         */
+        std::string source = "OpenCAX";
+
+        /**
+         * @brief 网格拓扑维度
+         */
+        MeshDimension dimension = MeshDimension::Unknown;
+
+        /**
+         * @brief 网格生成来源
+         */
+        MeshSourceType source_type = MeshSourceType::Unknown;
+
+        /**
+         * @brief 是否结构网格
+         */
+        bool structured = false;
+
+        /**
+         * @brief 是否高阶网格
+         */
+        bool high_order = false;
+    };
+
+    /**
+     * @brief 二维结构网格参数
+     *
+     * 用于保存矩形结构网格生成信息。
+     */
+    struct StructuredGridInfo2D
+    {
+        int nx = 0;
+        int ny = 0;
+
+        double xmin = 0.0;
+        double xmax = 0.0;
+
+        double ymin = 0.0;
+        double ymax = 0.0;
+
+        /**
+         * @brief 是否交错对角线
+         *
+         * Triangle 网格生成时使用。
+         */
+        bool alternate_diagonal = false;
+    };
+
+    /**
+     * @brief 三维结构网格参数
+     *
+     * 用于六面体、四面体结构网格生成。
+     */
+    struct StructuredGridInfo3D
+    {
+        int nx = 0;
+        int ny = 0;
+        int nz = 0;
+
+        double xmin = 0.0;
+        double xmax = 0.0;
+
+        double ymin = 0.0;
+        double ymax = 0.0;
+
+        double zmin = 0.0;
+        double zmax = 0.0;
+    };
+
+    /**
+     * @brief CellType 字符串转换
+     */
+    const char *to_string(CellType type);
+
+    /**
+     * @brief MeshDimension 字符串转换
+     */
+    const char *to_string(MeshDimension dimension);
+
+    /**
+     * @brief MeshSourceType 字符串转换
+     */
+    const char *to_string(MeshSourceType source_type);
 
 } // namespace OpenCAX

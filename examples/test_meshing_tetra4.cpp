@@ -1,6 +1,6 @@
 #include <OpenCAX/Meshing/Structured/StructuredMeshGenerator.h>
-#include <OpenCAX/Mesh2/MeshTopology.h>
-#include <OpenCAX/Mesh2/MeshDebugUtils.h>
+#include <OpenCAX/Mesh/MeshTopology.h>
+#include <OpenCAX/Mesh/MeshDebugUtils.h>
 #include <OpenCAX/Post/Viewer/VisualOptions.h>
 #include <OpenCAX/Post/Viewer/VtkViewer.h>
 

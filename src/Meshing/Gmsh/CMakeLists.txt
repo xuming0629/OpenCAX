@@ -38,7 +38,7 @@ target_compile_definitions(OpenCAXMeshingGmsh
 target_link_libraries(OpenCAXMeshingGmsh
     PUBLIC
         OpenCAX::Core
-        OpenCAX::Mesh2
+        OpenCAX::Mesh
         OpenCAX::MeshingHighOrder
 )
 

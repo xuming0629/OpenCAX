@@ -1,6 +1,0 @@
-<map id="OpenCAX::HexMesh" name="OpenCAX::HexMesh">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,359,143,424"/>
-<area shape="rect" id="Node000002" href="$classOpenCAX_1_1Mesh.html" title="通用网格基础容器" alt="" coords="17,5,131,311"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,325,70,358,65,359,63,325"/>
-<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="85,325,83,359,78,358,80,325"/>
-</map>

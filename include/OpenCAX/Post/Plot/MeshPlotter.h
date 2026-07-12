@@ -31,8 +31,8 @@
  */
 
 #include <OpenCAX/Core/Config.h>
-#include <OpenCAX/Mesh2/Mesh.h>
-#include <OpenCAX/Mesh2/MeshTopology.h>
+#include <OpenCAX/Mesh/Mesh.h>
+#include <OpenCAX/Mesh/MeshTopology.h>
 
 #include <string>
 
