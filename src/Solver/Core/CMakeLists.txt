@@ -1,0 +1,7 @@
+add_library(OpenCAXSolverCore SolverFactory.cpp)
+add_library(OpenCAX::SolverCore ALIAS OpenCAXSolverCore)
+target_compile_features(OpenCAXSolverCore PUBLIC cxx_std_17)
+target_include_directories(OpenCAXSolverCore PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include>)
+target_link_libraries(OpenCAXSolverCore PUBLIC OpenCAX::Core Eigen3::Eigen)
+set_target_properties(OpenCAXSolverCore PROPERTIES EXPORT_NAME SolverCore)
+install(TARGETS OpenCAXSolverCore EXPORT OpenCAXTargets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib RUNTIME DESTINATION bin)

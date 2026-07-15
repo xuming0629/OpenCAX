@@ -1,73 +1,28 @@
+# ============================================================
+# OpenCAX Tests
+# ============================================================
+
 # find_package(GTest REQUIRED)
 
-include(GoogleTest)
-
-# # =====================================
-# # test_geometry_box
-# # =====================================
-
-# # add_executable(test_geometry_box
-# #     test_geometry_box.cpp
-# # )
-
-# # target_link_libraries(test_geometry_box
-# #     PRIVATE
-# #         GTest::gtest_main
-# #         OpenCAX::Core
-# #         OpenCAX::Geometry
-# # )
-
-# # gtest_discover_tests(test_geometry_box)
-
-
-# =====================================
-# test_io_step
-# =====================================
-
-# add_executable(test_io_step
-#     test_io_step.cpp
-# )
-
-# target_link_libraries(test_io_step
-#     PRIVATE
-#         GTest::gtest_main
-#         OpenCAX::Core
-#         OpenCAX::Geometry
-#         OpenCAX::IO
-# )
-
-# gtest_discover_tests(test_io_step)
-
-
-# # # =====================================
-# # # test_meshing
-# # # =====================================
-
-# # add_executable(test_meshing
-# #     test_meshing.cpp
-# # )
-
-# # target_link_libraries(test_meshing
-# #     PRIVATE
-# #         GTest::gtest_main
-# #         OpenCAX::Core
-# #         OpenCAX::Geometry
-# #         OpenCAX::Meshing
-# # )
-
-# # gtest_discover_tests(test_meshing)
-
-# add_executable(test_geometry_box
-#     test_geometry_box.cpp
-# )
-
-# target_link_libraries(test_geometry_box
-#     PRIVATE
-#         OpenCAX::Core
-#         OpenCAX::Geometry
-#         GTest::gtest
-#         GTest::gtest_main
-# )
-
 # include(GoogleTest)
-# gtest_discover_tests(test_geometry_box)
+include(OpenCAXTest)
+
+# ============================================================
+# Module Tests
+# ============================================================
+
+if(OPEN_CAX_BUILD_MESH)
+    add_subdirectory(Mesh)
+endif()
+
+# if(OPEN_CAX_BUILD_MESHING)
+#     add_subdirectory(Meshing)
+# endif()
+
+if(OPEN_CAX_BUILD_SOLVER)
+    add_subdirectory(Solver)
+endif()
+
+# if(OPEN_CAX_BUILD_FEM)
+#     add_subdirectory(FEM)
+# endif()
