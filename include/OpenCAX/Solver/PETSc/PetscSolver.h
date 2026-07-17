@@ -1,9 +1,9 @@
 #pragma once
 #include <OpenCAX/Solver/LinearSolver.h>
 namespace OpenCAX {
-class EigenCGSolver:public LinearSolver{
+class PetscSolver:public LinearSolver{
 public:
-const char* name()const override{return "Eigen::CG";}
+const char* name()const override{return "PETSc";}
 SolverResult solve(LinearSystem&,const SolverOptions&)override;
 };
 }

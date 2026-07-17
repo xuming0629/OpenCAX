@@ -1,8 +1,33 @@
-add_library(OpenCAXSolverEigen EigenSparseLUSolver.cpp EigenCGSolver.cpp EigenBiCGSTABSolver.cpp)
-add_library(OpenCAX::SolverEigen ALIAS OpenCAXSolverEigen)
-target_compile_features(OpenCAXSolverEigen PUBLIC cxx_std_17)
-target_include_directories(OpenCAXSolverEigen PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include>)
-target_link_libraries(OpenCAXSolverEigen PUBLIC OpenCAX::SolverCore Eigen3::Eigen)
-target_compile_definitions(OpenCAXSolverEigen PUBLIC OPEN_CAX_HAS_EIGEN_SOLVER=1)
-set_target_properties(OpenCAXSolverEigen PROPERTIES EXPORT_NAME SolverEigen)
-install(TARGETS OpenCAXSolverEigen EXPORT OpenCAXTargets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib RUNTIME DESTINATION bin)
+add_library(
+    OpenCAXSolverEigen
+    EigenBiCGSTABSolver.cpp
+    EigenCGSolver.cpp
+    EigenSparseLUSolver.cpp
+)
+
+
+add_library(
+    OpenCAX::SolverEigen
+
+    ALIAS
+
+    OpenCAXSolverEigen
+)
+
+
+target_include_directories(
+    OpenCAXSolverEigen
+
+    PUBLIC
+
+    ${PROJECT_SOURCE_DIR}/include
+)
+
+
+target_link_libraries(
+    OpenCAXSolverEigen
+
+    PUBLIC
+
+    Eigen3::Eigen
+)

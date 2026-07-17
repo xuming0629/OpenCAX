@@ -1,9 +1,16 @@
 #pragma once
-#include <OpenCAX/Solver/LinearSolver.h>
 #include <memory>
+#include <OpenCAX/Solver/LinearSolver.h>
+
 namespace OpenCAX {
-class SolverFactory {
+
+class SolverFactory
+{
 public:
-    static std::unique_ptr<LinearSolver> create(const SolverOptions& options);
+
+static std::unique_ptr<LinearSolver>
+create(const SolverOptions&);
+
 };
-} // namespace OpenCAX
+
+}

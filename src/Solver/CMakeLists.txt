@@ -1,9 +1,128 @@
-add_subdirectory(Core)
-add_subdirectory(Eigen)
-add_library(OpenCAXSolver INTERFACE)
-add_library(OpenCAX::Solver ALIAS OpenCAXSolver)
-target_link_libraries(OpenCAXSolver INTERFACE OpenCAX::SolverCore OpenCAX::SolverEigen)
-target_include_directories(OpenCAXSolver INTERFACE $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include>)
-set_target_properties(OpenCAXSolver PROPERTIES EXPORT_NAME Solver)
-install(TARGETS OpenCAXSolver EXPORT OpenCAXTargets)
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/OpenCAX/Solver DESTINATION include/OpenCAX)
+# ============================================================
+# OpenCAX Solver Module
+# ============================================================
+
+
+# ============================================================
+# Solver Core
+# ============================================================
+
+
+add_library(
+    OpenCAXSolver
+
+    SolverFactory.cpp
+
+)
+
+
+
+add_library(
+    OpenCAX::Solver
+
+    ALIAS
+
+    OpenCAXSolver
+)
+
+
+
+target_include_directories(
+    OpenCAXSolver
+
+    PUBLIC
+
+    ${PROJECT_SOURCE_DIR}/include
+)
+
+
+
+# ============================================================
+# Eigen Solver Backend
+# ============================================================
+
+
+if(OPEN_CAX_SOLVER_USE_EIGEN)
+
+    add_subdirectory(Eigen)
+
+
+    target_link_libraries(
+        OpenCAXSolver
+
+        PUBLIC
+
+        OpenCAX::SolverEigen
+    )
+
+
+endif()
+
+
+
+# ============================================================
+# MUMPS Solver Backend
+# ============================================================
+
+
+if(OPEN_CAX_SOLVER_USE_MUMPS)
+
+    add_subdirectory(Mumps)
+
+
+    target_link_libraries(
+        OpenCAXSolver
+
+        PUBLIC
+
+        OpenCAX::SolverMumps
+    )
+
+
+endif()
+
+
+
+# ============================================================
+# PETSc Solver Backend
+# ============================================================
+
+
+if(OPEN_CAX_SOLVER_USE_PETSC)
+
+    add_subdirectory(PETSc)
+
+
+    target_link_libraries(
+        OpenCAXSolver
+
+        PUBLIC
+
+        OpenCAX::SolverPETSc
+    )
+
+
+endif()
+
+
+
+# ============================================================
+# CUDA Solver Backend
+# ============================================================
+
+
+if(OPEN_CAX_SOLVER_USE_CUDA)
+
+    add_subdirectory(CUDA)
+
+
+    target_link_libraries(
+        OpenCAXSolver
+
+        PUBLIC
+
+        OpenCAX::SolverCUDA
+    )
+
+
+endif()

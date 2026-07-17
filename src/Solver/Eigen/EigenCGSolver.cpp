@@ -1,18 +1,198 @@
 #include <OpenCAX/Solver/Eigen/EigenCGSolver.h>
+
+#include <Eigen/Sparse>
 #include <Eigen/IterativeLinearSolvers>
-#include <chrono>
-namespace OpenCAX {
-SolverResult EigenCGSolver::solve(LinearSystem& system,const SolverOptions& o){
-    SolverResult r; r.backend_name="Eigen"; r.method_name="ConjugateGradient";
-    if(!system.valid()||system.size()==0){r.status=SolverStatus::InvalidSystem;r.message="Invalid or empty linear system";return r;}
-    auto t0=std::chrono::steady_clock::now();
-    Eigen::ConjugateGradient<LinearSystem::Matrix,Eigen::Lower|Eigen::Upper,Eigen::DiagonalPreconditioner<double>> s;
-    s.setMaxIterations(o.max_iterations); s.setTolerance(o.tolerance); s.compute(system.A);
-    if(s.info()!=Eigen::Success){r.message="CG matrix setup failed";return r;}
-    system.x=s.solve(system.b); r.iterations=(int)s.iterations(); r.residual_norm=(system.A*system.x-system.b).norm(); double bn=system.b.norm(); r.relative_residual=bn>0?r.residual_norm/bn:r.residual_norm;
-    r.solve_time_seconds=std::chrono::duration<double>(std::chrono::steady_clock::now()-t0).count();
-    if(s.info()==Eigen::Success&&system.x.allFinite()){r.status=SolverStatus::Success;r.message="CG solve succeeded";}
-    else if(r.iterations>=o.max_iterations){r.status=SolverStatus::MaxIterations;r.message="CG reached maximum iterations";}
-    else {r.status=SolverStatus::Failed;r.message="CG solve failed";} return r;
+
+#include <vector>
+
+
+namespace OpenCAX
+{
+
+
+SolverResult
+EigenCGSolver::solve(
+    LinearSystem& system,
+    const SolverOptions&
+)
+{
+
+    SolverResult result;
+
+
+    // ==================================================
+    // OpenCAX CSR
+    //        |
+    //        v
+    // Eigen SparseMatrix
+    // ==================================================
+
+    Eigen::SparseMatrix<double> A(
+        system.A.rows(),
+        system.A.cols()
+    );
+
+
+    std::vector<
+        Eigen::Triplet<double>
+    > triplets;
+
+
+
+    for(int i = 0;
+        i < system.A.rows();
+        ++i)
+    {
+
+        for(
+            int k = system.A.row_ptr[i];
+            k < system.A.row_ptr[i + 1];
+            ++k
+        )
+        {
+
+            triplets.emplace_back(
+                i,
+                system.A.col_indices[k],
+                system.A.values[k]
+            );
+
+        }
+
+    }
+
+
+    A.setFromTriplets(
+        triplets.begin(),
+        triplets.end()
+    );
+
+
+
+    // ==================================================
+    // RHS
+    // ==================================================
+
+    Eigen::VectorXd b(
+        system.b.size()
+    );
+
+
+    for(int i = 0;
+        i < system.b.size();
+        ++i)
+    {
+        b[i] = system.b[i];
+    }
+
+
+
+    // ==================================================
+    // Eigen CG Solver
+    // ==================================================
+
+    Eigen::ConjugateGradient<
+        Eigen::SparseMatrix<double>,
+        Eigen::Lower | Eigen::Upper
+    > solver;
+
+
+
+    solver.compute(A);
+
+
+
+    if(
+        solver.info()!=Eigen::Success
+    )
+    {
+
+        result.status =
+            SolverStatus::Failed;
+
+        result.message =
+            "Eigen CG factorization failed";
+
+        return result;
+
+    }
+
+
+
+    Eigen::VectorXd x =
+        solver.solve(b);
+
+
+
+    if(
+        solver.info()!=Eigen::Success
+    )
+    {
+
+        result.status =
+            SolverStatus::Failed;
+
+        result.message =
+            "Eigen CG solve failed";
+
+        return result;
+
+    }
+
+
+
+    // ==================================================
+    // Copy Eigen result -> OpenCAX Vector
+    // ==================================================
+
+    system.x.resize(
+        x.size()
+    );
+
+
+    for(int i=0;
+        i < x.size();
+        ++i)
+    {
+
+        system.x[i] = x[i];
+
+    }
+
+
+
+    // ==================================================
+    // Result
+    // ==================================================
+
+    result.status =
+        SolverStatus::Success;
+
+
+    result.backend_name =
+        "Eigen";
+
+
+    result.method_name =
+        "CG";
+
+
+    result.iterations =
+        solver.iterations();
+
+
+    result.residual_norm =
+        solver.error();
+
+
+
+    result.message =
+        "Eigen CG solve success";
+
+
+    return result;
+
 }
-} // namespace OpenCAX
+
+
+}
